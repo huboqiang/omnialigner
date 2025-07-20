@@ -62,4 +62,4 @@ streamlit run servers/agent.py
 ## OmniTME agent
 
 ```bash
-python ./servers/omics_browser/examples/deepzoom/deepzoom_multiserver.py  -p 5020 -l 0.0.0.0 YOUR_DATA_DIR/analysis/panlab/v1/fig
+python ./servers/omics_browser/examples/deepzoom/deepzoom_multiserver.py  -p 5020 -l 0.0.0.0 YOUR_DATA_DIR/analysis/panlab/v1/fig/
