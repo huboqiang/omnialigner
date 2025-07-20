@@ -1,0 +1,13 @@
+{
+    "genes":{
+               
+        "P1": ["DAPI", "FOXP3","CD8","CD4","PDCD1","NCAM1","MS4A1", "SampleAF"],
+        "P2": ["DAPI", "ITGAX","CD247","NR3C2","HLA-DRA","CD163","CD68", "SampleAF"],
+        "P3": ["DAPI", "MPO","GZMB","MKI67","COL1A1","PECAM1","PANK1", "SampleAF"],
+        "P4": ["DAPI", "CD4", "CD8", "COL1A1", "HLA-DR", "CD163", "PANK1", "SampleAF"]
+    },
+    
+    "order_in_tiff": ["DAPI", "Opal 570", "Opal 690", "Opal 480", "Opal 620", "Opal 780", "Opal 520", "Sample AF"],
+    "order_in_browser": ["DAPI", "Opal 480", "Opal 520", "Opal 570", "Opal 620", "Opal 690", "Opal 780", "Sample AF"],
+    "order_label": [0, 3, 6, 1, 4, 2,5, 7]
+}

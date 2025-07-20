@@ -1,0 +1,23 @@
+
+
+C = genes["P1"]["order"]
+CD4: tcell
+CD8
+FOXP3: Treg
+PD1: PD, T cell, 表达说明有靶点
+NCAM1: NK
+MS4A1: B-cell
+
+ITGAX: CD11c DC 细胞
+CD247: PD-L1 肿瘤细胞上面的免疫检查点
+NR3C2: MC 肥大细胞
+HLA-DR: 抗原呈递
+CD163: M2（+）/M1(-)
+CD68: 总巨噬
+
+MPO 中性粒细胞
+GZMB 脱颗粒酶，高表达杀伤性功能强
+COL1A1: 成纤维细胞
+MKI67: 增殖细胞
+PECAM1: CD31 上皮细胞, 肿瘤有
+PANK1: 内皮细胞

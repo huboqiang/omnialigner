@@ -1,0 +1,71 @@
+dataloader:
+  batch_size: 2
+  overlap: 2
+  k: 1
+
+optimizer:
+  optimizer_name: "torch.optim.Adam"
+  lr: 0.1
+  betas:
+    - 0.9
+    - 0.999
+
+trainer:
+  iterations: 500
+  log_prefix: "./logs_SG2D/"
+  n_iters_show: 100
+  n_cols: 4
+
+affine:
+  model: "TRSModuleDual"
+  tensor_resize: [256, 256]
+  weight_image: 0.0
+  weight_kpts: 10.0
+  weight_reg: 0.0
+  lambda_L1_angle: 0.05
+  lambda_L1_trans: 1.0
+  lambda_L1_scale: 10.0
+
+nonrigid:
+    model: "DeeperHistRegModule"
+    optimizer:
+      optimizer_name: "torch.optim.Adam"
+      lr: 0.005
+    scheduler:
+      scheduler_name: "torch.optim.lr_scheduler.CosineAnnealingWarmRestarts"
+      T_0: 200
+      T_mult: 2
+    
+    weight_image: 1.0
+    weight_kpts: 0.0
+    weight_reg: 1.0
+    grid_size: 16
+    show_ovlp: False
+    
+    cost_function:
+      ncc_local:
+        weight: 1.0
+        params: {win_size: 7}
+      
+      # nn.functional.l1_loss:
+      #   weight: 0.8
+      #   params: {}
+      # ssim_loss:
+      #   weight: 0.2
+      #   params: {}
+        
+    registration_size': 8192
+    regularization_function:
+      omnialigner.models.loss.diffusion_relative:
+        weight: 1.0
+        params: {}
+      torch.norm:
+        weight: 0.0
+        params: {p: 2}
+    
+    num_levels: 9
+    used_levels: 9
+    learning_rates: [0.005, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0015, 0.001]
+    iterations: [100,   100,   100,   100,   100,   100,   100,   200,   200]
+    alphas:   [0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.045, 0.054, 0.063]
+    

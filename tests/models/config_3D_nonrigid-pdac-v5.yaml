@@ -1,0 +1,67 @@
+dataloader:
+  batch_size: 4
+  overlap: 3
+  k: 4
+
+optimizer:
+  optimizer_name: "torch.optim.Adam"
+  lr: 0.1
+  betas:
+    - 0.9
+    - 0.999
+
+trainer:
+  iterations: 200
+  log_prefix: "./logs_SG3D/"
+  n_iters_show: 100
+  n_cols: 8
+
+RTKModuleDual:
+  tensor_resize: [256, 256]
+  weight_image: 10.0
+  weight_kpts: 1.0
+  weight_reg: 10.0
+  lambda_L1_angle: 0.05
+  lambda_L1_trans: 1.0
+  lambda_L1_scale: 10.0
+
+
+
+DeeperHistRegModule:
+  optimizer:
+    optimizer_name: "torch.optim.Adam"
+    lr: 0.005
+  scheduler:
+    scheduler_name: "torch.optim.lr_scheduler.CosineAnnealingWarmRestarts"
+    T_0: 200
+    T_mult: 2
+  
+  weight_image: 1.0
+  weight_kpts: 0.0
+  weight_reg: 1.0
+  grid_size: 16
+  show_ovlp: False
+  
+  cost_function:
+    ncc_local:
+      weight: 1.0
+      params: {win_size: 7}
+      
+  registration_size: 8192
+  regularization_function:
+    models.loss.diffusion_relative:
+      weight: 1.0
+      params: {}
+    models.loss.grad_loss:
+      weight: 10.0
+      params: {penalty: "l2"}
+    torch.norm:
+      weight: 0.1
+      params: {p: 2}
+      
+  num_levels: 9
+  used_levels: 7
+  learning_rates: [0.005, 0.005, 0.005, 0.0025, 0.0025, 0.0025, 0.0025]
+  iterations: [100,   100,   100,   100,   100,   200,   200]
+  alphas:   [0.030, 0.030, 0.030, 0.09, 0.09, 0.3, 0.3]
+  

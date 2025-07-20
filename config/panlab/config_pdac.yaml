@@ -1,0 +1,132 @@
+datasets:
+  project: panlab
+  group: pdac
+  version: v6
+  nonrigid: False
+  zoom_level: 3
+
+  root_dir: "~/projects/scGaussian3dGen/"
+  tag: "raw"
+  method: "gigapath"
+  transform_engine: "torch"
+  raw_img_prefix: ".qptiff"
+  
+  max_size: 1280
+  l_scales: [40, 10, 5, 1]
+  file_data: "~/projects/omni/config/panlab/data_panlab.csv"
+  file_IHC_name: "~/projects/omni/config/panlab/IHC_layer_info.json"
+
+  plt_row_col: [30, 30]
+  plt_figsize: [30, 30]
+  to_gray:
+    alpha_he: 3
+    alpha_ihc: 5
+  
+pp:
+  crop:
+    min_length: 80
+    threshold: 0.05
+    margin_extend: 0.10
+    cos_sim_cutoff: 0.6 # 0.8 for ["HE_409", "P1_844", "P3_893", "P2_538", "P2_837", "P2_861"]
+  dtype: "HE"
+  vit_attention:
+    params:
+      tile_size: 4096 
+      hipt:
+        patch_size: [256, 256]
+        subpatch_size: [16, 16]
+      UNI:
+        patch_size: [224, 224]
+        subpatch_size: [16, 16]
+      virchow:
+        patch_size: [224, 224]
+        subpatch_size: [16, 16]
+      gigapath:
+        patch_size: [224, 224]
+        subpatch_size: [14, 14]
+
+kpt:
+  method: xfeats_cv2DMatch
+  n_angles: 20
+
+align:
+  ## SGBaseAligner.config
+  dataloader:
+    batch_size: 64
+    overlap: 8
+    k: 4
+
+  optimizer:
+    optimizer_name: "torch.optim.Adam"
+    lr: 0.1
+    betas:
+      - 0.9
+      - 0.999
+
+  trainer:
+    iterations: 200
+    log_prefix: "./logs_SG2D/"
+    n_iters_show: 100
+    n_cols: 8
+    figsize: [20, 10]
+
+  affine:
+    model: "omnialigner.align.models.grid_2d.TRSModuleDual"
+    freezed_layers: [0]
+    optimizer:
+      optimizer_name: "torch.optim.Adam"
+      lr: 0.1
+    scheduler:
+      scheduler_name: "torch.optim.lr_scheduler.CosineAnnealingWarmRestarts"
+      T_0: 200
+      T_mult: 2
+    tensor_resize: [256, 256]
+    weight_image: 10.0
+    weight_kpts: 100.0
+    weight_reg: 10.0
+    lambda_L1_angle: 1.0
+    lambda_L1_trans: 1.0
+    lambda_L1_scale: 10.0
+    num_levels: 3
+    learning_rates: [0.1, 0.1, 0.05]
+    iterations: [200, 200, 200]
+    trs_save_prefix: ["rotation", "tx", "ty", "kx", "ky"]
+
+  nonrigid:
+    model: "omnialigner.align.models.grid_2d.DeeperHistRegModule"
+    n_keypoints: 1000
+    optimizer:
+      optimizer_name: "torch.optim.Adam"
+      lr: 0.0005
+    scheduler:
+      scheduler_name: "torch.optim.lr_scheduler.CosineAnnealingWarmRestarts"
+      T_0: 70
+      T_mult: 2
+    
+    weight_image: 1.0
+    weight_kpts: 1000.0
+    weight_reg: 10.0
+    grid_size: 16
+    show_ovlp: True
+    
+    cost_function:
+      ncc_local:
+        weight: 1.0
+        params: {win_size: 7}
+        
+    registration_size': 8192
+    regularization_function:
+      omnialigner.metrics.diffusion_relative:
+        weight: 1.0
+        params: {}
+      omnialigner.metrics.l1_mean:
+        weight: 1
+        params: {p: 1}
+    
+    num_levels: 8
+    used_levels: 5
+    learning_rates: [0.0005, 0.0004, 0.0003, 0.0002, 0.0001, 0.00005]
+    iterations: [200, 200, 200, 200, 200, 400]
+    alphas:   [0.045, 0.045, 0.1, 0.1, 0.2, 0.2]
+    
+    
