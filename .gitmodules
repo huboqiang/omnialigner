@@ -1,0 +1,6 @@
+[submodule "servers/omics_browser"]
+	path = servers/omics_browser
+	url = https://github.com/huboqiang/omics_browser
+[submodule "servers/aligner_agent"]
+	path = servers/aligner_agent
+	url = https://github.com/huboqiang/aligner_agent
