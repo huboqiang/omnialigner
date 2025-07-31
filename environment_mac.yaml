@@ -1,15 +1,13 @@
-# mainly from https://github.com/nv-tlabs/XCube/blob/main/environment.yml
+# Corrected for macOS compatibility
 name: omni
 channels:
-  - pyg
   - pytorch
   - conda-forge
+  - pyg
 dependencies:
   - python=3.10
-  - pytorch=2.2.0
-  - cudatoolkit=11.7
+  - pytorch::pytorch=2.2.0
   - numpy<2.0.0
-  - faiss-gpu=1.7.2
   - tensorboard
   - pip
   - git
@@ -18,8 +16,6 @@ dependencies:
   - certifi
   - openssl
   - parameterized
-  - gcc_linux-64=11
-  - gxx_linux-64=11
   - setuptools
   - cmake
   - make
@@ -29,7 +25,6 @@ dependencies:
   - matplotlib
   - seaborn
   - tqdm
-  - pyg
   - sparsehash
   - sphinx>=7.0.0
   - sphinx_rtd_theme
@@ -37,10 +32,6 @@ dependencies:
   - pandas
   - rich
   - pytest-benchmark
-  - openblas=0.3.23=pthreads_h855a84d_0
-  - openjpeg=2.5.0=hfec8fc6_2
-  - openslide=3.4.1=h7773abc_6
-  - openssl=3.1.1=hd590300_0
   - pytorch-lightning=1.9.4
   - omegaconf
   - flatten-dict
@@ -54,9 +45,8 @@ dependencies:
     - torchvision==0.17.0
     - linkify-it-py
     - python-pycg
-    - https://data.dgl.ai/wheels/torch-2.2/cu118/dgl-2.4.0%2Bcu118-cp310-cp310-manylinux1_x86_64.whl
     - torch_sparse
-    - point_cloud_utils==0.29.5 # ! required version
+    - point_cloud_utils==0.29.5
     - loguru
     - einops
     - dask
@@ -74,9 +64,7 @@ dependencies:
     - pykan==0.2.3
     - hnswlib
     - annoy
-    - scanpy [louvain]
+    - "scanpy[louvain]"
     - leidenalg
     - cellpose
-    #### If using CUDA, e.g. 11.8
-    # - https://download.pytorch.org/whl/cu118/torch-2.2.0%2Bcu118-cp310-cp310-linux_x86_64.whl#sha256=4377e0a7fe8ff8ffc4f7c9c6130c1dcd3874050ae4fc28b7ff1d35234fbca423
-    # - https://download.pytorch.org/whl/cu118/torchvision-0.17.0%2Bcu118-cp310-cp310-linux_x86_64.whl#sha256=2e63d62e09d9b48b407d3e1b30eb8ae4e3abad6968e8d33093b60d0657542428
+    - faiss-cpu

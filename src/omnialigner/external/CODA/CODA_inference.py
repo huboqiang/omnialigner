@@ -5,7 +5,6 @@ import torch
 import cv2
 from tqdm import tqdm
 import pandas as pd
-import matlab.engine
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -86,7 +85,7 @@ def calculate_rtre(
 
 
 def load_CODA(path_tform, path_D):
-
+    import matlab.engine
     eng = matlab.engine.start_matlab()
     eng.eval(f"""load('{path_tform}');""", nargout=0)
     cent = eng.eval("cent")

@@ -4,3 +4,4 @@
 example/.bak/
 *.log
 *lightning_logs/
+src/omnialigner/vendor/RoMa/build/

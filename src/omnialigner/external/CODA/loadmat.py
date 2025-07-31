@@ -2,10 +2,10 @@ import cv2
 import pandas as pd
 from scipy.ndimage import map_coordinates, zoom
 from scipy.interpolate import griddata
-import matlab.engine
 import numpy as np
-from omnialigner.external.CODA.pad import pad_im_both2, preprocessing
 import matplotlib.pyplot as plt
+
+from omnialigner.external.CODA.pad import pad_im_both2, preprocessing
 
 def calculate_landmarks_offset(landmarks, szz, raw_size, padall=250):
     H_raw, W_raw = raw_size
@@ -301,7 +301,7 @@ def register_global_im(im, tform, cent, f=0, fillval=0):
 
 
 def load_matlab_params(path_tform, path_D):
-
+    import matlab.engine
     eng = matlab.engine.start_matlab()
     eng.eval(f"""load('{path_tform}');""", nargout=0)
     cent = eng.eval("cent")

@@ -28,8 +28,12 @@ Clone the repository and install the required dependencies:
 git clone https://github.com/huboqiang/omnialigner.git
 cd omnialigner
 conda env create -f environment.yaml
-conda activate omnialigner
+conda activate omni
 pip install -r requirements.txt
+
+### for istar checkpoints
+cd src/omnialigner/vendor/istar
+bash download_checkpoints.sh
 ```
 
 ## Example for pdac 2d
@@ -61,5 +65,14 @@ streamlit run servers/agent.py
 
 ## OmniTME agent
 
+First make sure the browser worked with the data folder.
+
 ```bash
 python ./servers/omics_browser/examples/deepzoom/deepzoom_multiserver.py  -p 5020 -l 0.0.0.0 YOUR_DATA_DIR/analysis/panlab/v1/fig/
+```
+
+Then start the omniTME agent:
+
+```bash
+python ./servers/navigation_agent/voyager.py
+```
