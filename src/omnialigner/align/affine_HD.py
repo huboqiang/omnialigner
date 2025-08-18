@@ -1,10 +1,7 @@
 import os
-from typing import Tuple
 
 import dask.array as da
 import torch
-import numpy as np
-from dask_image.ndinterp import affine_transform
 
 import omnialigner as om
 from omnialigner.preprocessing.pad import pad_apply_to_omic_inputs, get_pad_size
@@ -14,7 +11,7 @@ from omnialigner.omni_3D import tag_decorator, zoom_level_decorator
 from omnialigner.utils.image_transform import apply_tfrs_to_dask
 from omnialigner.utils.point_transform import raw_landmarks_to_padded, transform_keypoints
 from omnialigner.utils.field_transform import calculate_M_from_theta, tfrs_inv
-from omnialigner.dtypes import Dask_image_HWC, Np_image_HWC, Tensor_kpts_N_xy_raw, Np_kpts_N_yx_raw, DataType, tag_map, Tensor_tfrs, Tensor_trs
+from omnialigner.dtypes import Dask_image_HWC, Tensor_kpts_N_xy_raw, Np_kpts_N_yx_raw, DataType, tag_map
 
 
 def read_image_for_affine_HD(om_data: om.Omni3D, i_layer: int, **kwargs_tag) -> Dask_image_HWC:
@@ -99,39 +96,6 @@ def _affine_image_core(om_data: om.Omni3D, i_layer: int, **kwargs):
     return da_affine_hd_HWC
 
 
-def apply_affine_HD_custom(
-        image: Dask_image_HWC|Np_image_HWC,
-        pad_size: Tuple[int, int, int, int]=None,
-        affine_matrix: np.ndarray=None,
-        tensor_tfrs_1: Tensor_tfrs|Tensor_trs=None,
-        tensor_tfrs_2: Tensor_tfrs|Tensor_trs=None,
-        **kwargs
-    ):
-    if pad_size is None:
-        pad_size = (0, 0, 0, 0)
-
-    if affine_matrix is None:
-        affine_matrix = np.eye(3)
-    
-    if tensor_tfrs_1 is None:
-        tensor_tfrs_1 = torch.zeros(7).float()
-
-    if tensor_tfrs_2 is None:
-        tensor_tfrs_2 = torch.zeros(7).float()
-
-    kwargs_pad = {}
-    kwargs_pad["mode"] = kwargs.get("mode", "constant")
-    kwargs_pad["constant_values"] = kwargs.get("constant_values", 0)
-
-    tile_size = kwargs.get("tile_size", 2048)
-    logging.info(f"Processing apply_affine_HD_custom, processing {image.shape} with {kwargs}")
-
-    ky, kx = affine_matrix[0, 0], affine_matrix[1, 1]
-    size_ = ( int(image.shape[0] // ky), int(image.shape[1] // kx))
-    da_zoomed = affine_transform(image, affine_matrix)[:size_[0], :size_[1], :]
-    da_image_pad = da.pad(da_zoomed, pad_size=pad_size, **kwargs_pad)
-    da_affine_hd_HWC = apply_tfrs_to_dask(da_image_pad, [tensor_tfrs_1, tensor_tfrs_2], tile_size=(tile_size, tile_size, 1), **kwargs_pad)
-    return da_affine_hd_HWC
 
 
 @tag_decorator

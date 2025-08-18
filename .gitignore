@@ -5,3 +5,4 @@ example/.bak/
 *.log
 *lightning_logs/
 src/omnialigner/vendor/RoMa/build/
+servers/navigation_agent/out_2025-08*

@@ -14,5 +14,15 @@
             "args": ["run", "servers/agent.py"],
             "justMyCode": false
         },
+        {
+            "name": "affine_HD_test",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "tests/align/affine_HD_test.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [],
+            "justMyCode": false
+        },
     ]
 }
