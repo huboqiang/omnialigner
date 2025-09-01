@@ -4,3 +4,7 @@
 [submodule "servers/aligner_agent"]
 	path = servers/aligner_agent
 	url = https://github.com/huboqiang/aligner_agent
+[submodule "src/omnialigner/vendor/TRIDENT"]
+	path = src/omnialigner/vendor/TRIDENT
+	url = https://github.com/huboqiang/TRIDENT
+	branch = attention
