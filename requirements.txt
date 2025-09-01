@@ -9,6 +9,10 @@ huggingface_hub
 imageio
 ipywidgets
 lazyslide>=0.7.0
+wsidata
+legendkit
+einops_exts
+openslide-python
 matplotlib>=3.0.0
 # miso==3.1.25
 napari

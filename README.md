@@ -29,7 +29,7 @@ git clone https://github.com/huboqiang/omnialigner.git
 cd omnialigner
 conda env create -f environment.yaml
 conda activate omni
-pip install -r requirements.txt
+pip install --no-deps -r requirements.txt
 
 ### for istar checkpoints
 cd src/omnialigner/vendor/istar
