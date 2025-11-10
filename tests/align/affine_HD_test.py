@@ -51,9 +51,9 @@ class TestAlignAffineHDCustome(unittest.TestCase):
             template_string = f.read()
             config_info = yaml.load(template_string, Loader=yaml.FullLoader)
             config_info["datasets"]["group"] = f"{group_id}"
-            config_info["datasets"]["root_dir"] = "~/Documents/projects/pdac3d/omni_data/"
-            config_info["datasets"]["file_data"] = "/Users/bqhu/Documents/projects/pdac3d/omnialigner/config/panlab2d/data_ALL-TLS.csv"
-            config_info["datasets"]["file_IHC_name"] = "/Users/bqhu/Documents/projects/pdac3d/omnialigner/config/panlab2d/IHC_layer_info.json"
+            config_info["datasets"]["root_dir"] = "~/projects/scGaussian3dGen"
+            config_info["datasets"]["file_data"] = f"{curr_dir}/../../config/panlab2d/data_ALL-TLS.csv"
+            config_info["datasets"]["file_IHC_name"] = f"{curr_dir}/../../config/panlab2d/IHC_layer_info.json"
         
         om_data = om.Omni3D(config_info=config_info)
         return om_data
@@ -101,7 +101,7 @@ class TestAlignAffineHDCustome(unittest.TestCase):
         group_id = "ALL-TLS_100"
         l_layers = ["HE", "P1", "P2", "P3", "P4"]
         for i_layer, layer_name in enumerate(l_layers):
-            file_tiff = f"/Users/bqhu/Documents/projects/pdac3d/omni_data/analysis/panlab/v1/01.ome_tiff/{group_id}/{layer_name}.ome.tiff"
+            file_tiff = f"~/projects/scGaussian3dGen/analysis/panlab/v1/01.ome_tiff/{group_id}/{layer_name}.ome.tiff"
             da_img = om.tl.read_ome_tiff(file_tiff, i_page=-1, i_level=0, l_channels=[0,1,2])
             out = apply_image_HD(da_img)
             is_none = out is None
@@ -114,7 +114,7 @@ class TestAlignAffineHDCustome(unittest.TestCase):
         om_data = self.load_omdata(group_id=group_id)
         
         for i_layer, layer_name in enumerate(l_layers):
-            file_tiff = f"/Users/bqhu/Documents/projects/pdac3d/omni_data/analysis/panlab/v1/01.ome_tiff/{group_id}/{layer_name}.ome.tiff"
+            file_tiff = f"~/projects/scGaussian3dGen/analysis/panlab/v1/01.ome_tiff/{group_id}/{layer_name}.ome.tiff"
             l_channels = [0, 1, 2] if layer_name == "HE" else range(8)
 
 
@@ -139,8 +139,8 @@ class TestAlignAffineHDCustome(unittest.TestCase):
         om_data = self.load_omdata(group_id=group_id)
         
         for i_layer, layer_name in enumerate(l_layers):
-            file_tiff_qptiff = f"/Users/bqhu/Documents/projects/pdac3d/omni_data/data/panlab/{group_id}/{layer_name}.qptiff"
-            file_tiff_ome = f"/Users/bqhu/Documents/projects/pdac3d/omni_data/analysis/panlab/v1/01.ome_tiff/{group_id}/{layer_name}.ome.tiff"
+            file_tiff_qptiff = f"~/projects/scGaussian3dGen/data/panlab/{group_id}/{layer_name}.qptiff"
+            file_tiff_ome = f"~/projects/scGaussian3dGen/analysis/panlab/v1/01.ome_tiff/{group_id}/{layer_name}.ome.tiff"
             
             
             l_channels = [0, 1, 2] if layer_name == "HE" else range(8)
@@ -163,7 +163,7 @@ class TestAlignAffineHDCustome(unittest.TestCase):
         om_data = self.load_omdata(group_id=group_id)
         
         for i_layer, layer_name in enumerate(l_layers):
-            file_tiff = f"/Users/bqhu/Documents/projects/pdac3d/omni_data/analysis/panlab/v1/01.ome_tiff/{group_id}/{layer_name}.ome.tiff"
+            file_tiff = f"~/projects/scGaussian3dGen/analysis/panlab/v1/01.ome_tiff/{group_id}/{layer_name}.ome.tiff"
             l_channels = [0, 1, 2] if layer_name == "HE" else range(8)
 
 

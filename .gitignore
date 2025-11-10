@@ -2,6 +2,8 @@
 *__pycache__/
 *ipynb_checkpoints
 example/.bak/
+example/3d_construct/
+example/logs/
 *.log
 *lightning_logs/
 src/omnialigner/vendor/RoMa/build/
@@ -10,3 +12,16 @@ data/
 *.DS_Store
 notebooks/
 *checkpoints*
+
+omnialigner.code-workspace
+
+# do not add more data
+example/panlab_pdac2_work.sh
+example/panlab_2d_adjust.ipynb
+example/panlab_pdac2_work.slurm.sh
+config/panlab/data_panlab2_sorted.csv
+config/panlab/data_panlab2.csv
+config/panlab/config_pdac2.yaml
+example/panlab_pdac2.ipynb
+example/panlab_pdac2.py
+
