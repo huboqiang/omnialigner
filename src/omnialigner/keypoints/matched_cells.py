@@ -3,8 +3,6 @@ from typing import Tuple
 import torch
 import numpy as np
 from tqdm import tqdm
-from cellpose.denoise import CellposeDenoiseModel
-from cellpose.utils import outlines_list
 
 from omnialigner.keypoints.keypoint_pairs import KeypointPairs
 from omnialigner.dtypes import Tensor_image_NCHW, Tensor_kpts_N_xy_raw, Tensor_tfrs, Tensor_cv2_affine_M, Dask_image_HWC
@@ -66,6 +64,9 @@ class MatchedCells(KeypointPairs):
                 best_angle=best_angle,
                 flip=flip, 
                 device=device)
+        
+        from cellpose.denoise import CellposeDenoiseModel
+        from cellpose.utils import outlines_list
         self.knn_cell_match = knn_cell_match
         self.knn_matched_threshold = knn_matched_threshold
         self.dist_threshold = dist_threshold
@@ -80,6 +81,7 @@ class MatchedCells(KeypointPairs):
             masks (tuple, optional): Pre-computed cell masks for both images.
                 If None, performs cell detection. Defaults to None.
         """
+        
         if masks is None:
             model_denoise = CellposeDenoiseModel(gpu=False, model_type="nuclei",
                                      restore_type="denoise_nuclei")

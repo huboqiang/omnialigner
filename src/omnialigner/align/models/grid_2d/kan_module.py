@@ -5,7 +5,6 @@ from typing import Tuple, Dict
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from kan import KAN
 
 from omnialigner.dtypes import Grid2DModelDual, Tensor_image_NCHW, Tensor_kpts_N_xy, Tensor_trs
 from omnialigner.utils.field_transform import create_gaussian_kernel, generate_grid, warp_tensor, resample_displacement_field_to_size, tfrs_to_grid_M
@@ -70,6 +69,7 @@ class DeformKANGrid2D(nn.Module, Grid2DModelDual):
                 **kwargs
         ):
         super().__init__()
+        from kan import KAN
         self.tensor_size = tensor_size
         self.regularization_function = regularization_function
         H, W = tensor_size
@@ -100,9 +100,9 @@ class DeformKANGrid2D(nn.Module, Grid2DModelDual):
             torch.linspace(-1,1,self.tensor_size[1], device=self.bspline.omega.device),
             indexing='ij')
         pts = torch.stack([grid_x.reshape(-1), grid_y.reshape(-1)], dim=-1)
-        with torch.no_grad():
-            coarse = self.bspline(pts)                    # (H*W,2)
-            fine   = self.kan(pts)                        # (H*W,2)
+
+        coarse = self.bspline(pts)
+        fine   = self.kan(pts)
         disp = (coarse + fine).reshape(
             1, self.tensor_size[0], self.tensor_size[1], 2
         )#.permute(0,3,1,2)
@@ -133,7 +133,6 @@ class DeformKANGrid2D(nn.Module, Grid2DModelDual):
 
         displacement_field_smoothed = self.disp
         if x is not None:
-            print(x.shape, displacement_field_smoothed.shape)
             warped_source = warp_tensor(x, displacement_field_smoothed, grid=grid, device=self.dev)
 
         kpts_new_scaled = None

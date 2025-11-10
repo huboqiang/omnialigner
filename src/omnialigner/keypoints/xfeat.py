@@ -9,11 +9,7 @@ import torch.nn as nn
 from omnialigner.dtypes import KeypointDetectorMeta
 from omnialigner.dtypes import Tensor_image_NCHW, Tensor_kpts_N_xy_raw, Tensor_kpts_N_embed, Np_image_HWC
 from omnialigner.utils.image_viz import tensor2im
-root_path = os.path.realpath(os.path.join(os.path.dirname(__file__), '../'))
-vendor_path = os.path.join(root_path, 'vendor/accelerated_features/')
-sys.path.append(vendor_path)
 
-from omnialigner.vendor.accelerated_features.modules.xfeat import XFeat
 torch.use_deterministic_algorithms(False)
 
 class XfeatDetector(nn.Module, KeypointDetectorMeta):
@@ -21,6 +17,12 @@ class XfeatDetector(nn.Module, KeypointDetectorMeta):
         super().__init__()
         if "device" in kwargs:
             del kwargs["device"]
+
+        root_path = os.path.realpath(os.path.join(os.path.dirname(__file__), '../'))
+        vendor_path = os.path.join(root_path, 'vendor/accelerated_features/')
+        sys.path.append(vendor_path)
+
+        from omnialigner.vendor.accelerated_features.modules.xfeat import XFeat
         self.xfeat = XFeat(**kwargs)
 
     def detect(self, image: Tensor_image_NCHW) -> Tuple[Tensor_kpts_N_xy_raw, Tensor_kpts_N_embed]:
@@ -43,7 +45,11 @@ class XfeatDetector(nn.Module, KeypointDetectorMeta):
             mkpts_F, mkpts_M = self.xfeat.match_xfeat(image_F, image_M)
             img_F = tensor2im(image_F)
             img_M = tensor2im(image_M)
-            canvas, matches = warp_corners_and_draw_matches(mkpts_F, mkpts_M, img_F, img_M)
+            try:
+                canvas, matches = warp_corners_and_draw_matches(mkpts_F, mkpts_M, img_F, img_M)
+            except:
+                canvas = np.concatenate((img_F, img_M), axis=1)
+                matches = []
             l_idxs = [ m.queryIdx for m in matches ]
             
             return torch.from_numpy(mkpts_F), torch.from_numpy(mkpts_M), l_idxs, canvas
