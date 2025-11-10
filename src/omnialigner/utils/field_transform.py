@@ -399,7 +399,8 @@ def tfrs_to_grid_M(tensor_tfrs: Tensor_tfrs|Tensor_trs, device: torch.device=Non
 def resample_displacement_field_to_size(
         displacement_field: Tensor_disp_2d,
         new_size: torch.Tensor, 
-        mode: str='bilinear'
+        mode: str='bilinear',
+        align_corners: bool=False
     ) -> Tensor_disp_2d:
     """Resamples a displacement field to a new size.
 
@@ -411,7 +412,7 @@ def resample_displacement_field_to_size(
     Returns:
         A tensor of shape (N, new_H, new_W, 2) representing the resampled displacement field.
     """
-    return F.interpolate(displacement_field.permute(0, 3, 1, 2), size=new_size, mode=mode, align_corners=False).permute(0, 2, 3, 1)
+    return F.interpolate(displacement_field.permute(0, 3, 1, 2), size=new_size, mode=mode, align_corners=align_corners).permute(0, 2, 3, 1)
 
 
 def get_sampling_grid(tensor_tfrs: Tensor_tfrs, tensor_size: Tuple[int, int], displacement_field: Tensor_disp_2d, device: torch.device) -> Tensor_grid_2d:

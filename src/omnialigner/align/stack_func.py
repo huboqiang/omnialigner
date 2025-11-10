@@ -25,7 +25,7 @@ def calculate_flip_angle(
 
     n_angle = om_data.config['kpt'].get("n_angles", 20)
     
-    padded_tensor = om_data.padded_tensor
+    padded_tensor = om_data.load_3d_NCHW("PAD")
     N_layers = len(l_layers)
     kpt_tag = "KEYPOINTS"
     q_combined = combine_image_transformations(angle=0, flip=[0, 0])

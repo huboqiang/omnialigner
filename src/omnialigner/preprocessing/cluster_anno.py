@@ -116,7 +116,7 @@ def fetch_img_from_coords(
 
             # print(f"Processing label {label}, idx {i}: ({x}, {y}), clipped to ({x_clip}, {y_clip}), crop size {crop_size}")
             crop = image[y_clip : y_clip + h, x_clip : x_clip + w].copy()
-            outputs.append((crop, (x_clip, y_clip)))
+            outputs.append((crop, (x_clip, y_clip), i))
 
         dict_label_cropped[label] = outputs
 
@@ -151,7 +151,7 @@ def viz_dict_label_cropped(
             ax.set_yticklabels([])
 
             if c < len(samples):
-                crop, (x, y) = samples[c]
+                crop, (x, y), _ = samples[c]
                 if crop.ndim == 2 or crop.shape[2] == 1:  # 灰度
                     ax.imshow(crop.squeeze(), cmap=cmap or "gray")
                 else:
@@ -173,10 +173,12 @@ def viz_boxes_on_img(
     linewidth: int = 2,
     alpha: float = 1.0,
     figsize: Tuple[int, int] | None = None,
+    label2color: Dict = None,
     cmap_name: str = "tab20",
     show: bool = True,
     start_idx: int = 1,
     font_size: int = 8,
+    ratio: float = 40,
     text_offset: Tuple[int, int] = (2, 8),
 ):
     """
@@ -212,8 +214,10 @@ def viz_boxes_on_img(
 
     plt = om.pl.plt
     labels = list(dict_label_cropped.keys())
-    cmap = plt.get_cmap(cmap_name, max(len(labels), 1))
-    label2color = {lab: cmap(i) for i, lab in enumerate(labels)}
+    if label2color is None:
+        cmap = plt.get_cmap(cmap_name, max(len(labels), 1))
+        label2color = {lab: cmap(i) for i, lab in enumerate(labels)}
+    
     figsize = (10, 10)
     fig, ax = plt.subplots(figsize=figsize)
     ax.imshow(image)
@@ -222,11 +226,11 @@ def viz_boxes_on_img(
     w, h = crop_size
     for label in labels:
         color = label2color[label]
-        for idx, (_, (x, y)) in enumerate(dict_label_cropped[label], start=start_idx):
-            x = x / 40
-            y = y / 40
-            h = h / 40
-            w = w / 40
+        for idx, (_, (x, y), _) in enumerate(dict_label_cropped[label], start=start_idx):
+            x = x / ratio
+            y = y / ratio
+            h = h / ratio
+            w = w / ratio
             # 绘制矩形框
             rect = Rectangle(
                 (x, y),

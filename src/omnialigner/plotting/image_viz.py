@@ -34,8 +34,8 @@ def plot_nchw_2d(
         l_layers = list(range(len(om_data)))
 
     aligned_tensor = om_data.load_3d_NCHW(aligned_tag, l_layers=l_layers)
-    for i_layer in l_layers:
-        ax = fig.add_subplot(n_col, n_row, i_layer+1)
+    for idx,i_layer in enumerate(l_layers):
+        ax = fig.add_subplot(n_col, n_row, idx+1)
         if isinstance(aligned_tensor, Tensor_image_NCHW):
             img = tensor2im(aligned_tensor[i_layer:i_layer+1])
         elif isinstance(aligned_tensor, Dask_image_NCHW):
