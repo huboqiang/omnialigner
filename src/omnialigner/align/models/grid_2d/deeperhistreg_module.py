@@ -23,6 +23,7 @@ class DeeperHistRegModule(nn.Module, Grid2DModelDual):
             initial_displacement_field=None,
             current_epoch=0,
             tensor_size=[256, 256],
+            final_hw=(100, 100),
             disp_type="nonrigid",
             regularization_function={},
             alphas=[ 1.5, 1.5, 1.5, 1.5, 1.5, 1.8, 2.1],
@@ -43,7 +44,7 @@ class DeeperHistRegModule(nn.Module, Grid2DModelDual):
         self.disp_type = disp_type
         self.splines_type = splines_type
         self.cp_spacing = cp_spacing
-
+        self.final_hw = final_hw
         if initial_displacement_field is None:
             displacement_field = self.__init_displacement_field(pseudo_image)
         else:
@@ -183,11 +184,11 @@ class DeeperHistRegModule(nn.Module, Grid2DModelDual):
         if kpts is not None:
             disp = displacement_field_smoothed
             resized_ = (disp.shape[1], disp.shape[2])
-            grid_resized = resample_displacement_field_to_size(grid, resized_)
-            final_hw = (100, 100)
-            if resized_[0] > 50:
-                final_hw = (500, 500)
-            sampling_grid = resample_displacement_field_to_size(grid_resized + disp, final_hw)
+            grid_resized = resample_displacement_field_to_size(grid, resized_, align_corners=True)
+            
+            if resized_[0] > 50 and self.final_hw[0] < 500:
+                self.final_hw = (500, 500)
+            sampling_grid = resample_displacement_field_to_size(grid_resized + disp, self.final_hw, align_corners=True)
             kpts_new_scaled = warp_landmark_grid(kpts, grid=sampling_grid)
             kpts_new_scaled = kpts_new_scaled[:, 0, :]
 
