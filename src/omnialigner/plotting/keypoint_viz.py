@@ -7,6 +7,8 @@ from omnialigner.plotting.matplotlib_init import plt
 from omnialigner.utils.image_viz import tensor2im
 from omnialigner.dtypes import Tensor_image_NCHW, Tensor_kpts_N_xy_raw, Tensor_l_kpt_pair, Tensor_kpt_pair
 
+
+
 def plot_kpt_pairs(image: Tensor_image_NCHW, 
                kpts0: Tensor_kpts_N_xy_raw=None, 
                kpts1: Tensor_kpts_N_xy_raw=None, 
@@ -295,7 +297,7 @@ def plot_kpts_diff(pt_kpts_0: Tensor_kpts_N_xy_raw,
     head_length = kwargs.get("head_length", mkpts_0.max()/500.)
     linewidth = kwargs.get("linewidth", 1)
     ax.scatter(mkpts_0[:, 0], mkpts_0[:, 1], c=color_all, s=size_all)
-    ax.scatter(mkpts_1[:, 0], mkpts_1[:, 1], c=color_used, s=size_used)
+    ax.scatter(mkpts_1[:, 0], mkpts_1[:, 1], c=color_used, s=size_all)
     for i in l_idxs:
         # ax.plot([mkpts_1[i,0], mkpts_0[i,0]], [mkpts_1[i,1], mkpts_0[i,1]], "g-")
         ax.arrow(mkpts_1[i, 0], mkpts_1[i, 1], mkpts_0[i, 0] - mkpts_1[i, 0], mkpts_0[i, 1] - mkpts_1[i, 1], head_width=head_width, head_length=head_length, fc='green', ec='green', linewidth=linewidth)
@@ -372,7 +374,8 @@ def plot_kpts_diff_gradient(dataset, grid_size=10, show_grad=True):
     img_src = tensor2im(dataset["image_input"])
     img_tar = tensor2im(dataset["image_label"])
     H, W = img_src.shape[0], img_src.shape[1]
-    np_out = np.zeros([H, W, 3], dtype=np.uint8)+255
+    # np_out = np.zeros([H, W, 3], dtype=np.uint8)+255
+    np_out = np.repeat(img_src[:,:,0:1], 3, axis=2)
     np_out[:,:,0] = img_src[:,:,0]  # red move
     np_out[:,:,2] = img_tar[:,:,0]
     fig = plt.figure()
@@ -394,8 +397,8 @@ def plot_kg_dist_distribute(dataset, ax=None):
         ax = fig.add_subplot(1,1,1)
     
     index_matches = np.array(dataset["index_matches"])
-    mkpts_M = dataset['test_input'].detach().numpy()
-    mkpts_F = dataset['test_label'].detach().numpy()
+    mkpts_M = dataset['test_input'].detach().cpu().numpy()
+    mkpts_F = dataset['test_label'].detach().cpu().numpy()
     ax.plot( np.sum(np.abs(mkpts_M-mkpts_F), axis=1) )
     ax.plot( index_matches, np.sum(np.abs(mkpts_M[index_matches]-mkpts_F[index_matches]), axis=1), "." )
     return fig
@@ -411,9 +414,38 @@ def plot_kg_dataset(dataset: Dict[str, str], **kwargs) -> plt.Figure:
     tensor_M = dataset["image_input"]    
     idxs = dataset["index_matches"]
 
-    fig = plt.figure(figsize=(18,6))
+    figsize = kwargs.get("figsize", (18, 6))
+    fig = plt.figure(figsize=figsize)
+    n_cols = 3
+    kpt1_raw = None
+    if "best_pose" in dataset:
+        from omnialigner.utils.field_transform import tfrs_to_grid_M, tfrs_inv, calculate_M_from_theta
+        from omnialigner.utils.point_transform import transform_keypoints
+        n_cols = 4
+        reordered_tfrs = dataset["best_pose"].float()
+        # tfrs = dataset["best_pose"]
+        # reordered_tfrs = torch.FloatTensor([-tfrs[0], tfrs[2], tfrs[1], tfrs[4], tfrs[3]])
+        # if len(tfrs) == 7:
+        #     reordered_tfrs = torch.FloatTensor([-tfrs[0], tfrs[2], tfrs[1], tfrs[4], tfrs[3], tfrs[5], tfrs[6]])
+        
+        tensor_affineM = tfrs_to_grid_M(reordered_tfrs)
+        grid_M = F.affine_grid(tensor_affineM.unsqueeze(0), size=[1, 2, tensor_M.shape[2], tensor_M.shape[3]])
+        img_moved = F.grid_sample(tensor_M, grid_M, align_corners=True, padding_mode='border')
 
-    ax = fig.add_subplot(1,3,1)
+        grid_M_1_inv = calculate_M_from_theta(tfrs_inv(reordered_tfrs), h=tensor_M.shape[2], w=tensor_M.shape[3])[0:2]
+        kpt1_raw = transform_keypoints(dataset["test_input"], grid_M_1_inv)
+
+        ax = fig.add_subplot(1,n_cols,n_cols-1)
+        ax.set_title("image_moved")
+        _plot_kpts_selected(kpt1_raw, l_idxs=idxs, ax=ax, color="r", **kwargs)
+        if img_moved is not None:
+            image_M = tensor2im(img_moved)
+            ax.imshow(image_M)
+            ax.set_ylim(0, image_M.shape[0])
+            ax.set_xlim(0, image_M.shape[1])
+            ax.invert_yaxis()
+
+    ax = fig.add_subplot(1,n_cols,1)
     _plot_kpts_selected(dataset["test_label"], l_idxs=idxs, ax=ax, color="b", **kwargs)
     ax.set_title("image_fixed")
     if tensor_F is not None:
@@ -424,7 +456,7 @@ def plot_kg_dataset(dataset: Dict[str, str], **kwargs) -> plt.Figure:
         ax.invert_yaxis()
 
 
-    ax = fig.add_subplot(1,3,2)
+    ax = fig.add_subplot(1,n_cols,2)
     _plot_kpts_selected(dataset["test_input"], l_idxs=idxs, ax=ax, color="r", **kwargs)
     ax.set_title("image_move")
     if tensor_M is not None:
@@ -434,9 +466,11 @@ def plot_kg_dataset(dataset: Dict[str, str], **kwargs) -> plt.Figure:
         ax.set_xlim(0, image_M.shape[1])
         ax.invert_yaxis()
 
-    ax = fig.add_subplot(1,3,3)
-    plot_kpts_diff(dataset["test_label"], dataset["test_input"], idxs, ax=ax, **kwargs)
+    ax = fig.add_subplot(1,n_cols,n_cols)
+    kpt_1 = kpt1_raw if kpt1_raw is not None else dataset["test_input"]
+    plot_kpts_diff(dataset["test_label"], kpt_1, idxs, ax=ax, **kwargs)
     ax.set_title("kpt movement, r(M)->b(F)")
+    
     plt.close()
     return fig
 

@@ -121,7 +121,7 @@ def smooth_angles(angles: np.ndarray, window: int = 50) -> np.ndarray:
     for i in range(len(angles)):
         start = max(0, i - half_window)
         end = min(len(angles), i + half_window + 1)        
-        angles_smooth[i] = angles[i] - np.median(angles[start:end])
+        angles_smooth[i] = angles[i] #- np.median(angles[start:end])
     
     return angles_smooth
 

@@ -76,6 +76,10 @@ def read_file(
 
     kwargs_read_ome_tiff = kwargs.get("read_ome_tiff", {})
     logging.info(f"Reading {file_name} using read_ome_tiff, {kwargs_read_ome_tiff}")
+    if "i_page" not in kwargs_read_ome_tiff:
+        kwargs_read_ome_tiff["i_page"] = kwargs_read_ome_tiff["zoom_level"]
+        kwargs_read_ome_tiff["l_channels"] = [0, 1, 2]
+
     da_arr = read_ome_tiff(file_name, **kwargs_read_ome_tiff)
     return da_arr
 
@@ -132,7 +136,7 @@ class WSIGenerator:
                     )
     @staticmethod
     def generate_fair(file_name, zoom_level=0, resize_to_20x=True, is_raw=False, **kwargs):
-        return read_ome_tiff(file_name, i_page=zoom_level, i_level=0, l_channels=[0], axes=[0, 1, 3])
+        return read_ome_tiff(file_name, i_page=zoom_level, i_level=0, l_channels=[0,1,2], axes=[0, 1, 3])
     
 
     @staticmethod

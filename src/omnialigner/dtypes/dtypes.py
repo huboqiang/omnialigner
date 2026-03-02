@@ -3,7 +3,7 @@ from enum import Enum
 import torch
 import numpy as np
 import dask.array as da
-
+import scanpy as sc
 """ 
     | Name                  | DataType         | DataSize     | Description                      |
     |-----------------------|------------------|--------------|----------------------------------|
@@ -53,6 +53,13 @@ Tensor_kpts_N_xky_knn = torch.FloatTensor
 Tensor_kpt_pair = Tuple[Tensor_kpts_N_xy, Tensor_kpts_N_xy]
 Tensor_Layer_kpt_pair = List[Tensor_kpt_pair]
 Tensor_l_kpt_pair = List[Tensor_Layer_kpt_pair]
+
+AnnData_l_cells_pair = List[sc.AnnData]
+Tensor_cells_N_embed = torch.FloatTensor
+Tensor_cells_N_xy = torch.FloatTensor
+Np_cells_MNN = np.ndarray
+Np_l_cells_MNN = List[List[Np_cells_MNN]]
+
 Np_kpts_N_yx_raw = np.ndarray
 Np_kpts_N_yx = np.ndarray
 

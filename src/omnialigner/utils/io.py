@@ -131,7 +131,8 @@ def write_NCHW_dask_ometiff(
 def write_qptiff_2d(
         file_name: str, 
         np_arr: Union[np.array, da.Array], 
-        sizes: List[int]=None, 
+        sizes: List[int]=None,
+        mpp: float = 0.25,
         photometric="rgb"
     ):
     """Write a 2D image to QPTIFF format with multiple resolution levels.
@@ -141,6 +142,7 @@ def write_qptiff_2d(
         np_arr: Input image in HWC format.
         sizes: List of downsampling factors for resolution pyramid. 
             Defaults to [1, 4, 8, 40].
+        mpp: Microns per pixel for metadata. Defaults to 20.0.
         photometric: Color interpretation. Use "rgb" for HE, "minisblack" for IHC.
 
     Note:
@@ -156,30 +158,32 @@ def write_qptiff_2d(
     if isinstance(np_arr, da.Array):
         np_arr = np_arr.compute()
 
+    px_per_cm = 10000.0 / float(mpp)  # 1 cm = 10000 µm
     with TiffWriter(file_name, bigtiff=True, ome=True) as tif:
-        for level, size in enumerate(sizes):
-            new_size = (np_arr.shape[1] // size, np_arr.shape[0] // size)
+        for level, ds in enumerate(sizes):
+            new_size = (np_arr.shape[1] // ds, np_arr.shape[0] // ds)
+
             options = dict(
                 tile=(512, 512),
-                compression='lzw',
+                compression="lzw",
                 photometric=photometric,
+                resolution=(px_per_cm, px_per_cm),
+                resolutionunit="CENTIMETER",
             )
-            metadata = {
-                'axes': 'YXC',
-                "ImageWidth": new_size[0],
-                "ImageLength": new_size[1],
-                "XResolution": 107598 / 4294967295,
-                "YResolution": 107598 / 4294967295,
-                "ResolutionUnit": "CENTIMETER",
-                "Software": "PerkinElmer-QPI"
+
+            ome_metadata = {
+                "axes": "YXC",
+                "PhysicalSizeX": float(mpp),
+                "PhysicalSizeXUnit": "µm",
+                "PhysicalSizeY": float(mpp),
+                "PhysicalSizeYUnit": "µm",
             }
-            logging.info(f"writing level {level} with size {new_size}")
+
             if level == 0:
-                tif.write(np_arr, **options, metadata=metadata)
-                continue
-            
-            image = cv2.resize(np_arr, new_size)
-            tif.write(image, **options, metadata=metadata, subfiletype=1)
+                tif.write(np_arr, **options, metadata=ome_metadata)
+            else:
+                image = cv2.resize(np_arr, new_size, interpolation=cv2.INTER_AREA)
+                tif.write(image, **options, metadata=None, subfiletype=1)
 
 
 def chunked_grid_sample_dask(dask_input, grid, N_chunk_size, C_chunk_size, align_corners=True):

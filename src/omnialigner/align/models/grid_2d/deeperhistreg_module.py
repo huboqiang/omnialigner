@@ -134,7 +134,7 @@ class DeeperHistRegModule(nn.Module, Grid2DModelDual):
 
 
     def regularization(self):
-        total_reg_loss = 0.0
+        total_reg_loss = torch.tensor(0.).to(self.dev)
         for func_name, element in self.regularization_function.items():
             weight = element.get("weight", 1.0)
             params = element.get("params", {})
@@ -151,7 +151,7 @@ class DeeperHistRegModule(nn.Module, Grid2DModelDual):
             
             total_reg_loss += weight * reg
 
-        return total_reg_loss, torch.tensor(1.)
+        return total_reg_loss, torch.tensor(1.).to(self.dev)
 
     def freeze_layer(self, fwd: bool=True, inv:bool= True):
         if fwd or inv:

@@ -33,7 +33,7 @@ nodes = [
     ("Neu",          True),    #17
     ("NCAM1",         False),  #18  ← was  CD56
     ("NK",           True),    #19
-    ("ITGAX",        False),  #20  ← was CD11C
+    ("ITGAX",        False),   #20  ← was CD11C
     ("HLA-DRA",       False),  #21  ← HLA-DR
     ("Dendritic Cell", True),  #22
     ("PECAM1",         False), #23  ← was  CD31

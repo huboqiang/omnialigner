@@ -15,7 +15,6 @@ from scipy.spatial import ConvexHull
 import geopandas as gpd
 from multiprocessing import Pool, cpu_count
 
-from CAST import coords2adjacentmat
 import omnialigner as om
 from omnialigner.plotting.h5ad_viz import adata_to_gpd, gdf_shape_to_image
 
@@ -216,7 +215,7 @@ def calculate_region_signal(gdf_obj: gpd.GeoDataFrame, img_exp: np.ndarray, l_ge
 
     return df_gdf_exp
 
-def adata_to_regions(adata_sc: sc.AnnData, key: str="CAST_label", radius: int=16, scale_factor: int = 10, min_area: int = 5000, kernel_size: Tuple[int, int]=None, image_size: Tuple[int, int]=None) -> gpd.GeoDataFrame:
+def adata_to_regions(adata_sc: sc.AnnData, key: str="CAST_label", radius: int=16, scale_factor: int = 10, min_area: int = 5000, kernel_size: Tuple[int, int]=None, image_size: Tuple[int, int]=None, basis: str="spatial") -> gpd.GeoDataFrame:
     """
     Convert an AnnData object to a GeoPandas GeoDataFrame with regions.
 
@@ -236,7 +235,7 @@ def adata_to_regions(adata_sc: sc.AnnData, key: str="CAST_label", radius: int=16
         kernel_size = (3, 3)
 
     if image_size is None:
-        coords = adata_sc.obsm["spatial"]
+        coords = adata_sc.obsm[basis]
         image_size = coords.max(0).astype(int)
     
     if not pd.api.types.is_integer_dtype(gdf_obj[key]):
@@ -558,7 +557,8 @@ def get_cast_regions(
     Returns:
         all_regions: DataFrame with statistics for all regions,
     """
-
+    from CAST import coords2adjacentmat
+    
     coords = adata_sc.obsm["spatial"]
     delaunay_graph = coords2adjacentmat(coords, output_mode='raw', strategy_t='convex')
 

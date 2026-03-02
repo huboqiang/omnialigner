@@ -86,10 +86,9 @@ def filter_sub_meshes(
     """
     sub_meshes = mesh.split(only_watertight=False)
     l_filtered_mesh = []
-    print(f"divide into {len(sub_meshes)} sub_meshes")
     for i, sub_mesh in enumerate(sub_meshes):
         volume = sub_mesh.volume
-        vol = -volume
+        vol = volume
         if vol > min_vol:
             if smooth:
                 if smooth_kwargs is None:
@@ -99,11 +98,9 @@ def filter_sub_meshes(
 
             l_filtered_mesh.append(sub_mesh)
 
-    print(f"filtered into {len(l_filtered_mesh)} sub_meshes")
     merged_sub_meshes = merge_submeshes_knn(
         l_filtered_mesh, threshold=merge_threshold, k=5, sample_points=min_vol)
 
-    print(f"merged into {len(merged_sub_meshes)} sub_meshes")
     new_mesh = trimesh.util.concatenate(merged_sub_meshes)
     return new_mesh
 
@@ -222,7 +219,7 @@ def merge_submeshes_knn(
 
     G = nx.Graph()
     G.add_nodes_from(range(n))
-    for i in tqdm(range(n)):
+    for i in range(n):
         dist, idx = tree.query(centroids[i], k=k+1)
         for d, j in zip(dist[1:], idx[1:]):
             if j == i:
@@ -280,10 +277,38 @@ def mesh_from_verts_faces(verts: np.ndarray, faces: np.ndarray) -> trimesh.Trime
     return mesh
 
 
+# def volume_to_verts_faces(
+#         np_binary_vol: np.ndarray, 
+#         level: float=0.5, 
+#         min_size: int=1
+#     ) -> Tuple[np.ndarray, np.ndarray]:
+#     """Convert a binary volume to mesh vertices and faces using marching cubes.
+
+#     Args:
+#         np_binary_vol (np.ndarray): Binary volume array of shape [H, W, D].
+#         level (float, optional): Threshold level for isosurface. Defaults to 0.5.
+#         min_size (int, optional): Minimum size of objects to keep. Defaults to 1.
+
+#     Returns:
+#         Tuple[np.ndarray, np.ndarray]: A tuple containing:
+#             - vertices: Array of vertex coordinates [N, 3]
+#             - faces: Array of face indices [M, 3]
+#     """
+#     filtered_volume = morphology.remove_small_objects(
+#         np_binary_vol, min_size=min_size)
+#     verts, faces, normals, values = measure.marching_cubes(
+#         filtered_volume,
+#         level=level
+#     )
+#     return verts, faces
+
+
 def volume_to_verts_faces(
         np_binary_vol: np.ndarray, 
         level: float=0.5, 
-        min_size: int=1
+        min_size: int=1,
+        ensure_closed: bool=True,
+        closing_iterations: int=2
     ) -> Tuple[np.ndarray, np.ndarray]:
     """Convert a binary volume to mesh vertices and faces using marching cubes.
 
@@ -291,18 +316,56 @@ def volume_to_verts_faces(
         np_binary_vol (np.ndarray): Binary volume array of shape [H, W, D].
         level (float, optional): Threshold level for isosurface. Defaults to 0.5.
         min_size (int, optional): Minimum size of objects to keep. Defaults to 1.
+        ensure_closed (bool, optional): Apply morphological operations to ensure closed mesh.
+            Defaults to True.
+        closing_iterations (int, optional): Number of binary closing iterations.
+            Defaults to 2.
 
     Returns:
         Tuple[np.ndarray, np.ndarray]: A tuple containing:
             - vertices: Array of vertex coordinates [N, 3]
             - faces: Array of face indices [M, 3]
     """
-    filtered_volume = morphology.remove_small_objects(
-        np_binary_vol, min_size=min_size)
+    from scipy import ndimage
+    # Remove small objects
+    vol = morphology.remove_small_objects(
+        np_binary_vol.astype(bool), min_size=min_size)
+    
+    if ensure_closed:
+        # Apply binary closing to seal small gaps
+        struct = np.ones((3, 3, 3), dtype=bool)
+        for _ in range(closing_iterations):
+            vol = ndimage.binary_closing(vol, structure=struct)
+        
+        # Fill holes in each slice to ensure closed surfaces
+        vol = ndimage.binary_fill_holes(vol)
+    
+    # Pad volume to avoid open boundaries
+    vol_padded = np.pad(vol, pad_width=1, mode='constant', constant_values=0)
+    
+    # Run marching cubes on padded volume
+    if vol_padded.sum() == 0:
+        return np.zeros((0, 3)), np.zeros((0, 3), dtype=int)
+    
     verts, faces, normals, values = measure.marching_cubes(
-        filtered_volume,
+        vol_padded.astype(np.uint8),
         level=level
     )
+    
+    # Adjust vertices to account for padding
+    verts = verts - 1.0
+    
+    # Create trimesh and apply basic repairs
+    if ensure_closed:
+        mesh = trimesh.Trimesh(vertices=verts, faces=faces, process=False)
+        mesh.remove_duplicate_faces()
+        mesh.remove_unreferenced_vertices()
+        trimesh.repair.fix_normals(mesh)
+        trimesh.repair.fill_holes(mesh)
+        
+        verts = np.asarray(mesh.vertices)
+        faces = np.asarray(mesh.faces)
+    
     return verts, faces
 
 
@@ -385,3 +448,76 @@ def save_mesh_as_ply(
         color) + [int(alpha * 255)], (trimesh_mesh.vertices.shape[0], 1))
     trimesh_mesh.visual.vertex_colors = vertex_colors
     trimesh_mesh.export(filename, file_type='ply')
+
+
+def hex_to_rgba_u8(hexstr: str) -> np.ndarray:
+    h = hexstr.lstrip("#")
+    if len(h) == 6:
+        r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+        a = 255
+    elif len(h) == 8:
+        r, g, b, a = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16), int(h[6:8], 16)
+    else:
+        raise ValueError(f"Bad hex color: {hexstr}")
+    return np.array([r, g, b, a], dtype=np.uint8)
+
+def export_classes_to_glb(
+    l_meshes: List[Union[trimesh.Trimesh, trimesh.points.PointCloud]],
+    class_names: Optional[List[str]] = None,
+    class_colors_hex: Optional[List[str]] = None,
+    out_glb: str = "classes.glb",
+):
+    n = len(l_meshes)
+    if class_names is None:
+        class_names = [f"class_{i:03d}" for i in range(n)]
+    if class_colors_hex is None:
+        class_colors_hex = ["#888888"] * n
+    if not (len(class_names) == len(class_colors_hex)):
+        raise ValueError("class_names / class_colors_hex ")
+
+    scene = trimesh.Scene()
+
+    for i, mesh in enumerate(l_meshes):
+        # 判断是PointCloud还是Mesh
+        is_pointcloud = isinstance(mesh, trimesh.points.PointCloud)
+        
+        if is_pointcloud:
+            # PointCloud: 只检查vertices
+            if mesh.vertices.size == 0:
+                name = str(class_names[i])
+                print(f"SKIP empty point cloud:", {name})
+                continue
+        else:
+            # Mesh: 检查vertices和faces
+            if mesh.vertices.size == 0 or mesh.faces.size == 0:
+                name = str(class_names[i])
+                print(f"SKIP empty mesh:", {name})
+                continue
+
+        name = str(class_names[i])
+        rgba_u8 = hex_to_rgba_u8(class_colors_hex[i])
+        rgba = (rgba_u8.astype(np.float32) / 255.0).tolist()  # [0..1]
+
+        # 给每个 mesh/pointcloud 固化材质色（glb/gltf 里可保留）
+        mat = trimesh.visual.material.PBRMaterial(
+            baseColorFactor=rgba,  # [r,g,b,a] in 0..1
+            metallicFactor=0.0,
+            roughnessFactor=1.0
+        )
+
+        # 使用 ColorVisuals 以保证导出时材质/颜色落到 glTF
+        mesh = mesh.copy()
+        
+        if is_pointcloud:
+            # PointCloud使用vertex colors
+            vertex_colors = np.tile(rgba_u8, (mesh.vertices.shape[0], 1))
+            mesh.colors = vertex_colors
+        else:
+            # Mesh使用材质
+            mesh.visual = trimesh.visual.TextureVisuals(material=mat)
+
+        # node_name / geom_name 用同一个,方便 Three.js 索引
+        scene.add_geometry(mesh, node_name=name, geom_name=name)
+
+    scene.export(out_glb)
+    return scene

@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GLB Class Viewer (Three.js)</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; margin: 0; overflow: hidden; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    #app { display: grid; grid-template-columns: 360px 1fr; height: 100%; }
+    #panel {
+      border-right: 1px solid #ddd;
+      padding: 12px;
+      box-sizing: border-box;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 10px;
+      background: #fafafa;
+    }
+    #viewer { position: relative; }
+    #canvas { width: 100%; height: 100%; display: block; }
+
+    .row { display: flex; align-items: center; gap: 8px; padding: 4px 6px; border-radius: 6px; }
+    .row:hover { background: #f0f0f0; }
+    .swatch { width: 14px; height: 14px; border: 1px solid #999; border-radius: 3px; flex: 0 0 auto; }
+    .name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1 1 auto; }
+    .muted { color: #666; font-size: 12px; }
+
+    .controls { display: grid; gap: 8px; }
+    .controls input, .controls select, .controls button {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+    }
+    .controls button { cursor: pointer; }
+    .controls button:active { transform: translateY(1px); }
+    .btnrow { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+
+    #list { overflow: auto; border: 1px solid #ddd; border-radius: 10px; background: #fff; padding: 6px; }
+    #listSection { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+    #controlsContainer { overflow-y: auto; overflow-x: hidden; height: 100%; }
+    #footer { font-size: 12px; color: #666; line-height: 1.4; }
+
+    .badge {
+      font-size: 11px;
+      padding: 2px 6px;
+      border: 1px solid #ccc;
+      border-radius: 999px;
+      background: #fff;
+      color: #555;
+      flex: 0 0 auto;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div id="panel">
+    <div class="controls">
+      <input id="file" type="file" accept=".glb,.gltf" />
+      <div class="muted">Or drag .glb file into the viewer</div>
+    </div>
+
+    <div class="controls">
+      <input id="search" type="text" placeholder="Search class / mesh name..." />
+      <select id="select"></select>
+      <div class="btnrow">
+        <button id="showAll">Show All</button>
+        <button id="hideAll">Hide All</button>
+        <button id="invert">Invert</button>
+      </div>
+      <div class="btnrow">
+        <button id="isolate">Isolate</button>
+        <button id="focus">Focus</button>
+        <button id="resetCam">Reset Cam</button>
+      </div>
+    </div>
+
+    <div id="listSection" style="display: grid; grid-template-rows: auto minmax(0, 1fr) 1fr; gap: 10px; overflow: hidden;">
+      <div>
+        <div id="stats" class="muted">No model loaded</div>
+        <div id="loading" class="muted" style="display:none; color:#0066cc; font-weight:bold;">⏳ Loading...</div>
+        <div id="error" class="muted" style="display:none; color:#cc0000;"></div>
+      </div>
+
+      <div id="list"></div>
+
+      <div id="controlsContainer">
+        <div class="controls">
+          <div style="font-size: 13px; color: #555; margin-bottom: 4px;">Quick Views</div>
+          <div class="btnrow">
+            <button id="viewFront">Front</button>
+            <button id="viewTop">Top</button>
+            <button id="viewLeft">Left</button>
+          </div>
+          <div class="btnrow">
+            <button id="viewRight">Right</button>
+            <button id="viewBack">Back</button>
+            <button id="viewBottom">Bottom</button>
+          </div>
+          <div style="font-size: 13px; color: #555; margin: 8px 0 4px 0;">ISO Views (X Y Z)</div>
+          <div class="btnrow">
+            <button id="viewIso_ppp" title="Right-Top-Front">+++</button>
+            <button id="viewIso_ppn" title="Right-Top-Back">++-</button>
+            <button id="viewIso_pnp" title="Right-Bottom-Front">+-+</button>
+          </div>
+          <div class="btnrow">
+            <button id="viewIso_pnn" title="Right-Bottom-Back">+--</button>
+            <button id="viewIso_npp" title="Left-Top-Front">-++</button>
+            <button id="viewIso_npn" title="Left-Top-Back">-+-</button>
+          </div>
+          <div class="btnrow">
+            <button id="viewIso_nnp" title="Left-Bottom-Front">--+</button>
+            <button id="viewIso_nnn" title="Left-Bottom-Back">---</button>
+            <button style="visibility: hidden;"></button>
+          </div>
+          <div style="margin-top: 8px;">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+              <input type="checkbox" id="toggleAxes" checked style="width: auto;" />
+              <span style="font-size: 13px; color: #555;">Show Axes (X:Red Y:Green Z:Blue)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="controls" style="margin-top: 10px;">
+          <div style="font-size: 13px; color: #555; margin-bottom: 4px;">Manual Camera Position</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px;">
+            <input id="posX" type="number" placeholder="X" step="any" style="padding: 6px; font-size: 12px;" />
+            <input id="posY" type="number" placeholder="Y" step="any" style="padding: 6px; font-size: 12px;" />
+            <input id="posZ" type="number" placeholder="Z" step="any" style="padding: 6px; font-size: 12px;" />
+          </div>
+          <button id="applyPos">Apply Position</button>
+          <button id="getPos">Get Current Position</button>
+        </div>
+
+        <div class="controls" style="margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px;">
+          <div style="font-size: 13px; color: #555; margin-bottom: 4px;">透视控制 (Transparency Slicing)</div>
+          <label style="font-size: 12px; color: #666;">切片平面:</label>
+          <select id="slicePlane" style="padding: 6px;">
+            <option value="none">关闭透视</option>
+            <option value="xy">XY平面 (沿Z轴透视)</option>
+            <option value="xz">XZ平面 (沿Y轴透视)</option>
+            <option value="yz">YZ平面 (沿X轴透视)</option>
+          </select>
+          
+          <label style="font-size: 12px; color: #666; margin-top: 6px;">切片位置: <span id="slicePosValue">50%</span></label>
+          <input id="slicePos" type="range" min="0" max="1" step="0.01" value="0.5" style="width: 100%;" />
+          
+          <label style="font-size: 12px; color: #666; margin-top: 6px;">透明度: <span id="sliceOpacityValue">0.3</span></label>
+          <input id="sliceOpacity" type="range" min="0" max="1" step="0.05" value="0.3" style="width: 100%;" />
+          
+          <label style="font-size: 12px; color: #666; margin-top: 6px;">过渡宽度: <span id="sliceWidthValue">0.1</span></label>
+          <input id="sliceWidth" type="range" min="0" max="0.5" step="0.01" value="0.1" style="width: 100%;" />
+          
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-top: 6px;">
+            <input type="checkbox" id="sliceInvert" style="width: auto;" />
+            <span style="font-size: 12px; color: #666;">反向透视</span>
+          </label>
+          
+          <button id="resetSlice" style="margin-top: 6px;">重置透视</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      Note: Colors are from glTF material baseColor. If colors repeat (e.g., 100 colors for 300+ classes), you can still control visibility by name.
+    </div>
+  </div>
+
+  <div id="viewer">
+    <canvas id="canvas"></canvas>
+  </div>
+</div>
+
+<script type="module">
+  import * as THREE from "three";
+  import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+  import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+  const canvas = document.getElementById("canvas");
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.localClippingEnabled = true;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 100000);
+  camera.position.set(0, 0, 5);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+
+  // Lights
+  scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+  const dir = new THREE.DirectionalLight(0xffffff, 0.6);
+  dir.position.set(3, 5, 4);
+  scene.add(dir);
+
+  // Custom axes with labels
+  const axesGroup = new THREE.Group();
+  axesGroup.visible = true;
+  scene.add(axesGroup);
+
+  function createAxes(size) {
+    // Clear existing axes
+    while (axesGroup.children.length > 0) {
+      const child = axesGroup.children[0];
+      axesGroup.remove(child);
+      if (child.geometry) child.geometry.dispose();
+      if (child.material) child.material.dispose();
+    }
+
+    const axisLength = size;
+    const headLength = size * 0.2;
+    const headWidth = size * 0.15;
+    const lineWidth = size * 0.03;
+
+    // X axis (red)
+    const xArrow = new THREE.ArrowHelper(
+      new THREE.Vector3(1, 0, 0),
+      new THREE.Vector3(0, 0, 0),
+      axisLength,
+      0xff0000,
+      headLength,
+      headWidth
+    );
+    xArrow.line.material.linewidth = 3;
+    axesGroup.add(xArrow);
+
+    // Y axis (green)
+    const yArrow = new THREE.ArrowHelper(
+      new THREE.Vector3(0, 1, 0),
+      new THREE.Vector3(0, 0, 0),
+      axisLength,
+      0x00ff00,
+      headLength,
+      headWidth
+    );
+    yArrow.line.material.linewidth = 3;
+    axesGroup.add(yArrow);
+
+    // Z axis (blue)
+    const zArrow = new THREE.ArrowHelper(
+      new THREE.Vector3(0, 0, 1),
+      new THREE.Vector3(0, 0, 0),
+      axisLength,
+      0x0000ff,
+      headLength,
+      headWidth
+    );
+    zArrow.line.material.linewidth = 3;
+    axesGroup.add(zArrow);
+
+    // Add text labels using sprites
+    function createTextSprite(text, color, position) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 128;
+      canvas.height = 128;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = color;
+      ctx.font = 'Bold 80px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, 64, 64);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      const material = new THREE.SpriteMaterial({ map: texture });
+      const sprite = new THREE.Sprite(material);
+      sprite.scale.set(size * 0.5, size * 0.5, 1);
+      sprite.position.copy(position);
+      return sprite;
+    }
+
+    const labelOffset = axisLength * 1.2;
+    axesGroup.add(createTextSprite('X', '#ff0000', new THREE.Vector3(labelOffset, 0, 0)));
+    axesGroup.add(createTextSprite('Y', '#00ff00', new THREE.Vector3(0, labelOffset, 0)));
+    axesGroup.add(createTextSprite('Z', '#0000ff', new THREE.Vector3(0, 0, labelOffset)));
+  }
+
+  // Initialize with default size
+  createAxes(10);
+
+  // State
+  let root = null;                     // gltf.scene
+  const items = [];                    // [{name, mesh, checkbox, rowEl, colorHex}]
+  let bboxAll = new THREE.Box3();      // full bbox for camera reset
+  
+  // Transparency slicing state
+  let slicingEnabled = false;
+  let slicePlane = 'none';             // 'none', 'xy', 'xz', 'yz'
+  let slicePosition = 0.5;             // 0-1 normalized position
+  let sliceOpacity = 0.3;              // target opacity for transparent side
+  let sliceWidth = 0.1;                // transition width
+  let sliceInvert = false;             // invert transparency direction
+  const originalMaterials = new Map(); // store original materials for restoration
+  let slicePlaneMesh = null;           // visual slice plane
+  const clippingPlane = new THREE.Plane(); // clipping plane for cross-section
+
+  // UI
+  const fileInput = document.getElementById("file");
+  const listEl = document.getElementById("list");
+  const selectEl = document.getElementById("select");
+  const searchEl = document.getElementById("search");
+  const statsEl = document.getElementById("stats");
+  const loadingEl = document.getElementById("loading");
+  const errorEl = document.getElementById("error");
+
+  function resize() {
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  new ResizeObserver(resize).observe(document.getElementById("viewer"));
+
+  function colorToHex(color) {
+    // THREE.Color => #RRGGBB
+    const c = color.clone().convertSRGBToLinear(); // ensure consistent, optional
+    // Note: GLTF colors often already linear; for swatch just use getHexString on sRGB.
+    // We'll just use getHexString on the current color.
+    return "#" + color.getHexString();
+  }
+
+  function getMeshColorHex(mesh) {
+    // Prefer material.color if exists (MeshStandardMaterial, MeshPhongMaterial, etc.)
+    const m = mesh.material;
+    if (Array.isArray(m)) {
+      // multi-material: take first with color
+      for (const mm of m) {
+        if (mm && mm.color) return colorToHex(mm.color);
+      }
+      return "#ffffff";
+    }
+    if (m && m.color) return colorToHex(m.color);
+    return "#ffffff";
+  }
+
+  function showLoading() {
+    loadingEl.style.display = "block";
+    errorEl.style.display = "none";
+  }
+
+  function hideLoading() {
+    loadingEl.style.display = "none";
+  }
+
+  function showError(msg) {
+    errorEl.textContent = "❌ Error: " + msg;
+    errorEl.style.display = "block";
+    loadingEl.style.display = "none";
+  }
+
+  function clearModel() {
+    if (root) {
+      scene.remove(root);
+      root.traverse(obj => {
+        if (obj.isMesh) {
+          if (obj.geometry) obj.geometry.dispose();
+          const mat = obj.material;
+          if (Array.isArray(mat)) mat.forEach(m => m && m.dispose && m.dispose());
+          else mat && mat.dispose && mat.dispose();
+        }
+      });
+    }
+    root = null;
+    items.length = 0;
+    listEl.innerHTML = "";
+    selectEl.innerHTML = "";
+    statsEl.textContent = "No model loaded";
+    hideSlicePlane();
+    originalMaterials.clear();
+  }
+
+  function buildUIFromRoot() {
+    listEl.innerHTML = "";
+    selectEl.innerHTML = "";
+
+    // Dropdown default
+    const opt0 = document.createElement("option");
+    opt0.value = "";
+    opt0.textContent = "(Select a class / mesh)";
+    selectEl.appendChild(opt0);
+
+    // Build list
+    for (const it of items) {
+      listEl.appendChild(it.rowEl);
+
+      const opt = document.createElement("option");
+      opt.value = it.name;
+      opt.textContent = it.name;
+      selectEl.appendChild(opt);
+    }
+
+    statsEl.textContent = `Loaded: ${items.length} meshes (classes)`;
+  }
+
+  function applySearchFilter(q) {
+    q = (q || "").trim().toLowerCase();
+    let shown = 0;
+    for (const it of items) {
+      const ok = !q || it.name.toLowerCase().includes(q);
+      it.rowEl.style.display = ok ? "" : "none";
+      if (ok) shown++;
+    }
+    statsEl.textContent = `Loaded: ${items.length} meshes (showing ${shown} rows)`;
+  }
+
+  function updateVisibilityFromCheckboxes() {
+    for (const it of items) {
+      it.mesh.visible = it.checkbox.checked;
+    }
+  }
+
+  function setAllVisible(v) {
+    for (const it of items) it.checkbox.checked = v;
+    updateVisibilityFromCheckboxes();
+  }
+
+  function invertVisible() {
+    for (const it of items) it.checkbox.checked = !it.checkbox.checked;
+    updateVisibilityFromCheckboxes();
+  }
+
+  function isolateSelected(name) {
+    if (!name) return;
+    for (const it of items) {
+      const on = (it.name === name);
+      it.checkbox.checked = on;
+      it.mesh.visible = on;
+    }
+  }
+
+  function focusSelected(name) {
+    if (!name) return;
+    // 保持其它 mesh 可见性不强制改变，只做相机聚焦
+    const it = items.find(x => x.name === name);
+    if (!it) return;
+    const box = new THREE.Box3().setFromObject(it.mesh);
+    frameBox(box);
+  }
+
+  function frameBox(box) {
+    if (box.isEmpty()) return;
+    const size = new THREE.Vector3();
+    const center = new THREE.Vector3();
+    box.getSize(size);
+    box.getCenter(center);
+
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const fov = camera.fov * Math.PI / 180;
+    const dist = (maxDim / (2 * Math.tan(fov / 2))) * 1.2;
+
+    const dir = new THREE.Vector3(0, 0, 1); // camera forward in local
+    const newPos = center.clone().add(dir.multiplyScalar(dist));
+
+    camera.position.copy(newPos);
+    controls.target.copy(center);
+    controls.update();
+  }
+
+  function resetCamera() {
+    frameBox(bboxAll);
+  }
+
+  function setViewAngle(direction) {
+    if (bboxAll.isEmpty()) return;
+    
+    const center = new THREE.Vector3();
+    bboxAll.getCenter(center);
+    
+    const size = new THREE.Vector3();
+    bboxAll.getSize(size);
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const fov = camera.fov * Math.PI / 180;
+    const distance = (maxDim / (2 * Math.tan(fov / 2))) * 1.5;
+    
+    let position = new THREE.Vector3();
+    
+    switch(direction) {
+      case 'front':  // 正面 (Z+)
+        position.set(0, 0, distance);
+        break;
+      case 'back':   // 后视 (Z-)
+        position.set(0, 0, -distance);
+        break;
+      case 'left':   // 左视 (X-)
+        position.set(-distance, 0, 0);
+        break;
+      case 'right':  // 右视 (X+)
+        position.set(distance, 0, 0);
+        break;
+      case 'top':    // 俯视 (Y+)
+        position.set(0, distance, 0);
+        break;
+      case 'bottom': // 底视 (Y-)
+        position.set(0, -distance, 0);
+        break;
+      // ISO views (X Y Z combinations - 8 total)
+      case 'iso_ppp': // +++ Right-Top-Front
+        position.set(distance * 0.7, distance * 0.7, distance * 0.7);
+        break;
+      case 'iso_ppn': // ++- Right-Top-Back
+        position.set(distance * 0.7, distance * 0.7, -distance * 0.7);
+        break;
+      case 'iso_pnp': // +-+ Right-Bottom-Front
+        position.set(distance * 0.7, -distance * 0.7, distance * 0.7);
+        break;
+      case 'iso_pnn': // +-- Right-Bottom-Back
+        position.set(distance * 0.7, -distance * 0.7, -distance * 0.7);
+        break;
+      case 'iso_npp': // -++ Left-Top-Front
+        position.set(-distance * 0.7, distance * 0.7, distance * 0.7);
+        break;
+      case 'iso_npn': // -+- Left-Top-Back
+        position.set(-distance * 0.7, distance * 0.7, -distance * 0.7);
+        break;
+      case 'iso_nnp': // --+ Left-Bottom-Front
+        position.set(-distance * 0.7, -distance * 0.7, distance * 0.7);
+        break;
+      case 'iso_nnn': // --- Left-Bottom-Back
+        position.set(-distance * 0.7, -distance * 0.7, -distance * 0.7);
+        break;
+    }
+    
+    position.add(center);
+    camera.position.copy(position);
+    controls.target.copy(center);
+    controls.update();
+  }
+
+  function setCameraPosition(x, y, z) {
+    camera.position.set(x, y, z);
+    
+    // Set target to model center if available
+    if (!bboxAll.isEmpty()) {
+      const center = new THREE.Vector3();
+      bboxAll.getCenter(center);
+      controls.target.copy(center);
+    }
+    
+    controls.update();
+  }
+
+  function getCurrentCameraPosition() {
+    return {
+      x: camera.position.x,
+      y: camera.position.y,
+      z: camera.position.z
+    };
+  }
+
+  function storeMaterialIfNeeded(mesh) {
+    if (!originalMaterials.has(mesh)) {
+      originalMaterials.set(mesh, mesh.material);
+    }
+  }
+
+  function ensureMaterialTransparent(material) {
+    if (Array.isArray(material)) {
+      material.forEach(m => {
+        if (m) {
+          m.transparent = true;
+          m.depthWrite = false;
+        }
+      });
+    } else if (material) {
+      material.transparent = true;
+      material.depthWrite = false;
+    }
+  }
+
+  function restoreMaterials() {
+    for (const it of items) {
+      const mesh = it.mesh;
+      if (originalMaterials.has(mesh)) {
+        const original = originalMaterials.get(mesh);
+        if (Array.isArray(original)) {
+          original.forEach(m => {
+            if (m) {
+              m.opacity = 1.0;
+              m.transparent = false;
+              m.depthWrite = true;
+            }
+          });
+        } else if (original) {
+          original.opacity = 1.0;
+          original.transparent = false;
+          original.depthWrite = true;
+        }
+      }
+    }
+  }
+
+  function createSlicePlaneMesh(size) {
+    // Remove old plane if exists
+    if (slicePlaneMesh) {
+      scene.remove(slicePlaneMesh);
+      if (slicePlaneMesh.geometry) slicePlaneMesh.geometry.dispose();
+      if (slicePlaneMesh.material) slicePlaneMesh.material.dispose();
+    }
+
+    const geometry = new THREE.PlaneGeometry(size, size);
+    const material = new THREE.MeshBasicMaterial({
+      color: 0xcccccc,
+      transparent: true,
+      opacity: 0.1,
+      side: THREE.DoubleSide,
+      depthWrite: false
+    });
+    slicePlaneMesh = new THREE.Mesh(geometry, material);
+    scene.add(slicePlaneMesh);
+    return slicePlaneMesh;
+  }
+
+  function updateSlicePlanePosition(plane, position, normal) {
+    if (!slicePlaneMesh) return;
+    
+    slicePlaneMesh.position.copy(position);
+    slicePlaneMesh.lookAt(
+      position.x + normal.x,
+      position.y + normal.y,
+      position.z + normal.z
+    );
+    slicePlaneMesh.visible = true;
+  }
+
+  function hideSlicePlane() {
+    if (slicePlaneMesh) {
+      slicePlaneMesh.visible = false;
+    }
+  }
+
+  function updateSliceRange() {
+    if (bboxAll.isEmpty()) return;
+    // Update the slice position slider based on current plane
+    applyTransparencySlicing();
+  }
+
+  function applyTransparencySlicing() {
+    if (slicePlane === 'none' || !root || bboxAll.isEmpty()) {
+      restoreMaterials();
+      slicingEnabled = false;
+      hideSlicePlane();
+      // Disable clipping
+      root.traverse(obj => {
+        if (obj.isMesh && obj.material) {
+          const mat = obj.material;
+          if (Array.isArray(mat)) {
+            mat.forEach(m => { if (m) m.clippingPlanes = null; });
+          } else {
+            mat.clippingPlanes = null;
+          }
+        }
+      });
+      return;
+    }
+
+    slicingEnabled = true;
+    const size = new THREE.Vector3();
+    const min = new THREE.Vector3();
+    const center = new THREE.Vector3();
+    bboxAll.getSize(size);
+    bboxAll.getCenter(center);
+    bboxAll.min.clone().toArray(min.toArray());
+    min.copy(bboxAll.min);
+
+    // Determine which axis to slice along
+    let axisIndex, axisMin, axisMax, planeNormal, planeSize;
+    switch(slicePlane) {
+      case 'xy': // slice along Z axis
+        axisIndex = 2;
+        axisMin = bboxAll.min.z;
+        axisMax = bboxAll.max.z;
+        planeNormal = new THREE.Vector3(0, 0, 1);
+        planeSize = Math.max(size.x, size.y) * 1.2;
+        break;
+      case 'xz': // slice along Y axis
+        axisIndex = 1;
+        axisMin = bboxAll.min.y;
+        axisMax = bboxAll.max.y;
+        planeNormal = new THREE.Vector3(0, 1, 0);
+        planeSize = Math.max(size.x, size.z) * 1.2;
+        break;
+      case 'yz': // slice along X axis
+        axisIndex = 0;
+        axisMin = bboxAll.min.x;
+        axisMax = bboxAll.max.x;
+        planeNormal = new THREE.Vector3(1, 0, 0);
+        planeSize = Math.max(size.y, size.z) * 1.2;
+        break;
+      default:
+        return;
+    }
+
+    const axisRange = axisMax - axisMin;
+    const sliceWorldPos = axisMin + axisRange * slicePosition;
+    const transitionWidth = axisRange * sliceWidth;
+
+    // Create or update slice plane mesh
+    if (!slicePlaneMesh) {
+      createSlicePlaneMesh(planeSize);
+    } else {
+      // Update plane size if needed
+      if (slicePlaneMesh.geometry.parameters.width !== planeSize) {
+        slicePlaneMesh.geometry.dispose();
+        slicePlaneMesh.geometry = new THREE.PlaneGeometry(planeSize, planeSize);
+      }
+    }
+
+    // Update plane position
+    const planePosition = center.clone();
+    planePosition.setComponent(axisIndex, sliceWorldPos);
+    updateSlicePlanePosition(slicePlaneMesh, planePosition, planeNormal);
+
+    // Setup clipping plane for cross-section effect
+    const clipNormal = planeNormal.clone();
+    if (sliceInvert) clipNormal.negate();
+    clippingPlane.setFromNormalAndCoplanarPoint(clipNormal, planePosition);
+
+    for (const it of items) {
+      const mesh = it.mesh;
+      storeMaterialIfNeeded(mesh);
+
+      // Get mesh position along the slicing axis
+      const meshBox = new THREE.Box3().setFromObject(mesh);
+      const meshCenter = new THREE.Vector3();
+      meshBox.getCenter(meshCenter);
+      
+      let meshAxisPos;
+      switch(axisIndex) {
+        case 0: meshAxisPos = meshCenter.x; break;
+        case 1: meshAxisPos = meshCenter.y; break;
+        case 2: meshAxisPos = meshCenter.z; break;
+      }
+
+      // Calculate distance from slice position
+      let distance = meshAxisPos - sliceWorldPos;
+      if (sliceInvert) distance = -distance;
+
+      // Calculate opacity based on distance
+      let opacity = 1.0;
+      if (distance < 0) {
+        // On the transparent side
+        if (transitionWidth > 0) {
+          const t = Math.max(0, Math.min(1, -distance / transitionWidth));
+          opacity = sliceOpacity + (1 - sliceOpacity) * (1 - t);
+        } else {
+          opacity = sliceOpacity;
+        }
+      }
+
+      // Apply opacity
+      const material = mesh.material;
+      if (Array.isArray(material)) {
+        material.forEach(m => {
+          if (m) {
+            m.opacity = opacity;
+            m.transparent = true;
+            m.depthWrite = opacity >= 0.95;
+            // Apply clipping plane for cross-section
+            m.clippingPlanes = [clippingPlane];
+            m.clipShadows = true;
+          }
+        });
+      } else if (material) {
+        material.opacity = opacity;
+        material.transparent = true;
+        material.depthWrite = opacity >= 0.95;
+        // Apply clipping plane for cross-section
+        material.clippingPlanes = [clippingPlane];
+        material.clipShadows = true;
+      }
+    }
+  }
+
+  function collectMeshesAndBuildRows() {
+    items.length = 0;
+    bboxAll = new THREE.Box3().setFromObject(root);
+
+    root.traverse(obj => {
+      if (!obj.isMesh) return;
+      const mesh = obj;
+
+      // Ensure stable name
+      const name = (mesh.name && mesh.name.trim()) ? mesh.name.trim() : `mesh_${items.length}`;
+
+      const colorHex = getMeshColorHex(mesh);
+
+      const row = document.createElement("div");
+      row.className = "row";
+
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = true;
+      cb.addEventListener("change", () => {
+        mesh.visible = cb.checked;
+      });
+
+      const sw = document.createElement("div");
+      sw.className = "swatch";
+      sw.style.background = colorHex;
+
+      const nm = document.createElement("div");
+      nm.className = "name";
+      nm.title = name;
+      nm.textContent = name;
+
+      // 可选：显示一个简短 id/序号，便于颜色重复时快速区分
+      const badge = document.createElement("div");
+      badge.className = "badge";
+      badge.textContent = String(items.length);
+
+      row.appendChild(cb);
+      row.appendChild(sw);
+      row.appendChild(nm);
+      row.appendChild(badge);
+
+      // 点击行：切换勾选
+      row.addEventListener("click", (e) => {
+        if (e.target === cb) return;
+        cb.checked = !cb.checked;
+        mesh.visible = cb.checked;
+      });
+
+      items.push({ name, mesh, checkbox: cb, rowEl: row, colorHex });
+    });
+
+    // Keep original mesh order, no sorting
+    // items.sort((a, b) => a.name.localeCompare(b.name, "en", { numeric: true }));
+
+    // Update badge numbers
+    items.forEach((it, idx) => {
+      const badge = it.rowEl.querySelector(".badge");
+      if (badge) badge.textContent = String(idx);
+    });
+  }
+
+  async function loadGLBFromArrayBuffer(buffer) {
+    try {
+      console.log("Loading GLB, file size:", buffer.byteLength, "bytes");
+      showLoading();
+      clearModel();
+      
+      const loader = new GLTFLoader();
+      const gltf = await new Promise((resolve, reject) => {
+        loader.parse(buffer, "", resolve, reject);
+      });
+
+      console.log("GLB parsed successfully", gltf);
+      root = gltf.scene;
+      scene.add(root);
+
+      collectMeshesAndBuildRows();
+      console.log("Collected", items.length, "meshes");
+      
+      // Update axes size based on model
+      if (!bboxAll.isEmpty()) {
+        const size = new THREE.Vector3();
+        bboxAll.getSize(size);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        createAxes(maxDim * 0.15); // 15% of model size
+      }
+      
+      buildUIFromRoot();
+      applySearchFilter(searchEl.value);
+      resetCamera();
+      
+      // Initialize slicing UI range
+      updateSliceRange();
+      applyTransparencySlicing();
+      
+      hideLoading();
+      console.log("GLB loaded successfully");
+    } catch (error) {
+      console.error("Failed to load GLB:", error);
+      showError(error.message || "Failed to load file");
+    }
+  }
+
+  // File input
+  fileInput.addEventListener("change", async () => {
+    console.log("File selection triggered");
+    const file = fileInput.files?.[0];
+    if (!file) {
+      console.log("No file selected");
+      return;
+    }
+    console.log("Selected file:", file.name, file.size, "bytes", file.type);
+    try {
+      const buffer = await file.arrayBuffer();
+      await loadGLBFromArrayBuffer(buffer);
+    } catch (error) {
+      console.error("Failed to read file:", error);
+      showError("Failed to read file: " + error.message);
+    }
+  });
+
+  // Drag & drop
+  const viewerEl = document.getElementById("viewer");
+  viewerEl.addEventListener("dragover", (e) => { e.preventDefault(); });
+  viewerEl.addEventListener("drop", async (e) => {
+    e.preventDefault();
+    console.log("Drop file triggered");
+    const file = e.dataTransfer.files?.[0];
+    if (!file) {
+      console.log("No file dropped");
+      return;
+    }
+    console.log("Dropped file:", file.name, file.size, "bytes", file.type);
+    try {
+      const buffer = await file.arrayBuffer();
+      await loadGLBFromArrayBuffer(buffer);
+    } catch (error) {
+      console.error("Failed to read dropped file:", error);
+      showError("Failed to read file: " + error.message);
+    }
+  });
+
+  // Controls
+  document.getElementById("showAll").addEventListener("click", () => setAllVisible(true));
+  document.getElementById("hideAll").addEventListener("click", () => setAllVisible(false));
+  document.getElementById("invert").addEventListener("click", () => invertVisible());
+
+  document.getElementById("isolate").addEventListener("click", () => {
+    const name = selectEl.value;
+    isolateSelected(name);
+  });
+
+  document.getElementById("focus").addEventListener("click", () => {
+    const name = selectEl.value;
+    focusSelected(name);
+  });
+
+  document.getElementById("resetCam").addEventListener("click", () => resetCamera());
+
+  // View angle buttons
+  document.getElementById("viewFront").addEventListener("click", () => setViewAngle('front'));
+  document.getElementById("viewTop").addEventListener("click", () => setViewAngle('top'));
+  document.getElementById("viewLeft").addEventListener("click", () => setViewAngle('left'));
+  document.getElementById("viewRight").addEventListener("click", () => setViewAngle('right'));
+  document.getElementById("viewBack").addEventListener("click", () => setViewAngle('back'));
+  document.getElementById("viewBottom").addEventListener("click", () => setViewAngle('bottom'));
+  
+  // ISO view buttons
+  document.getElementById("viewIso_ppp").addEventListener("click", () => setViewAngle('iso_ppp'));
+  document.getElementById("viewIso_ppn").addEventListener("click", () => setViewAngle('iso_ppn'));
+  document.getElementById("viewIso_pnp").addEventListener("click", () => setViewAngle('iso_pnp'));
+  document.getElementById("viewIso_pnn").addEventListener("click", () => setViewAngle('iso_pnn'));
+  document.getElementById("viewIso_npp").addEventListener("click", () => setViewAngle('iso_npp'));
+  document.getElementById("viewIso_npn").addEventListener("click", () => setViewAngle('iso_npn'));
+  document.getElementById("viewIso_nnp").addEventListener("click", () => setViewAngle('iso_nnp'));
+  document.getElementById("viewIso_nnn").addEventListener("click", () => setViewAngle('iso_nnn'));
+
+  // Axes toggle
+  document.getElementById("toggleAxes").addEventListener("change", (e) => {
+    axesGroup.visible = e.target.checked;
+  });
+
+  // Manual camera position controls
+  document.getElementById("applyPos").addEventListener("click", () => {
+    const x = parseFloat(document.getElementById("posX").value);
+    const y = parseFloat(document.getElementById("posY").value);
+    const z = parseFloat(document.getElementById("posZ").value);
+    
+    if (isNaN(x) || isNaN(y) || isNaN(z)) {
+      showError("Please enter valid numbers for X, Y, Z");
+      setTimeout(() => {
+        errorEl.style.display = "none";
+      }, 3000);
+      return;
+    }
+    
+    setCameraPosition(x, y, z);
+    console.log("Camera position set to:", x, y, z);
+  });
+
+  document.getElementById("getPos").addEventListener("click", () => {
+    const pos = getCurrentCameraPosition();
+    document.getElementById("posX").value = pos.x.toFixed(2);
+    document.getElementById("posY").value = pos.y.toFixed(2);
+    document.getElementById("posZ").value = pos.z.toFixed(2);
+    console.log("Current camera position:", pos);
+  });
+
+  selectEl.addEventListener("change", () => {
+    const name = selectEl.value;
+    // Default: just focus without forcing isolate
+    if (name) focusSelected(name);
+  });
+
+  searchEl.addEventListener("input", () => applySearchFilter(searchEl.value));
+
+  // Transparency slicing controls
+  const slicePlaneEl = document.getElementById("slicePlane");
+  const slicePosEl = document.getElementById("slicePos");
+  const sliceOpacityEl = document.getElementById("sliceOpacity");
+  const sliceWidthEl = document.getElementById("sliceWidth");
+  const sliceInvertEl = document.getElementById("sliceInvert");
+  const slicePosValueEl = document.getElementById("slicePosValue");
+  const sliceOpacityValueEl = document.getElementById("sliceOpacityValue");
+  const sliceWidthValueEl = document.getElementById("sliceWidthValue");
+
+  slicePlaneEl.addEventListener("change", () => {
+    slicePlane = slicePlaneEl.value;
+    applyTransparencySlicing();
+  });
+
+  slicePosEl.addEventListener("input", () => {
+    slicePosition = parseFloat(slicePosEl.value);
+    slicePosValueEl.textContent = (slicePosition * 100).toFixed(0) + '%';
+    applyTransparencySlicing();
+  });
+
+  sliceOpacityEl.addEventListener("input", () => {
+    sliceOpacity = parseFloat(sliceOpacityEl.value);
+    sliceOpacityValueEl.textContent = sliceOpacity.toFixed(2);
+    applyTransparencySlicing();
+  });
+
+  sliceWidthEl.addEventListener("input", () => {
+    sliceWidth = parseFloat(sliceWidthEl.value);
+    sliceWidthValueEl.textContent = sliceWidth.toFixed(2);
+    applyTransparencySlicing();
+  });
+
+  sliceInvertEl.addEventListener("change", () => {
+    sliceInvert = sliceInvertEl.checked;
+    applyTransparencySlicing();
+  });
+
+  document.getElementById("resetSlice").addEventListener("click", () => {
+    slicePlaneEl.value = "none";
+    slicePosEl.value = "0.5";
+    sliceOpacityEl.value = "0.3";
+    sliceWidthEl.value = "0.1";
+    sliceInvertEl.checked = false;
+    slicePlane = "none";
+    slicePosition = 0.5;
+    sliceOpacity = 0.3;
+    sliceWidth = 0.1;
+    sliceInvert = false;
+    slicePosValueEl.textContent = "50%";
+    sliceOpacityValueEl.textContent = "0.30";
+    sliceWidthValueEl.textContent = "0.10";
+    applyTransparencySlicing();
+  });
+
+  // Render loop
+  function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  resize();
+  animate();
+</script>
+</body>
+</html>

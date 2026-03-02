@@ -41,7 +41,7 @@ def clustering_adata(adata, resolutions=None):
 
     return adata
 
-def clustering_adata_kmeans(adata, n_clusters=[10, 15, 20]):
+def clustering_adata_kmeans(adata, n_clusters=[10, 15, 20], basis=None):
     """
     Perform KMeans clustering on the given AnnData object.
     
@@ -54,6 +54,10 @@ def clustering_adata_kmeans(adata, n_clusters=[10, 15, 20]):
     """
     from sklearn.cluster import KMeans
     X = adata.X
+
+    if (basis is not None) and (basis in adata.obsm):
+        X = adata.obsm[basis]
+
     for n_cluster in n_clusters:
         kmeans = KMeans(n_clusters=n_cluster, random_state=0, n_init="auto")
         labels = kmeans.fit_predict(X)

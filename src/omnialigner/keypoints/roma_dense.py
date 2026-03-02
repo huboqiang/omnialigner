@@ -53,7 +53,7 @@ class RomaDenseDetector(nn.Module, KeypointDetectorMeta):
 
             batch = {"im_A": image_F, "im_B": image_M}
             warp, certainty, corresps = self.roma.match_batched(batch, device=self.device)
-            matches, certainty = self.roma.sample(warp, certainty)
+            matches, certainty = self.roma.sample(warp, certainty, num=10000)
             kpts1, kpts2 = self.roma.to_pixel_coordinates(matches, H_A, W_A, H_B, W_B)    
             return kpts1, kpts2, range(len(kpts1)), corresps
         else:

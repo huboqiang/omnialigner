@@ -138,7 +138,7 @@ def select_angles_with_scales(
 
     for sr in scale_ratios:
         img_size = (image_M.shape[2], image_M.shape[3])
-        img_size = (img_size[0] // sr, img_size[1] // sr)
+        img_size = (int(img_size[0] / sr), int(img_size[1] / sr))
         image_M_ = F.interpolate(image_M, img_size, mode='bilinear', align_corners=True)
         image_F_ = F.interpolate(image_F, img_size, mode='bilinear', align_corners=True)
         

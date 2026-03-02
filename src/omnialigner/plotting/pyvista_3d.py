@@ -1,5 +1,5 @@
 import logging as logging_
-from typing import List
+from typing import List, Optional
 
 from tqdm import tqdm
 import numpy as np
@@ -8,6 +8,7 @@ import torch
 import torch.nn.functional as F
 from matplotlib import cm
 import pyvista as pv
+import trimesh
 
 from omnialigner.utils.mesh import apply_gaussian_3d_filter, volume_to_verts_faces, mesh_from_verts_faces, filter_sub_meshes, color_to_rgb
 from omnialigner.dtypes import Np_image_HWC
@@ -95,10 +96,12 @@ def stack_rgba_images(
                              direction=(0, 0, 1),
                              i_size=(h//down_scale),
                              j_size=(w//down_scale))
-
+        thickness = 5
+        # img_plane = img_plane.extrude([0, 0, thickness], capping=True)
         # texture = pv.numpy_to_texture(np.moveaxis(img, 0, 1))
+
         texture = pv.numpy_to_texture(img)
-        plotter.add_mesh(img_plane, texture=texture)
+        plotter.add_mesh(img_plane, texture=texture,  lighting=False)
         if l_kpts and l_kpts[idx] is not None:
             for kpt in l_kpts[idx]:
                 x, y = kpt / down_scale
@@ -330,7 +333,6 @@ def bin_to_mesh(
         merge_threshold: float=10.0,
         smooth: bool=True,
         smooth_kwargs: dict=None,
-        zmax: int=750,
         z_scale: float=1.0,
         down_scale: int=5
     ):
@@ -347,7 +349,6 @@ def bin_to_mesh(
         merge_threshold: Threshold for merging mesh components (default: 10.0).
         smooth: Whether to smooth the mesh (default: True).
         smooth_kwargs: Optional smoothing parameters.
-        zmax: Maximum z-coordinate (default: 750).
         z_scale: Z-axis scaling factor (default: 1.0).
         down_scale: Downscaling factor (default: 5).
 
@@ -355,7 +356,7 @@ def bin_to_mesh(
         pyvista.PolyData: The generated 3D mesh.
     """
 
-    z_scale = 1/(40*down_scale) * (4/0.25)
+    # z_scale = 1/(40*down_scale) * (4/0.25)
     data = torch.from_numpy(np_binary_vol).float(
     ).unsqueeze(0).permute(0, 3, 1, 2)
     np_binary_vol = F.interpolate(
@@ -369,18 +370,124 @@ def bin_to_mesh(
     voxel_data = smoothed_tensor[0, 0, :, :, :].permute(
         1, 2, 0).numpy() > binary_cutoff
 
-    h, w, n = np_binary_vol.shape
-    idx = np.array(coord_z) < zmax
+    # print("after smoothing, volumn", voxel_data.sum())
+    # h, w, n = np_binary_vol.shape
+    # idx = np.array(coord_z) < zmax
 
     verts, faces = volume_to_verts_faces(
-        voxel_data[:, :, idx], level=level, min_size=0.1*min_size)
+        # voxel_data[:, :, idx],
+        voxel_data,
+        level=level,
+        min_size=10
+    )
     z = np.array([coord_z[int(x)] for x in verts[:, 2]])
-    verts[:, 2] = z_scale*(z-np.min(z))
+    
+    if z.shape[0] == 0:
+        return mesh_from_verts_faces(verts, faces)
 
+    # verts[:, 2] = z_scale*(z-np.min(z))
+    verts[:, 2] = z_scale*z / down_scale
     mesh = mesh_from_verts_faces(verts, faces)
+    # print("before filter, volumn", voxel_data.sum(), "z shape", z.shape, "mesh vertices", mesh.vertices.shape)
     mesh = filter_sub_meshes(mesh, min_vol=min_size, smooth=smooth,
                              smooth_kwargs=smooth_kwargs, merge_threshold=merge_threshold)
+    # print("volumn", voxel_data.sum(), "z shape", z.shape, "mesh vertices", mesh.vertices.shape)
     return mesh
+
+def hex_to_rgba(hexcol):
+    h = hexcol.lstrip('#')
+    if len(h) == 6:
+        r,g,b = int(h[0:2],16), int(h[2:4],16), int(h[4:6],16)
+        a = 255
+    elif len(h) == 8:
+        r,g,b,a = int(h[0:2],16), int(h[2:4],16), int(h[4:6],16), int(h[6:8],16)
+    else:
+        r,g,b,a = 136,136,136,255
+    return np.array([r,g,b,a], dtype=np.uint8)
+
+
+
+def l_mesh_to_ply(l_meshes: List[trimesh.Trimesh], l_colors: List[str]=None, out_path:str = None):
+    combined_vertices = []
+    combined_faces = []
+    combined_colors = []
+    vert_offset = 0
+    if l_colors is None:
+        l_colors = ["#888888"] * (len(l_meshes) + 1)
+
+    for idx, mesh in enumerate(l_meshes):
+        if mesh.vertices.size == 0:
+            continue
+
+        hexcol = l_colors[idx]
+        rgba = hex_to_rgba(hexcol)
+        n_verts = mesh.vertices.shape[0]
+
+        combined_vertices.append(mesh.vertices)
+        combined_faces.append(mesh.faces + vert_offset)
+        combined_colors.append(np.tile(rgba, (n_verts, 1)))
+        vert_offset += n_verts
+
+    if len(combined_vertices) == 0:
+        raise RuntimeError("没有可合并的 mesh。")
+
+    V = np.vstack(combined_vertices)
+    F = np.vstack(combined_faces).astype(np.int64)
+    C = np.vstack(combined_colors)
+
+    combined = trimesh.Trimesh(vertices=V, faces=F, process=False)
+    combined.visual.vertex_colors = C
+
+    if out_path is not None:
+        combined.export(out_path)
+    
+    return combined
+
+
+def export_classes_to_glb(
+    l_meshes: List[trimesh.Trimesh],
+    class_names: Optional[List[str]] = None,
+    class_colors_hex: Optional[List[str]] = None,
+    out_glb: str = "classes.glb",
+):
+    n = len(l_meshes)
+    if class_names is None:
+        class_names = [f"class_{i:03d}" for i in range(n)]
+    if class_colors_hex is None:
+        class_colors_hex = ["#888888"] * n
+    if not (len(class_names) == len(class_colors_hex)):
+        raise ValueError("class_names / class_colors_hex ")
+
+    scene = trimesh.Scene()
+
+    for i, mesh in enumerate(l_meshes):
+        if mesh.vertices.size == 0 or mesh.faces.size == 0:
+            name = str(class_names[i])
+            print(f"SKIP empty mesh:", {name})
+            continue
+
+        name = str(class_names[i])
+        # rgba_u8 = hex_to_rgba_u8(class_colors_hex[i])
+        rgba_u8 = hex_to_rgba(class_colors_hex[i])
+        rgba = (rgba_u8.astype(np.float32) / 255.0).tolist()  # [0..1]
+
+        # 给每个 mesh 固化材质色（glb/gltf 里可保留）
+        mat = trimesh.visual.material.PBRMaterial(
+            baseColorFactor=rgba,  # [r,g,b,a] in 0..1
+            metallicFactor=0.0,
+            roughnessFactor=1.0
+        )
+
+        # 使用 ColorVisuals 以保证导出时材质/颜色落到 glTF
+        mesh = mesh.copy()
+        mesh.visual = trimesh.visual.TextureVisuals(material=mat)
+
+        # node_name / geom_name 用同一个，方便 Three.js 索引
+        scene.add_geometry(mesh, node_name=name, geom_name=name)
+
+    scene.export(out_glb)
+    return out_glb
+
 
 
 if __name__ == "__main__":

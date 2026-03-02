@@ -47,6 +47,9 @@ def create_pyramid(tensor: Tensor_image_NCHW, num_levels: int, mode: str='biline
         The created resolution pyramid
 
     """
+    if tensor is None:
+        return [None]*num_levels
+
     pyramid = [None]*num_levels
     for i in range(num_levels - 1, -1, -1):
         print("create_pyramid", i)

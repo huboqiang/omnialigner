@@ -3,6 +3,7 @@
 *ipynb_checkpoints
 example/.bak/
 example/3d_construct/
+example/*pdf
 example/logs/
 *.log
 *lightning_logs/
@@ -24,4 +25,13 @@ config/panlab/data_panlab2.csv
 config/panlab/config_pdac2.yaml
 example/panlab_pdac2.ipynb
 example/panlab_pdac2.py
+example/brain3d*
+example/config_STAM.yaml
+example/debug_align_adata/
+example/fig5v3.*
 
+config/brain3d/
+example/Figure4v3.ipynb
+example/Figure5v3.ipynb
+example/adata_to_png*
+example/panlab_pdac2_*

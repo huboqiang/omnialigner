@@ -163,13 +163,18 @@ class Omni3D(object):
         kwargs_data["zoom_level"] = zoom_level
         kwargs_data["is_raw"] = is_raw
         kwargs_data["resize_to_20x"] = resize_to_20x
-        kwargs_read_ome_tiff = kwargs_data.get("read_ome_tiff", {})
+        
+        kwargs_read_ome_tiff = kwargs_data.get("read_ome_tiff", {"i_page": zoom_level})
         for k,v in kwargs_read_ome_tiff.items():
             if k == "i_page":
                 v = zoom_level
 
             kwargs_read_ome_tiff[k] = v
 
+        if is_raw and "l_channels" not in kwargs_read_ome_tiff:
+            kwargs_read_ome_tiff["l_channels"] = [0, 1, 2]
+            
+        kwargs_data["read_ome_tiff"] = kwargs_read_ome_tiff
         da_image = read_file(file_name=file, is_tiff=True, **kwargs_data)
         if self.tag == DataType.GRAY:
             is_HE = self.proj_info.get_dtype(i_layer=i_layer) == "HE"

@@ -21,9 +21,11 @@ from omnialigner.dtypes import Grid2DModelDual
 from omnialigner.logging import logger as logging
 from omnialigner.plotting.keypoint_viz import plot_align_batch, plot_ovlp_kpts
 from omnialigner.datasets import OverlappedImageLayerDataset
-from omnialigner.dtypes import Tensor_image_NCHW, Tensor_trs, Tensor_kpts_N_xy, Tensor_kpt_pair, Tensor_l_kpt_pair
+from omnialigner.dtypes import Tensor_image_NCHW, Tensor_trs, Tensor_kpts_N_xy, Tensor_kpt_pair, Tensor_l_kpt_pair, AnnData_l_cells_pair, Tensor_cells_N_embed, Tensor_cells_N_xy, Np_l_cells_MNN
 from omnialigner.utils.config import load_from_string
 from omnialigner.utils.image_transform import create_pyramid
+# from omnialigner.utils.mnn import mutual_nearest_neighbors_via_matrix, unpaired_dist, calculate_cdist_dist, calculate_cdist_corr
+from omnialigner.utils.mnn_fast import mutual_nearest_neighbors_fast, calculate_distance_for_pairs
 from omnialigner.metrics.regbenchmark_py import benchmark_kpts
 
 
@@ -92,10 +94,12 @@ def _apply_disp_to_HD(da_arr, i_layer, crop_region, dict_model):
 
 class OmniAligner(nn.Module):
     def __init__(self,
-            image_3d_tensor: Tensor_image_NCHW,
+            image_3d_tensor: Tensor_image_NCHW=None,
             l_kpt_pairs: Tensor_l_kpt_pair= None,
+            anndatas_cells: AnnData_l_cells_pair= None,
             l_init_trs: List[Tensor_trs]=None,
             dict_config: Dict[str, Any]=None,
+            max_size: int=1280,
             model_type: str="affine",
             save_prefix: str="",
             log_prefix=None,
@@ -127,9 +131,20 @@ class OmniAligner(nn.Module):
                             Prefix for logging.
         """
         super().__init__()
+        
+        if image_3d_tensor is not None:
+            self.N = image_3d_tensor.shape[0]
+        elif l_kpt_pairs is not None:
+            self.N = len(l_kpt_pairs) + 1
+        elif anndatas_cells is not None:
+            self.N = len(anndatas_cells)
+        else:
+            raise ValueError("At least one of image_3d_tensor, l_kpt_pairs, or anndatas_cells must be provided.")
+
         self.l_kpt_pairs = l_kpt_pairs
-        self.N = image_3d_tensor.shape[0]
         self.image_3d_tensor = image_3d_tensor
+        self.anndatas_cells = anndatas_cells
+        self.max_size = max_size
         self.dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.config = dict_config
         for key, value in self.config.items():
@@ -157,7 +172,6 @@ class OmniAligner(nn.Module):
         self.k = self.config["dataloader"]["k"]
         self.batch_size = self.config["dataloader"]["batch_size"]
         self.overlap = self.config["dataloader"]["overlap"]
-
         self.save_prefix = save_prefix
         self.log_prefix = self.config["trainer"]["log_prefix"]
         if log_prefix is not None:
@@ -181,8 +195,9 @@ class OmniAligner(nn.Module):
             n_epoches_used = self.config_model["used_levels"]
             self.target_pyramid = create_pyramid(image_3d_tensor, num_levels=n_epoches)[:n_epoches_used]
             ### INIT grid2d_modules in small sizes
-            h, w = self.target_pyramid[0].shape[2], self.target_pyramid[0].shape[3]
-            self.tensor_size = [h, w] #self.config_model.get("tensor_size", [h, w])
+            if self.target_pyramid is not None:
+                h, w = self.target_pyramid[0].shape[2], self.target_pyramid[0].shape[3]
+                self.tensor_size = [h, w] #self.config_model.get("tensor_size", [h, w])
 
         self.update_tensor_size(image_3d_tensor=image_3d_tensor)
         if l_init_trs is None:
@@ -196,7 +211,7 @@ class OmniAligner(nn.Module):
                 **self.config_model
             ) for i in range(self.N)
         ]
-        _, C, _, _ = image_3d_tensor.shape
+
         cost_func = None
         if "cost_function" in self.config_model:
             cost_func = self.config_model["cost_function"]
@@ -231,6 +246,24 @@ class OmniAligner(nn.Module):
         # pdb.set_trace()
         transformed_images = torch.stack(l_images).squeeze(1)
         return transformed_images
+
+
+    def forward_cells(self,
+            l_cell_pos: List[Tensor_cells_N_xy],
+            indices: List[int]
+        ) -> List[Tensor_cells_N_xy]:
+        l_kpt_pairs_moved = []
+        for i, index in enumerate(indices):
+            if len(l_cell_pos[i]) < 1:
+                l_kpt_pairs_moved.append([])
+                continue
+
+            kpt_F = l_cell_pos[i]
+            _, kpt_F_moved = self.grid2d_modules[index].forward(None, kpt_F)
+            l_kpt_pairs_moved.append(kpt_F_moved)
+
+        return l_kpt_pairs_moved
+
 
     def forward_kpts(self,
             l_kpt_pairs: Tensor_l_kpt_pair,
@@ -279,9 +312,9 @@ class OmniAligner(nn.Module):
 
 
     def training_step(self,
-            batch: Tuple[Tensor_image_NCHW, List[List[Tuple[Tensor_kpts_N_xy, Tensor_kpts_N_xy]]], torch.Tensor]
+            batch: Tuple[Tensor_image_NCHW, Tensor_l_kpt_pair, torch.Tensor, List[Tensor_cells_N_xy], List[Tensor_cells_N_embed], Np_l_cells_MNN]
         ) -> torch.Tensor:
-        batch_images, l_kpt_pairs, batch_indices = batch
+        batch_images, l_kpt_pairs, batch_indices, l_cell_pos, l_cell_emb, l_mnns = batch
         batch_images = batch_images.squeeze(0)
         batch_indices = batch_indices.squeeze(0)
 
@@ -292,7 +325,15 @@ class OmniAligner(nn.Module):
             iterations = self.config_model["iterations"][self.current_epoch]
 
         total_loss = float('inf')
-        batch_images, l_kpt_pairs = self._prepare_device(batch_images=batch_images, l_kpt_pairs=l_kpt_pairs, batch_indices=batch_indices, use_pyramid=self.use_pyramid)
+        # Now directly prepare device for already extracted tensors
+        batch_images, l_kpt_pairs, l_cells_emb, l_cells_pos = self._prepare_device(
+            batch_images=batch_images, 
+            l_kpt_pairs=l_kpt_pairs, 
+            batch_indices=batch_indices, 
+            l_cells_emb=l_cell_emb,
+            l_cells_pos=l_cell_pos,
+            use_pyramid=self.use_pyramid
+        )
         for mod in self.grid2d_modules:
             mod.set_device(self.dev)
 
@@ -305,15 +346,13 @@ class OmniAligner(nn.Module):
                 grid2d_module.freeze_layer()
 
         for index in self.config_model["freezed_layers"]:
-            # if hasattr(self.grid2d_modules[index], "displacement_field"):
-            #     self.grid2d_modules[index].displacement_field = nn.Parameter(torch.zeros_like(self.grid2d_modules[index].displacement_field))
-
             self.grid2d_modules[index].freeze_layer()
 
         beg, end = batch_indices[0], batch_indices[-1]        
         for iteration in tqdm(range(iterations), desc=f"epoch {self.current_epoch} iter"):
             opt.zero_grad()
-            total_loss, _, _, dict_loss = self.loss3d_per_iterations(batch_images, l_kpt_pairs, batch_indices)
+            update_mnn = (iteration % 50 == 0)
+            total_loss, _, _, dict_loss = self.loss3d_per_iterations(batch_images=batch_images, l_kpt_pairs=l_kpt_pairs, l_cells_emb=l_cells_emb, l_cells_pos=l_cells_pos, batch_indices=batch_indices, l_mnns=l_mnns, update_mnn=update_mnn)
 
             if total_loss.requires_grad:
                 total_loss.backward()
@@ -346,18 +385,74 @@ class OmniAligner(nn.Module):
         return total_loss
 
     def train_epoch(self,
-            batch: torch.FloatTensor,
+            batch: Tuple[Tensor_image_NCHW, Tensor_l_kpt_pair, torch.Tensor, List[Tensor_cells_N_xy], List[Tensor_cells_N_embed], Np_l_cells_MNN],
         ) -> float:
         loss = self.training_step(batch)
         return loss.item()
 
+    def loss_func_mnn(self,
+            l_cells_emb: List[Tensor_cells_N_embed],
+            l_cells_pos: List[Tensor_cells_N_xy],
+            l_mnns: Np_l_cells_MNN,
+            update_mnn: bool=False,
+            interval: int=1
+        ) -> torch.Tensor:
+        loss_mnn = torch.tensor(0.).to(self.dev)
+        if l_mnns is None:
+            l_mnns = [ [] for _ in range(len(l_cells_pos)) ]
+
+        for i_layer in tqdm(range(len(l_mnns)), desc="MNN loss computation"):
+            if len(l_mnns[i_layer]) == 0:
+                l_mnns[i_layer] = [ [] for _ in range(interval) ]
+                update_mnn = True
+
+            interval_i = 0
+            for interval_j in range(interval_i+1, interval_i+1+interval):
+                if i_layer + interval_i >= len(l_mnns):
+                    continue
+                
+                cells_emb_F = l_cells_emb[i_layer+interval_i] if l_cells_emb is not None else None
+                cells_emb_M = l_cells_emb[i_layer+interval_j] if l_cells_emb is not None else None
+                cells_pos_F = l_cells_pos[i_layer+interval_i]
+                cells_pos_M = l_cells_pos[i_layer+interval_j]
+
+                if update_mnn:
+                    l_mnns[i_layer][interval_j-1] = mutual_nearest_neighbors_fast(
+                        coord_i=cells_pos_F,
+                        coord_j=cells_pos_M,
+                        embed_i=cells_emb_F,
+                        embed_j=cells_emb_M,
+                        k=3,
+                        spatial_k_factor=3,
+                        chunk_size=1000,
+                        top_percent=0.9
+                    )
+    
+                mnn_pairs = l_mnns[i_layer][interval_j-1]
+                _, _, dist_combined = calculate_distance_for_pairs(
+                    pairs=mnn_pairs,
+                    coord_i=cells_pos_F,
+                    coord_j=cells_pos_M,
+                    embed_i=cells_emb_F,
+                    embed_j=cells_emb_M,
+                    chunk_size=1000
+                )
+                loss_mnn += dist_combined.mean()
+
+        return loss_mnn 
+
     def loss3d_per_iterations(self,
             batch_images: Tensor_image_NCHW,
             l_kpt_pairs: Tensor_l_kpt_pair,
-            batch_indices: List[int]
+            batch_indices: List[int],
+            l_cells_emb: List[Tensor_cells_N_embed]=None,
+            l_cells_pos: List[Tensor_cells_N_xy]=None,
+            l_mnns: Np_l_cells_MNN = None,
+            update_mnn: bool=False
         ) -> Tuple[torch.Tensor, Tensor_image_NCHW, Tensor_l_kpt_pair, Dict[str, torch.Tensor]]:
-        loss_image = torch.tensor(0.)
-        loss_kpts = torch.tensor(0.)
+        loss_image = torch.tensor(0.).to(self.dev)
+        loss_kpts = torch.tensor(0.).to(self.dev)
+        loss_cells = torch.tensor(0.).to(self.dev)
         transformed_images = self.forward(batch_images, batch_indices)
         transformed_kpt_pairs = self.forward_kpts(l_kpt_pairs, batch_indices)
         if self.weight_image > 0:
@@ -368,9 +463,15 @@ class OmniAligner(nn.Module):
 
         if self.weight_kpts != 0:
             loss_kpts = self.loss_func_kpt_pairs(transformed_kpt_pairs)
+            if l_cells_pos is not None and len(l_cells_pos[0]) > 0:
+                transformed_cells_pos = self.forward_cells(l_cells_pos, batch_indices)
+                loss_mnn = self.loss_func_mnn(l_cells_emb=l_cells_emb, l_cells_pos=transformed_cells_pos, l_mnns=l_mnns, update_mnn=update_mnn, interval=1)
+                loss_cells = loss_mnn
+
 
         total_loss = self.weight_image * loss_image + \
                      self.weight_kpts * loss_kpts + \
+                     1e-2 * self.weight_kpts * loss_cells + \
                      self.weight_reg * l1_local_regularization
 
         # if torch.isnan(total_loss):
@@ -438,7 +539,7 @@ class OmniAligner(nn.Module):
                 self.grid2d_modules[idx_].tensor_size = self.tensor_size
 
             idx_range = torch.arange(start_idx, end_idx)
-            img, l_kpt_pairs = self._prepare_device(
+            img, l_kpt_pairs, _, _ = self._prepare_device(
                     batch_images=image_3d_tensor,
                     l_kpt_pairs=l_kpt_pairs,
                     batch_indices=idx_range,
@@ -612,10 +713,14 @@ class OmniAligner(nn.Module):
                 batch_images: Tensor_image_NCHW=None,
                 l_kpt_pairs: Tensor_l_kpt_pair=None,
                 batch_indices: List[int]=None,
-                use_pyramid: bool=False
-        ) -> Tuple[Tensor_image_NCHW, Tensor_l_kpt_pair]:
+                l_cells_emb: List[Tensor_cells_N_embed]=None,
+                l_cells_pos: List[Tensor_cells_N_xy]=None,
+                use_pyramid: bool=False,
+        ) -> Tuple[Tensor_image_NCHW, Tensor_l_kpt_pair, List[Tensor_cells_N_embed], List[Tensor_cells_N_xy]]:
 
         dev = self.dev
+        
+        # Process keypoint pairs
         if l_kpt_pairs is not None:
             for idx, kpt_pair in enumerate(l_kpt_pairs):
                 for i_cmp, kpts in enumerate(kpt_pair):
@@ -629,15 +734,23 @@ class OmniAligner(nn.Module):
                     l_kpt_pairs[idx][i_cmp][0] = kpt_F.to(dev)
                     l_kpt_pairs[idx][i_cmp][1] = kpt_M.to(dev)
 
+        # Process images
         if batch_images is not None:
             batch_images = batch_images.to(dev)
 
+        if l_cells_emb is not None and len(l_cells_emb) > 0 and len(l_cells_emb[0]) > 0:
+            l_cells_emb = [emb.squeeze(0).to(dev) for emb in l_cells_emb]
+        
+        if l_cells_pos is not None and len(l_cells_pos) > 0 and len(l_cells_pos[0]) > 0:
+            l_cells_pos = [pos.squeeze(0).to(dev) for pos in l_cells_pos]
+            
+        # Process pyramid
         if use_pyramid:
             batch_images = self.target_pyramid[self.current_epoch][batch_indices.cpu()].to(dev)
             for i_grid in range(len(self.grid2d_modules)):
                 self.grid2d_modules[i_grid].tensor_size = batch_images.shape[2:]
 
-        return batch_images, l_kpt_pairs
+        return batch_images, l_kpt_pairs, l_cells_emb, l_cells_pos
 
 
     def _freeze_non_roi_layers(self, batch_indices: List[int]):
@@ -668,7 +781,14 @@ class OmniAligner(nn.Module):
                     self.writer.add_scalar(f'train/{index}/{prefix}', grid2d_module.tensor_trs[i_rtk], self.i_iter_global[beg])
 
     def train_dataloader(self):
-        dataset = OverlappedImageLayerDataset(self.image_3d_tensor, self.l_kpt_pairs, self.batch_size, self.overlap)
+        dataset = OverlappedImageLayerDataset(
+            image_3d_tensor=self.image_3d_tensor,
+            l_kpt_pairs=self.l_kpt_pairs,
+            anndatas_cells=self.anndatas_cells,
+            max_size=self.max_size,
+            batch_size=self.batch_size,
+            overlap=self.overlap,
+        )
         dataloader = DataLoader(dataset, batch_size=1, shuffle=False)
         return dataloader
 
@@ -711,7 +831,9 @@ def train_model(model: OmniAligner, num_epochs=1, l_kpts_eval: List[Tensor_kpts_
     validate_epoch(model, l_kpt_pairs=l_kpts_eval, scale_level=scale_level, show_img=model.show_ovlp)
     for epoch in range(num_epochs):
         for batch in train_loader:
-            _, _, indices = batch
+            _, _, indices, _, _, _ = batch
+            
+            ## TODO, update mnn each N_MNN epochs
             epoch_loss = model.train_epoch(batch)
             str_log = (f"layer {indices[0][0]}-{indices[0][-1]}, Epoch {epoch + 1}/{num_epochs}, Loss: {epoch_loss:.4f}")
             if hasattr(model.grid2d_modules[0], "displacement_field"):

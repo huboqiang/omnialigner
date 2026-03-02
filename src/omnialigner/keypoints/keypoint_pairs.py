@@ -180,6 +180,10 @@ class KeypointPairs(object):
         """
         _, _, h1, w1 = self.dataset['image_label'].shape
         _, _, h2, w2 = self.dataset['image_input'].shape
+        if "train_label" not in self.dataset:
+            self.dataset['train_label'] = self.dataset['test_label']
+            self.dataset['train_input'] = self.dataset['test_input']
+
         np1 = self.dataset["train_label"].float() / torch.FloatTensor([w1/2, h1/2]).float()-1
         np2 = self.dataset["train_input"].float() / torch.FloatTensor([w2/2, h2/2]).float()-1
         n = np2.shape[0]
@@ -299,3 +303,77 @@ class KeypointPairs(object):
             tuple: Plot figure and axes.
         """
         return viz.plot_kpts_diff_gradient(self.dataset, grid_size=n_grids, show_grad=show_grad)
+
+    def move_kpt_knn(self, kpt: Tensor_kpts_N_xy_raw, k: int = 5, method: str = "linear") -> Tensor_kpts_N_xy_raw:
+        """Transform keypoints using KNN interpolation based on train_input and train_label anchors.
+        
+        Args:
+            kpt (Tensor_kpts_N_xy_raw): Input keypoints to transform (N, 2).
+            k (int, optional): Number of nearest neighbors for interpolation. Defaults to 5.
+            method (str, optional): Interpolation method ('linear' or 'nearest'). Defaults to 'linear'.
+        
+        Returns:
+            Tensor_kpts_N_xy_raw: Transformed keypoint coordinates (N, 2).
+        
+        Raises:
+            ValueError: If train_input or train_label not available, or invalid parameters.
+        """
+        from scipy.spatial import KDTree
+        from scipy.interpolate import LinearNDInterpolator, NearestNDInterpolator
+        
+        # Validate inputs
+        if "train_input" not in self.dataset or "train_label" not in self.dataset:
+            raise ValueError("train_input and train_label must be available in dataset")
+        
+        if method not in ["linear", "nearest"]:
+            raise ValueError(f"Invalid method: {method}. Must be 'linear' or 'nearest'")
+        
+        # Extract anchor points
+        anchor_src = self.dataset["train_input"].detach().cpu().numpy()  # Source (moving) anchors
+        anchor_tar = self.dataset["train_label"].detach().cpu().numpy()  # Target (fixed) anchors
+        
+        # Convert input keypoints to numpy if needed
+        if isinstance(kpt, torch.Tensor):
+            kpt_np = kpt.detach().cpu().numpy()
+            return_tensor = True
+        else:
+            kpt_np = kpt
+            return_tensor = False
+        
+        # Directly interpolate all points
+        if method == "nearest":
+            # Nearest neighbor interpolation
+            interpolator = NearestNDInterpolator(anchor_src, anchor_tar)
+            kpt_moved = interpolator(kpt_np)
+        
+        else:  # linear interpolation with KNN
+            kd_tree = KDTree(anchor_src)
+            kpt_moved = np.zeros_like(kpt_np)
+            
+            for i, point in enumerate(kpt_np):
+                # Get k nearest neighbors
+                k_current = min(k, len(anchor_src))
+                distances, indices = kd_tree.query(point, k=k_current)
+                
+                neighbor_src = anchor_src[indices]
+                neighbor_tar = anchor_tar[indices]
+                
+                # Linear interpolation on local neighbors
+                try:
+                    local_interp = LinearNDInterpolator(neighbor_src, neighbor_tar)
+                    interp_val = local_interp(point)
+                except Exception as e:
+                    interp_val = np.array([np.nan, np.nan])
+
+                # Fallback to nearest if interpolation fails
+                if np.any(np.isnan(interp_val)):
+                    kpt_moved[i] = neighbor_tar[np.argmin(distances)]
+                else:
+                    kpt_moved[i] = interp_val
+        
+        # Convert back to tensor if input was tensor
+        if return_tensor:
+            return torch.from_numpy(kpt_moved).float().to(self.dev)
+        
+        return kpt_moved
+

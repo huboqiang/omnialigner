@@ -219,7 +219,8 @@ def calculate_M_from_theta(
 
 def tfrs_inv(
         tensor_tfrs: Tensor_tfrs|Tensor_trs,
-        device: torch.device=None
+        device: torch.device=None,
+        return_matrix: bool=True
     ) -> Tensor_tfrs:
     """Computes the inverse transformation of a TFRS (Translation, Flip, Rotation, Scale) transform.
 
@@ -287,8 +288,11 @@ def tfrs_inv(
 
     # Combine SRFT
     tensor_tfrs_inv = S_inv @ R_inv @ F_inv @ T_inv
-
-    return tensor_tfrs_inv
+    if return_matrix:
+        return tensor_tfrs_inv
+    
+    tfrs_inv = grid_M_to_tfrs(tensor_tfrs_inv[0:2, :], device=device)
+    return tfrs_inv
 
 
 def _grid_M_to_tfrs_core(grid_M, fx=1, fy=1, device=None):
