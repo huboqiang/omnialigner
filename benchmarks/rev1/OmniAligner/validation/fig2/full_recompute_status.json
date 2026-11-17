@@ -1,0 +1,34 @@
+{
+  "as_of_utc": "2026-11-17T11:31:37.275690+00:00",
+  "completed_method_metric_means": 135,
+  "target_means": 135,
+  "fresh_scoring_complete": true,
+  "method_dataset_conditions": 45,
+  "adjacent_pair_rows": 1955,
+  "pair_metric_scores": 5865,
+  "max_abs_pair_difference": 1.1102230246251563e-16,
+  "max_abs_mean_difference": 0.0,
+  "max_abs_difference_from_original_table": 2.220446049250313e-16,
+  "all_results_finite": true,
+  "original_table_sha256": "0ab60673d89aa66353eda37f1b627845a0441335d8367da1b73620ae5a9850f8",
+  "scoring_module_sha256": "e392a39eed2740296f7d5f651e4713e5e833de9cabd47b24b2a50b099c7774a2",
+  "evaluation_support": "Linux SciPy 1.15.3 KDTree freshly constructed from original coordinate/label inputs; original categorical rasters for ARI/NMI. No cached metric values entered computation.",
+  "runtime": {
+    "python": "3.10.12 | packaged by conda-forge | (main, Jun 23 2023, 22:40:32) [GCC 12.3.0]",
+    "numpy": "1.26.0",
+    "scipy": "1.15.3",
+    "sklearn": "1.4.2"
+  },
+  "completed_methods_by_dataset": {
+    "ABCA1": 5,
+    "ABCA2": 5,
+    "ABCA3": 5,
+    "E9_5": 5,
+    "MLN": 5,
+    "STARmap": 5,
+    "ST_brain": 5,
+    "SmallIntestine": 5,
+    "Stereo_embryo": 5
+  },
+  "historical_plot_overrides_applied_to_scoring": false
+}

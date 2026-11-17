@@ -1,0 +1,317 @@
+[
+  {
+    "method": "STalign",
+    "pair": 0,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 1,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "STalign",
+    "pair": 1,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "STalign",
+    "pair": 2,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "STalign",
+    "pair": 3,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "STalign",
+    "pair": 4,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "STalign",
+    "pair": 5,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "STalign",
+    "pair": 6,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "loki",
+    "pair": 0,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 1,
+    "target_knn_set_different_rows": 2,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "loki",
+    "pair": 1,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "loki",
+    "pair": 2,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "loki",
+    "pair": 3,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 1,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "loki",
+    "pair": 4,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 1,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "loki",
+    "pair": 5,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 3,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "loki",
+    "pair": 6,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 2,
+    "target_knn_set_different_rows": 2,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "SPACEL",
+    "pair": 0,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 3,
+    "target_knn_set_different_rows": 1,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "SPACEL",
+    "pair": 1,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 1,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "SPACEL",
+    "pair": 2,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 1,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "SPACEL",
+    "pair": 3,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 9,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "SPACEL",
+    "pair": 4,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "SPACEL",
+    "pair": 5,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 2,
+    "target_knn_set_different_rows": 2,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "SPACEL",
+    "pair": 6,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 1,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "spateo",
+    "pair": 0,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 1,
+    "target_knn_set_different_rows": 2,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "spateo",
+    "pair": 1,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "spateo",
+    "pair": 2,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 0,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "spateo",
+    "pair": 3,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 1,
+    "target_knn_set_different_rows": 1,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "spateo",
+    "pair": 4,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 3,
+    "target_knn_set_different_rows": 2,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "spateo",
+    "pair": 5,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 0,
+    "target_knn_set_different_rows": 1,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "spateo",
+    "pair": 6,
+    "nearest_mapping_differences": 0,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 2,
+    "target_knn_set_different_rows": 4,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "omnialigner",
+    "pair": 0,
+    "nearest_mapping_differences": 15,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 5,
+    "target_knn_set_different_rows": 9,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "omnialigner",
+    "pair": 1,
+    "nearest_mapping_differences": 7,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 9,
+    "target_knn_set_different_rows": 3,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "omnialigner",
+    "pair": 2,
+    "nearest_mapping_differences": 13,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 2,
+    "target_knn_set_different_rows": 6,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "omnialigner",
+    "pair": 3,
+    "nearest_mapping_differences": 10,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 2,
+    "target_knn_set_different_rows": 5,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "omnialigner",
+    "pair": 4,
+    "nearest_mapping_differences": 9,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 6,
+    "target_knn_set_different_rows": 7,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "omnialigner",
+    "pair": 5,
+    "nearest_mapping_differences": 1,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 6,
+    "target_knn_set_different_rows": 9,
+    "max_changed_boundary_distance_spread": 0
+  },
+  {
+    "method": "omnialigner",
+    "pair": 6,
+    "nearest_mapping_differences": 5,
+    "mapping_max_distance_gap": 0.0,
+    "source_knn_set_different_rows": 3,
+    "target_knn_set_different_rows": 4,
+    "max_changed_boundary_distance_spread": 0
+  }
+]

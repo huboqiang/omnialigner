@@ -1,0 +1,65 @@
+[
+  {
+    "dataset": "ABCA1",
+    "file": "rev1-fig2-ABCA1-inputs-20261117.tar.gz",
+    "sha256": "9e3a7c3eae9c7f33e757c30f8b6276fa965e2f438f81c2801e423b3cbca13bee",
+    "bytes": 559130125,
+    "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-ABCA1-inputs-20261117.tar.gz"
+  },
+  {
+    "dataset": "ABCA2",
+    "file": "rev1-fig2-ABCA2-inputs-20261117.tar.gz",
+    "sha256": "b34621a06ce5ea352bb1828f671143fd2acdb56869d0b602b7d5be03c74e7602",
+    "bytes": 223971891,
+    "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-ABCA2-inputs-20261117.tar.gz"
+  },
+  {
+    "dataset": "ABCA3",
+    "file": "rev1-fig2-ABCA3-inputs-20261117.tar.gz",
+    "sha256": "60481efac3c9d6c9300307905ee98a63fd8443d6f8933c5d0a5b8c87274bd702",
+    "bytes": 325810133,
+    "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-ABCA3-inputs-20261117.tar.gz"
+  },
+  {
+    "dataset": "E9_5",
+    "file": "rev1-fig2-E9_5-inputs-20261117.tar.gz",
+    "sha256": "17f1599dc9e03ca58e81b940f8e9e72c7d7b399ba6398bf57605b53a5eb2e243",
+    "bytes": 85202134,
+    "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-E9_5-inputs-20261117.tar.gz"
+  },
+  {
+    "dataset": "Stereo_embryo",
+    "file": "rev1-fig2-Stereo_embryo-inputs-20261117.tar.gz",
+    "sha256": "045656581df583782b363d953c3182989f0c970d3b8dcc8a42ce4cf8c3ac5905",
+    "bytes": 18817256,
+    "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-Stereo_embryo-inputs-20261117.tar.gz"
+  },
+  {
+    "dataset": "STARmap",
+    "file": "rev1-fig2-STARmap-inputs-20261117.tar.gz",
+    "sha256": "ef3afb500afbe5ec75209b635f4b8831cfd118b67f2d0f2dadffdfbcd3a91f97",
+    "bytes": 3511145,
+    "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-STARmap-inputs-20261117.tar.gz"
+  },
+  {
+    "dataset": "MLN",
+    "file": "rev1-fig2-MLN-inputs-20261117.tar.gz",
+    "sha256": "310cd1525fbcb40f458f491c11163351f592e62dd60dd6c2f4171e8ff4688e45",
+    "bytes": 113081251,
+    "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-MLN-inputs-20261117.tar.gz"
+  },
+  {
+    "dataset": "ST_brain",
+    "file": "rev1-fig2-ST_brain-inputs-20261117.tar.gz",
+    "sha256": "39114ade304cef68a6daf08928ab0eeb6a57ff54526dbae239e8d5d849913c88",
+    "bytes": 7845918,
+    "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-ST_brain-inputs-20261117.tar.gz"
+  },
+  {
+    "dataset": "SmallIntestine",
+    "file": "rev1-fig2-SmallIntestine-inputs-20261117.tar.gz",
+    "sha256": "10c94b18ad4aee8facc1feb20b95ab129752cfa8bc351b871e1dfb6bbcc9ee2c",
+    "bytes": 3663428,
+    "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-SmallIntestine-inputs-20261117.tar.gz"
+  }
+]

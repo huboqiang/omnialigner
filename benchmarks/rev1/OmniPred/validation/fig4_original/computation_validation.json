@@ -1,0 +1,14 @@
+{
+  "scores_checked": 1252,
+  "original_scipy_atol": 1e-12,
+  "explicit_formula_atol": 1e-12,
+  "max_abs_difference": 9.8879238130678e-17,
+  "undefined_genes": 0,
+  "status": "passed",
+  "validation_scope": "Pre-publication calculation cells with the byte-identical archive staged locally; public bootstrap not executed in this run.",
+  "archive_sha256": "76e2c5a31e9c85a2e2ed6365ada32365396efbfe2e3770e05e165c9de2e0d89a",
+  "truth_reconstruction_max_abs_difference": {
+    "2_to_1": 0.0,
+    "1_to_2": 0.0
+  }
+}

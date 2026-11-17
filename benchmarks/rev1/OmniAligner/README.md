@@ -1,4 +1,4 @@
-# OmniAligner NCS revision benchmark
+# OmniAligner revision benchmarks
 
 Open any notebook in `notebooks/` with a fresh Python 3.10/3.11 Jupyter kernel. Its first code cell downloads the public release archive, clones the `rev1` branch, checks SHA-256, and extracts the inputs; the second installs the pinned dependencies. No private server path or existing H5AD is required.
 
@@ -25,3 +25,10 @@ There is one selected OmniAligner result per dataset; no historical OmniAligner 
 The full-table notebook reconstructs every method row; it does not refit all comparators. Historical baseline means come from archived scored records, and added comparisons from their complete pair-score files. The full-table notebook itself recalculates OmniAligner from expression inputs and coordinates. MLN PASTE-family uses 5,000 cells per section; OmniAligner retains its recorded full-cell support. Fitting information and tuning budgets differ. These are descriptive development results, not evidence of independent-patient generalization.
 
 The native scoring implementation is from [SABench](https://github.com/Yunzhi-Yan/SABench). See `THIRD_PARTY_NOTICES.md` and the provenance manifests. Benchmark-frame coordinates are not calibrated micrometre measurements.
+
+## Original main figures
+
+- [Fig. 2 spatial-omics benchmark](notebooks/Fig2_spatial_omics_benchmark_reproduce.ipynb): explicit ARI/NMI/CLC with original raster/coordinate/label inputs, transparent historical scaling and overrides. [Scope](docs/FIG2_REPRODUCTION.md).
+- [Fig. 3 FAIR benchmark](notebooks/Fig3_FAIR_landmark_benchmark.ipynb): direct landmark calculations and separately reproduced historical display. [Scope](docs/Fig3_FAIR_reproduction.md).
+
+These original-figure experiments use different datasets and metrics from the NCS revision comparison above. They do not change its scores, ranks or eligibility rules.

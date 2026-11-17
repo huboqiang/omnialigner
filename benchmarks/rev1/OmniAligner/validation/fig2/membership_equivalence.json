@@ -1,0 +1,29 @@
+{
+  "description": "Integer marker implementation vs explicit original membership, including duplicate mapped and target indices and k=1",
+  "cases": [
+    {
+      "rows": 1,
+      "k": 1,
+      "index_upper_bound": 1,
+      "max_abs_difference": 0.0
+    },
+    {
+      "rows": 5,
+      "k": 1,
+      "index_upper_bound": 20,
+      "max_abs_difference": 0.0
+    },
+    {
+      "rows": 7,
+      "k": 12,
+      "index_upper_bound": 9,
+      "max_abs_difference": 0.0
+    },
+    {
+      "rows": 256,
+      "k": 2500,
+      "index_upper_bound": 50000,
+      "max_abs_difference": 0.0
+    }
+  ]
+}

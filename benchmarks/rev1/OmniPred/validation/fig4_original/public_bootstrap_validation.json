@@ -1,0 +1,17 @@
+{
+  "scores_checked": 1252,
+  "original_scipy_atol": 1e-12,
+  "explicit_formula_atol": 1e-12,
+  "max_abs_difference": 9.8879238130678e-17,
+  "undefined_genes": 0,
+  "status": "passed",
+  "public_bootstrap": "original git clone, wget and pip cell executed unchanged",
+  "python": "3.10.17",
+  "platform": "macOS-15.7.7-arm64-arm-64bit",
+  "calculation_elapsed_seconds": 19.499,
+  "initial_inputs": [
+    "Fig4_BRCA_original_benchmark.ipynb"
+  ],
+  "setup_interruption": "The first attempt exhausted local disk during extraction. After verifying equal SHA-256, duplicate archives were hard-linked to free space. All calculation cells were rerun in a fresh kernel, with the same public-download filename.",
+  "checkout_commit": "8fe590251e598d3088dacdebd196d2f7d7a45c44"
+}

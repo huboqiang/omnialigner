@@ -1,0 +1,12 @@
+{
+  "historical_display_cells": 80,
+  "finite_cells": 78,
+  "source_notebook_cells": [
+    5,
+    6,
+    7,
+    9
+  ],
+  "source_function": "show_benchmark_styled; stopped before plotting, returned wide and scaled",
+  "allclose": true
+}

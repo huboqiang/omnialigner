@@ -1,0 +1,17 @@
+{
+  "input_sets": 10,
+  "metric_arrays_checked": 20,
+  "values_checked": 8335,
+  "max_abs_error": 2.2737367544323206e-13,
+  "historical_scale": 0.46,
+  "physical_calibration_verified": false,
+  "point_selection": "first four per set, source order",
+  "prostate_atre": "cumulative mean displacement",
+  "liver_atre": "linear-fit residual",
+  "source_notebook_sha256": "bd54d87f0fbfe7e5ad2c4750d628d795d7c6550cb6a2eee51f40a009f7bcae7a",
+  "data_archive_sha256": "38020db057f3914c78aa1bf631409bedfca3a061213304d37c8cd846c11936d4",
+  "public_cold_start": true,
+  "bootstrap": "Unmodified notebook cell: public git clone, wget, pip; fresh isolated directory and Python3.10 environment.",
+  "runtime_seconds": 260.16,
+  "visual_inspection": "Both figures previously inspected; public rerun numerical equality verified."
+}

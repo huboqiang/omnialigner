@@ -1,0 +1,27 @@
+{
+  "public_cold_start_passed": true,
+  "bootstrap": [
+    "public wget archives",
+    "git clone rev1",
+    "pip pinned dependencies"
+  ],
+  "no_private_directory_required": true,
+  "runtime": "macOS arm64, Python 3.13.3; source coordinate validation on Linux x86_64",
+  "frozen_neighbor_support_means_recomputed": 15,
+  "frozen_neighbor_pair_metric_scores_recomputed": 105,
+  "archived_means_reconstructed_and_checked": 135,
+  "default_coordinate_recomputation_also_reported": true,
+  "formula_change": false,
+  "maximum_mean_coordinate_tie_difference": 9.915493750234372e-05,
+  "tie_audit": {
+    "changed_1NN_mappings": 60,
+    "changed_KNN_rows": 126,
+    "max_neighbor_distance_difference": 0.0
+  },
+  "membership_optimization": "Integer marks preserve set membership including repeated mapped indices and original denominator; original/native real-pair equality checked.",
+  "visual_check": "Rendered full heatmap inspected; colorbar label shortened to avoid clipping.",
+  "full_recompute_status": "Complete independent Linux validation: 135/135 means; see full_recompute_status.json for environment, pair counts and exact differences.",
+  "notebook_sha256": "c50f8a9590d2488c8787a7bb0715de6c39793144850d12f9b163a4d9a0d87c6e",
+  "scoring_module_sha256": "e392a39eed2740296f7d5f651e4713e5e833de9cabd47b24b2a50b099c7774a2",
+  "execution_detail": "Public download/clone/pip cold-start executed without local inputs; after exact membership optimization the calculation and plot cells were rerun with the identical verified assets, preserving the unchanged bootstrap execution record."
+}

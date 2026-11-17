@@ -1,0 +1,89 @@
+{
+  "assets": [
+    {
+      "file": "rev1-fig2-ABCA1-inputs-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-ABCA1-inputs-20261117.tar.gz",
+      "bytes": 559130125,
+      "sha256": "9e3a7c3eae9c7f33e757c30f8b6276fa965e2f438f81c2801e423b3cbca13bee"
+    },
+    {
+      "file": "rev1-fig2-ABCA2-inputs-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-ABCA2-inputs-20261117.tar.gz",
+      "bytes": 223971891,
+      "sha256": "b34621a06ce5ea352bb1828f671143fd2acdb56869d0b602b7d5be03c74e7602"
+    },
+    {
+      "file": "rev1-fig2-ABCA3-inputs-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-ABCA3-inputs-20261117.tar.gz",
+      "bytes": 325810133,
+      "sha256": "60481efac3c9d6c9300307905ee98a63fd8443d6f8933c5d0a5b8c87274bd702"
+    },
+    {
+      "file": "rev1-fig2-E9_5-inputs-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-E9_5-inputs-20261117.tar.gz",
+      "bytes": 85202134,
+      "sha256": "17f1599dc9e03ca58e81b940f8e9e72c7d7b399ba6398bf57605b53a5eb2e243"
+    },
+    {
+      "file": "rev1-fig2-MLN-inputs-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-MLN-inputs-20261117.tar.gz",
+      "bytes": 113081251,
+      "sha256": "310cd1525fbcb40f458f491c11163351f592e62dd60dd6c2f4171e8ff4688e45"
+    },
+    {
+      "file": "rev1-fig2-STARmap-inputs-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-STARmap-inputs-20261117.tar.gz",
+      "bytes": 3511145,
+      "sha256": "ef3afb500afbe5ec75209b635f4b8831cfd118b67f2d0f2dadffdfbcd3a91f97"
+    },
+    {
+      "file": "rev1-fig2-ST_brain-inputs-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-ST_brain-inputs-20261117.tar.gz",
+      "bytes": 7845918,
+      "sha256": "39114ade304cef68a6daf08928ab0eeb6a57ff54526dbae239e8d5d849913c88"
+    },
+    {
+      "file": "rev1-fig2-SmallIntestine-example-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-SmallIntestine-example-20261117.tar.gz",
+      "bytes": 3663430,
+      "sha256": "fb4a20c6c97a3d899cc624bfbf651e42435fc050a99241e4e734dae99ca8ffd7"
+    },
+    {
+      "file": "rev1-fig2-SmallIntestine-inputs-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-SmallIntestine-inputs-20261117.tar.gz",
+      "bytes": 3663428,
+      "sha256": "10c94b18ad4aee8facc1feb20b95ab129752cfa8bc351b871e1dfb6bbcc9ee2c"
+    },
+    {
+      "file": "rev1-fig2-SmallIntestine-neighbours-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-SmallIntestine-neighbours-20261117.tar.gz",
+      "bytes": 37566689,
+      "sha256": "6c0ad1f70d8097c6aaa7acf094e8de203bca03b8b17ad60472b30acf9236c7e9"
+    },
+    {
+      "file": "rev1-fig2-Stereo_embryo-inputs-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-Stereo_embryo-inputs-20261117.tar.gz",
+      "bytes": 18817256,
+      "sha256": "045656581df583782b363d953c3182989f0c970d3b8dcc8a42ce4cf8c3ac5905"
+    },
+    {
+      "file": "rev1-fig2-scores-20261117.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig2-scores-20261117.tar.gz",
+      "bytes": 96470,
+      "sha256": "2c4c74b128d856c1ddfb2d27b39b1e7c2eb64dd88aced8e31a09acdf7e6bcb22"
+    },
+    {
+      "file": "rev1-fig3-fair-landmarks.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig3-fair-landmarks.tar.gz",
+      "bytes": 398772,
+      "sha256": "38020db057f3914c78aa1bf631409bedfca3a061213304d37c8cd846c11936d4"
+    },
+    {
+      "file": "rev1-fig4-brca-data.tar.gz",
+      "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-fig4-brca-data.tar.gz",
+      "bytes": 681559920,
+      "sha256": "76e2c5a31e9c85a2e2ed6365ada32365396efbfe2e3770e05e165c9de2e0d89a"
+    }
+  ],
+  "existing_benchmark_archive": "Unchanged; see release_data.json."
+}

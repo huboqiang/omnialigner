@@ -1,0 +1,10 @@
+{
+  "dataset": "SmallIntestine",
+  "method": "omnialigner",
+  "pair": 0,
+  "native": 0.7674180562663754,
+  "blocked": 0.7674180562663754,
+  "absolute_difference": 0.0,
+  "native_seconds": 1.4228899478912354,
+  "blocked_seconds": 0.8335771560668945
+}
