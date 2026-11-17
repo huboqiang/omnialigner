@@ -2,7 +2,9 @@
 
 Open any notebook in `notebooks/` with a fresh Python 3.10/3.11 Jupyter kernel. Its first code cell downloads the public release archive, clones the `rev1` branch, checks SHA-256, and extracts the inputs; the second installs the pinned dependencies. No private server path or existing H5AD is required.
 
-1. **NCS_submission_table_reproduce.ipynb** reconstructs the full submitted comparison, including all method rows and the rank/count figure. It verifies values, missingness, eligibility and all 36 ranks against the frozen submission reference.
+Start with [the DLPFC alignment and agent-refinement walkthrough](notebooks/OmniAligner_alignment_workflow_DLPFC.ipynb) to see the complete recorded stage sequence, actual agent decisions and both optimization trajectories. It verifies the source records and freshly recomputes coarse/final coordinates and scores. Archived detector/agent/training steps are explicitly distinguished from executed inference.
+
+1. **NCS_submission_table_reproduce.ipynb** shows the six metric definitions directly, freshly computes all 44 OmniAligner adjacent pairs / 36 means, then reconstructs the full submitted comparison, including all method rows and the rank/count figure. It verifies values, missingness, eligibility and all 36 ranks against the frozen submission reference.
 2. **OmniAligner_NCS_reproduce.ipynb** recomputes all 44 adjacent pairs and 36 selected OmniAligner means from original expression values/annotations and the six selected coordinate NPZs. Allow 48–64 GB RAM for MLN.
 3. **OmniAligner_weights_to_scores_DLPFC.ipynb** loads the portable selected geometry checkpoint, transforms original raw coordinates through the frozen coarse frame and learned nonlinear field, and computes the six scores on all three DLPFC pairs. Saved final coordinates are used only for validation. This replays inference, not the coarse matcher, agent or optimizer.
 
@@ -20,6 +22,6 @@ The release expression inputs retain exact source `.X` values for the frozen eva
 
 There is one selected OmniAligner result per dataset; no historical OmniAligner alternative enters the ranks. Loki and CPD are excluded. PASTE2 MLN is complete (18/18); CAST MLN remains incomplete and unranked. Failed, undefined and diagnostic entries are retained. Green means rank 1; gray means another rank or unavailable comparison.
 
-The full-table notebook reconstructs every method row; it does not refit all comparators. Historical baseline means come from archived scored records, and added comparisons from their complete pair-score files. The coordinate replay independently checks OmniAligner. MLN PASTE-family uses 5,000 cells per section; OmniAligner retains its recorded full-cell support. Fitting information and tuning budgets differ. These are descriptive development results, not evidence of independent-patient generalization.
+The full-table notebook reconstructs every method row; it does not refit all comparators. Historical baseline means come from archived scored records, and added comparisons from their complete pair-score files. The full-table notebook itself recalculates OmniAligner from expression inputs and coordinates. MLN PASTE-family uses 5,000 cells per section; OmniAligner retains its recorded full-cell support. Fitting information and tuning budgets differ. These are descriptive development results, not evidence of independent-patient generalization.
 
 The native scoring implementation is from [SABench](https://github.com/Yunzhi-Yan/SABench). See `THIRD_PARTY_NOTICES.md` and the provenance manifests. Benchmark-frame coordinates are not calibrated micrometre measurements.

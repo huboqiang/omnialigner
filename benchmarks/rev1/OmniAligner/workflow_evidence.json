@@ -1,0 +1,6 @@
+{
+  "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-dlpfc-workflow.tar.gz",
+  "sha256": "68a982fec593f7a8c20d162bf5114e24b0ed3ba1e1205a6683ca6018a09c57fb",
+  "bytes": 25860778,
+  "scope": "Recorded DLPFC agent-assisted alignment workflow; fresh coordinate inference and scoring"
+}

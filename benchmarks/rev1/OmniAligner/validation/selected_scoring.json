@@ -11,7 +11,7 @@
   "metrics_checked": 36,
   "absolute_tolerance": 1e-10,
   "maximum_absolute_difference": 4.440892098500626e-16,
-  "elapsed_seconds": 708.1143510341644,
+  "elapsed_seconds": 344.036559343338,
   "source_hashes_checked": true,
   "packages": {
     "numpy": "1.26.0",

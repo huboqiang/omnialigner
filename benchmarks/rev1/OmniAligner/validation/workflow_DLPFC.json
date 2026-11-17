@@ -1,0 +1,24 @@
+{
+  "all_six_scores_match": true,
+  "pairs": 3,
+  "max_coordinate_difference": 0.00048828125,
+  "coordinate_tolerance": 0.001,
+  "score_tolerance": 1e-10,
+  "maximum_score_difference": 2.7755575615628914e-17,
+  "reads_selected_coordinates_as_prediction": false,
+  "coarse_stage": "frozen raw-to-coarse affine transforms",
+  "workflow_files_verified": 173,
+  "archived_agent_reviews": 9,
+  "recorded_optimizer_updates_per_candidate": 1000,
+  "selected_candidate": "A",
+  "selected_step": 100,
+  "fresh_LLM_calls": 0,
+  "fresh_optimizer_updates": 0,
+  "coarse_metrics_recomputed": true,
+  "archived_final_status": {
+    "scoring_completed": true,
+    "geometry_admitted": false,
+    "registration_success": false,
+    "formal_pipeline_resume": false
+  }
+}

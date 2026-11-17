@@ -1,0 +1,20 @@
+[
+  {
+    "notebook": "NCS_submission_table_reproduce.ipynb",
+    "success": true,
+    "seconds": 390.67,
+    "bootstrap": "Previously verified unchanged public download/install cells; all computational cells freshly executed"
+  },
+  {
+    "notebook": "OmniAligner_weights_to_scores_DLPFC.ipynb",
+    "success": true,
+    "seconds": 34.74,
+    "bootstrap": "Previously verified unchanged public download/install cells; all computational cells freshly executed"
+  },
+  {
+    "notebook": "OmniAligner_alignment_workflow_DLPFC.ipynb",
+    "success": true,
+    "seconds": 38.34,
+    "bootstrap": "Previously verified unchanged public download/install cells; all computational cells freshly executed"
+  }
+]

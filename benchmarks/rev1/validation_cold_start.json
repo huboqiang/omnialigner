@@ -1,0 +1,17 @@
+[
+  {
+    "notebook": "NCS_submission_table_reproduce.ipynb",
+    "success": true,
+    "seconds": 237.51
+  },
+  {
+    "notebook": "OmniAligner_weights_to_scores_DLPFC.ipynb",
+    "success": true,
+    "seconds": 298.17
+  },
+  {
+    "notebook": "OmniPred_submission_benchmarks.ipynb",
+    "success": true,
+    "seconds": 183.73
+  }
+]
