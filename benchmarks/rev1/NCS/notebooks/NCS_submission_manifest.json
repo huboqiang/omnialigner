@@ -1,0 +1,520 @@
+{
+  "snapshot": "2026-11-17T01:07:58-07:00",
+  "scope_file_sha256": "dba960e39f0340c5a145bfd9ee5306500abb786977607b4d255051e5b9e0afac",
+  "reference_table_sha256": "366b1ad54fc78602a5ae241e1ba65812dfc9cbd3259798e66896c1d1397b49f3",
+  "reference_ranks_sha256": "0b533d6024f537278e9a909e9c4b8b2a529a3f26bfb982b8bce2edc83637d52f",
+  "bindings": [
+    {
+      "dataset": "DLPFC",
+      "method": "OmniAligner",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "fresh_coordinate_recalculation",
+      "pairs": 3,
+      "pair_metrics_path": "data/pair_scores/DLPFC/OmniAligner.csv",
+      "pair_metrics_sha256": "89379f5afd73a0fcae88742d74c99316decffd6b2dcdfd45450e3ab9a46e6fdc"
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "CAST",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "PASTE",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "PASTE2",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "PASTE (p0)",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "SANTO",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "SLAT",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "SPACEL",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "STalign",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "MOSAICField (RNA)",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "OmniAligner",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "fresh_coordinate_recalculation",
+      "pairs": 4,
+      "pair_metrics_path": "data/pair_scores/MHPR/OmniAligner.csv",
+      "pair_metrics_sha256": "e08863d82e3f43ab413f75e961eedde5ac0278a7bdf7feefb7c692e37e7967ba"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "PASTE",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "PASTE (p0)",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "SANTO",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "SLAT",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "SPACEL",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "STalign",
+      "eligible": false,
+      "status": "Diagnostic; not ranked",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "Spateo nonrigid",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "Spateo rigid",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "PASTE2",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "completed_pair_scores",
+      "pairs": 4,
+      "pair_metrics_path": "data/pair_scores/MHPR/PASTE2.csv",
+      "pair_metrics_sha256": "ef0998ca58573d83d33c5c39deea0b43809fe42fda08046eee22b719bfdc9908"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "CAST",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 4,
+      "pair_metrics_path": "data/pair_scores/MHPR/CAST.csv",
+      "pair_metrics_sha256": "c9b7936e4964baa8f59acc5ce56f22b6f50bd89eaef7737a833c1ac388c53bb8"
+    },
+    {
+      "dataset": "MHPR",
+      "method": "MOSAICField (RNA)",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 4,
+      "pair_metrics_path": "data/pair_scores/MHPR/MOSAICField_RNA.csv",
+      "pair_metrics_sha256": "25a1ef975978bddb1d4d109287924e20c42e70456c6fa39e04539ea31eccb6b3"
+    },
+    {
+      "dataset": "MMPC",
+      "method": "OmniAligner",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "fresh_coordinate_recalculation",
+      "pairs": 2,
+      "pair_metrics_path": "data/pair_scores/MMPC/OmniAligner.csv",
+      "pair_metrics_sha256": "414278a626874e801c83611a44ee5cc1045c67e49ee48fe09db23a824f5581ab"
+    },
+    {
+      "dataset": "MMPC",
+      "method": "PASTE",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MMPC",
+      "method": "SANTO",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MMPC",
+      "method": "SLAT",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MMPC",
+      "method": "SPACEL",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MMPC",
+      "method": "STalign",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MMPC",
+      "method": "PASTE2",
+      "eligible": false,
+      "status": "Failed: 0/2 pairs",
+      "kind": "not_scored",
+      "reason": "Failed: 0/2 pairs"
+    },
+    {
+      "dataset": "MMPC",
+      "method": "CAST",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 2,
+      "pair_metrics_path": "data/pair_scores/MMPC/CAST.csv",
+      "pair_metrics_sha256": "d9451e69c1a6444d7a205e4e6b0442f81a9e6ecd07e8cdfafeb36d34d85d26e2"
+    },
+    {
+      "dataset": "MMPC",
+      "method": "MOSAICField (RNA)",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 2,
+      "pair_metrics_path": "data/pair_scores/MMPC/MOSAICField_RNA.csv",
+      "pair_metrics_sha256": "d5b715fca5f36c870faed0d2a69515b94d5e27467e4515c225c2052e64ac2d9f"
+    },
+    {
+      "dataset": "MPC",
+      "method": "OmniAligner",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "fresh_coordinate_recalculation",
+      "pairs": 2,
+      "pair_metrics_path": "data/pair_scores/MPC/OmniAligner.csv",
+      "pair_metrics_sha256": "66a9aa24b5499735b9eaa2829fb733a8f271e05c91c4693dddeb54d8d7e49b4e"
+    },
+    {
+      "dataset": "MPC",
+      "method": "PASTE",
+      "eligible": true,
+      "status": "Scored; undefined metrics",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MPC",
+      "method": "SANTO",
+      "eligible": true,
+      "status": "Scored; undefined metrics",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MPC",
+      "method": "SLAT",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MPC",
+      "method": "SPACEL",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MPC",
+      "method": "STalign",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MPC",
+      "method": "PASTE2",
+      "eligible": true,
+      "status": "Scored; undefined metrics",
+      "kind": "completed_pair_scores",
+      "pairs": 2,
+      "pair_metrics_path": "data/pair_scores/MPC/PASTE2.csv",
+      "pair_metrics_sha256": "3a8466772f53091f2d92abb795a5fba276bd81cc075ada64089b245fabe9895d"
+    },
+    {
+      "dataset": "MPC",
+      "method": "CAST",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 2,
+      "pair_metrics_path": "data/pair_scores/MPC/CAST.csv",
+      "pair_metrics_sha256": "19adaa43fae2bcae372c086b94f02e6df5110df2b119d7555490ecaeef61a672"
+    },
+    {
+      "dataset": "MPC",
+      "method": "MOSAICField (RNA)",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 2,
+      "pair_metrics_path": "data/pair_scores/MPC/MOSAICField_RNA.csv",
+      "pair_metrics_sha256": "376680390d4f82d061d2027eae33b38256bc08b4c9534ff196d111b9f15778d1"
+    },
+    {
+      "dataset": "E14_16",
+      "method": "OmniAligner",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "fresh_coordinate_recalculation",
+      "pairs": 15,
+      "pair_metrics_path": "data/pair_scores/E14_16/OmniAligner.csv",
+      "pair_metrics_sha256": "c3b57ec774d954b9181951bcd1fd0021fd89158ef07ac47d6c61fb8948ed5276"
+    },
+    {
+      "dataset": "E14_16",
+      "method": "PASTE",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "E14_16",
+      "method": "SLAT",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "E14_16",
+      "method": "SPACEL",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "E14_16",
+      "method": "PASTE2",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "completed_pair_scores",
+      "pairs": 15,
+      "pair_metrics_path": "data/pair_scores/E14_16/PASTE2.csv",
+      "pair_metrics_sha256": "040230f0e580677361a9e23deaac6742e6a015d45a22bd9bbb6118a26fa84987"
+    },
+    {
+      "dataset": "E14_16",
+      "method": "CAST",
+      "eligible": true,
+      "status": "Native fallback; Region scored",
+      "kind": "completed_pair_scores",
+      "pairs": 15,
+      "pair_metrics_path": "data/pair_scores/E14_16/CAST.csv",
+      "pair_metrics_sha256": "2a1266b3d41586971fcbfc1d26eb04bdd7b38eba63ec7884c321f0dd469164bd"
+    },
+    {
+      "dataset": "E14_16",
+      "method": "MOSAICField (RNA)",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 15,
+      "pair_metrics_path": "data/pair_scores/E14_16/MOSAICField_RNA.csv",
+      "pair_metrics_sha256": "b3693af62b95473d4b5e7d430ae9cfbd69224c99920d509d07be024ba2d9b53a"
+    },
+    {
+      "dataset": "E14_16",
+      "method": "SANTO",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 15,
+      "pair_metrics_path": "data/pair_scores/E14_16/SANTO.csv",
+      "pair_metrics_sha256": "72c6606b91a60ccfcbc8841d003db7402c5dee300b2a9eb7468f095b308463ba"
+    },
+    {
+      "dataset": "E14_16",
+      "method": "STalign",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 15,
+      "pair_metrics_path": "data/pair_scores/E14_16/STalign.csv",
+      "pair_metrics_sha256": "8bbd2c74a8140a0b71efd5c6d3108e41ccc815a82c9bba5d00dbb3817777fc0f"
+    },
+    {
+      "dataset": "MLN",
+      "method": "OmniAligner",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "fresh_coordinate_recalculation",
+      "pairs": 18,
+      "pair_metrics_path": "data/pair_scores/MLN/OmniAligner.csv",
+      "pair_metrics_sha256": "86329d45cbff0f22a957092196b896a692e419aa51efcbcfbc787a8d41151623"
+    },
+    {
+      "dataset": "MLN",
+      "method": "SLAT full sample",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MLN",
+      "method": "SPACEL",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MLN",
+      "method": "STalign",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MLN",
+      "method": "Spateo nonrigid",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MLN",
+      "method": "PASTE (5k)",
+      "eligible": true,
+      "status": "Scored",
+      "kind": "archived_scored_workbook"
+    },
+    {
+      "dataset": "MLN",
+      "method": "PASTE2 (5k)",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 18,
+      "pair_metrics_path": "data/pair_scores/MLN/PASTE2_5k.csv",
+      "pair_metrics_sha256": "42770de3b1b32cd6180e237893b509128500d760f86f840dc871da7c74c2d044"
+    },
+    {
+      "dataset": "MLN",
+      "method": "MOSAICField (RNA)",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 18,
+      "pair_metrics_path": "data/pair_scores/MLN/MOSAICField_RNA.csv",
+      "pair_metrics_sha256": "5a6603179d7c3a971a8032b2b4ad9e14326f4359824538b46c37121ececc12f8"
+    },
+    {
+      "dataset": "MLN",
+      "method": "SANTO",
+      "eligible": true,
+      "status": "New: complete and scored",
+      "kind": "completed_pair_scores",
+      "pairs": 18,
+      "pair_metrics_path": "data/pair_scores/MLN/SANTO.csv",
+      "pair_metrics_sha256": "904793b0cf9f868df38922857edbc992633abfac24554e5184ebc0e7ee46fe41"
+    },
+    {
+      "dataset": "MLN",
+      "method": "CAST",
+      "eligible": false,
+      "status": "Incomplete; not ranked",
+      "kind": "not_scored",
+      "reason": "Incomplete; not ranked"
+    }
+  ],
+  "excluded_algorithms": [
+    "Loki",
+    "CPD"
+  ],
+  "pending": [],
+  "omni_recalculation_validation": {
+    "all_metrics_match": true,
+    "datasets": [
+      "DLPFC",
+      "MHPR",
+      "MMPC",
+      "MPC",
+      "E14_16",
+      "MLN"
+    ],
+    "metrics_checked": 36,
+    "absolute_tolerance": 1e-10,
+    "maximum_absolute_difference": 4.440892098500626e-16,
+    "elapsed_seconds": 1119.838149547577,
+    "source_hashes_checked": true,
+    "packages": {
+      "numpy": "1.26.0",
+      "scipy": "1.15.3",
+      "pandas": "2.1.1",
+      "anndata": "0.10.9",
+      "scanpy": "1.11.5",
+      "scikit-learn": "1.4.2"
+    }
+  },
+  "archived_baselines_sha256": "ace87890d0b77f3b6ffa5c8790b1fb4ccec43d79eeee767bbf9f877d510df156",
+  "original_workbook_sha256": "67b36942a8a413e17a8173d183907c9328ec881a47f039ca069488344e9d8eb9"
+}

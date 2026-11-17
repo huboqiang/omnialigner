@@ -76,3 +76,6 @@ Then start the omniTME agent:
 ```bash
 python ./servers/navigation_agent/voyager.py
 ```
+## Revision 1 benchmarks
+
+[Revision 1 reproducibility notebooks](benchmarks/rev1/README.md) include the submitted NCS table, selected-coordinate scoring, a weight-to-coordinate example, and OmniPred benchmark tables.

@@ -1,0 +1,19 @@
+{
+  "cell_RNA": {
+    "rows": 14,
+    "metrics_compared": 126,
+    "match": true
+  },
+  "regional_tile": {
+    "rows": 8,
+    "PCC_and_delta_values": 24,
+    "match": true
+  },
+  "CRC_protein": {
+    "models": 47,
+    "markers_per_model": 9,
+    "regions": 178,
+    "match": true
+  },
+  "scope": "Reaggregation of frozen scoring records; no training or prediction rerun"
+}

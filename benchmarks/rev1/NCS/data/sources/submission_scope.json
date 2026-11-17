@@ -1,0 +1,330 @@
+{
+  "snapshot": "2026-11-17T01:07:58-07:00",
+  "datasets": [
+    {
+      "dataset": "DLPFC",
+      "rows": [
+        {
+          "method": "OmniAligner",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "CAST",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE2",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE (p0)",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SANTO",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SLAT",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SPACEL",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "STalign",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "MOSAICField (RNA)",
+          "eligible": true,
+          "status": "Scored"
+        }
+      ]
+    },
+    {
+      "dataset": "MHPR",
+      "rows": [
+        {
+          "method": "OmniAligner",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE (p0)",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SANTO",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SLAT",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SPACEL",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "STalign",
+          "eligible": false,
+          "status": "Diagnostic; not ranked"
+        },
+        {
+          "method": "Spateo nonrigid",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "Spateo rigid",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE2",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "CAST",
+          "eligible": true,
+          "status": "New: complete and scored"
+        },
+        {
+          "method": "MOSAICField (RNA)",
+          "eligible": true,
+          "status": "New: complete and scored"
+        }
+      ]
+    },
+    {
+      "dataset": "MMPC",
+      "rows": [
+        {
+          "method": "OmniAligner",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SANTO",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SLAT",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SPACEL",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "STalign",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE2",
+          "eligible": false,
+          "status": "Failed: 0/2 pairs"
+        },
+        {
+          "method": "CAST",
+          "eligible": true,
+          "status": "New: complete and scored"
+        },
+        {
+          "method": "MOSAICField (RNA)",
+          "eligible": true,
+          "status": "New: complete and scored"
+        }
+      ]
+    },
+    {
+      "dataset": "MPC",
+      "rows": [
+        {
+          "method": "OmniAligner",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE",
+          "eligible": true,
+          "status": "Scored; undefined metrics"
+        },
+        {
+          "method": "SANTO",
+          "eligible": true,
+          "status": "Scored; undefined metrics"
+        },
+        {
+          "method": "SLAT",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SPACEL",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "STalign",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE2",
+          "eligible": true,
+          "status": "Scored; undefined metrics"
+        },
+        {
+          "method": "CAST",
+          "eligible": true,
+          "status": "New: complete and scored"
+        },
+        {
+          "method": "MOSAICField (RNA)",
+          "eligible": true,
+          "status": "New: complete and scored"
+        }
+      ]
+    },
+    {
+      "dataset": "E14_16",
+      "rows": [
+        {
+          "method": "OmniAligner",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SLAT",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SPACEL",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE2",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "CAST",
+          "eligible": true,
+          "status": "Native fallback; Region scored"
+        },
+        {
+          "method": "MOSAICField (RNA)",
+          "eligible": true,
+          "status": "New: complete and scored"
+        },
+        {
+          "method": "SANTO",
+          "eligible": true,
+          "status": "New: complete and scored"
+        },
+        {
+          "method": "STalign",
+          "eligible": true,
+          "status": "New: complete and scored"
+        }
+      ]
+    },
+    {
+      "dataset": "MLN",
+      "rows": [
+        {
+          "method": "OmniAligner",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SLAT full sample",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "SPACEL",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "STalign",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "Spateo nonrigid",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE (5k)",
+          "eligible": true,
+          "status": "Scored"
+        },
+        {
+          "method": "PASTE2 (5k)",
+          "eligible": true,
+          "status": "New: complete and scored"
+        },
+        {
+          "method": "MOSAICField (RNA)",
+          "eligible": true,
+          "status": "New: complete and scored"
+        },
+        {
+          "method": "SANTO",
+          "eligible": true,
+          "status": "New: complete and scored"
+        },
+        {
+          "method": "CAST",
+          "eligible": false,
+          "status": "Incomplete; not ranked"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "original_checkpoint_sha256": "49c105da8564a1c97d298461f1a09c28728ebe110bc2a7435f95cf3fb10bd4fd",
+  "coarse_transform_source_sha256": "ecdce3dd6ae6b081cfd31cdf2811ed1d3fef8e0f85349d6b2e14c56f986ae9aa",
+  "coarse_transform_replay": [
+    {
+      "layer": 0,
+      "max_coarse_replay_error": 5.991685917397716e-05,
+      "n_cells": 3611
+    },
+    {
+      "layer": 1,
+      "max_coarse_replay_error": 0.00017018799955846218,
+      "n_cells": 3635
+    },
+    {
+      "layer": 2,
+      "max_coarse_replay_error": 0.00012292320920716522,
+      "n_cells": 3566
+    },
+    {
+      "layer": 3,
+      "max_coarse_replay_error": 0.00012826916886791436,
+      "n_cells": 3431
+    }
+  ],
+  "contains_expected_xy": false
+}

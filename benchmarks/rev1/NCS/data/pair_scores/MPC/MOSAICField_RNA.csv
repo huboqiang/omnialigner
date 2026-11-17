@@ -1,0 +1,3 @@
+pair_index,PCC,CosSim,SSIM,MI,Expression_MSE_native_ASSD_bygrid,Accuracy,native_insufficient_grid_fallback,reference_cells,moving_cells,reference_valid_grids,moving_valid_grids
+0,,,,0.04704943925834679,0.9084218045690353,0.2656333511491181,False,1525,2042,58,58
+1,0.21657137134218518,0.5631277152820479,0.20854506427618164,0.06598692004697586,0.5047836750473155,0.539147040101846,False,2042,1683,52,52

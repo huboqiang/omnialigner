@@ -1,0 +1,19 @@
+{
+  "all_table_entries_match": true,
+  "all_rank_cells_match": true,
+  "method_rows": 59,
+  "metric_positions": 354,
+  "finite_metric_positions": 325,
+  "rank_cells": 36,
+  "absolute_tolerance": 1e-10,
+  "maximum_absolute_difference": 4.440892098500626e-16,
+  "pending": [],
+  "snapshot": "2026-11-17T01:07:58-07:00",
+  "comparison_scope": "entire submission candidate table and rank matrix",
+  "evidence_modes": {
+    "archived_scored_workbook": 35,
+    "completed_pair_scores": 16,
+    "fresh_coordinate_recalculation": 6,
+    "not_scored": 2
+  }
+}

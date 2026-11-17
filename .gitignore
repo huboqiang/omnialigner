@@ -25,3 +25,9 @@ config/panlab/config_pdac2.yaml
 example/panlab_pdac2.ipynb
 example/panlab_pdac2.py
 
+
+# Revision benchmark: deliberately included compact data and notebooks
+!benchmarks/rev1/**/data/
+!benchmarks/rev1/**/data/**
+!benchmarks/rev1/**/notebooks/
+!benchmarks/rev1/**/notebooks/**

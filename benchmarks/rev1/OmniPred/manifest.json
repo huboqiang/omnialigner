@@ -1,0 +1,12 @@
+{
+  "data/FIG4_AGGREGATE_SCORES.csv": "3138a20d1ef5600a90ea56935b6db969c921b168f923b194998b2df46dc45659",
+  "data/FIG4_GENE_PCC_SEED_MEANS.csv": "7ab58ca1c21e8eb300406e0df7807f20d71229dfd6a34da4d8d0e1b0a3329a06",
+  "data/scores_by_gene.csv": "34cba404268a499c66d693ad99e49770e5acb519debb1cc6de6c65111cfb402e",
+  "data/scores_by_seed.csv": "e1e624d3a2331247e35427aefc3603afdd06697f262e4ba7592676baf960d238",
+  "data/crc/common9_comparison.csv": "e14b44233bbc1dac60da23c01042f4f2e8d84483f8bfdbf24a68f8f61fbd67d5",
+  "data/crc/common9_per_marker.csv": "d7e296cf6a515e0a422b3add7b8e9acffefa21436dd8851ac89145c5e8a63a26",
+  "data/regional/comparison_istar.csv": "a93f452943b31056b15982eee5d4a2203dc76a992b018be4f0f12fd58f7f1144",
+  "data/regional/comparison_path2.csv": "0ed6a67962675f0f89ffd652d8bd000c35fff541419b603eb17f8467e2442874",
+  "data/regional/per_gene.csv": "cead7a887f3273efb43d567042e4aa9dd0050a4c7c4d44961897a100ded35c87",
+  "data/regional/RESULT.json": "89898f946aa510792eded366817cafd1a01df2d645d2d1d92782b68b39f52182"
+}

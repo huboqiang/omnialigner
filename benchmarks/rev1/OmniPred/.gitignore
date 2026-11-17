@@ -1,0 +1,12 @@
+results/
+.runtime/
+__pycache__/
+.ipynb_checkpoints/
+*.h5ad
+*.h5
+.DS_Store
+.release_data/
+data/evaluation_inputs/
+data/evaluation_inputs_manifest.json
+omnialigner-rev1/
+rev1-benchmark-data.tar.gz

@@ -1,0 +1,725 @@
+[
+  {
+    "dataset": "DLPFC",
+    "method": "OmniAligner",
+    "source_kind": "fresh_coordinate_recalculation",
+    "original_pair_metrics_sha256": "89a4ffedf2389a7e4bee75734d063a8e850407ee393cb94f0e7b06df1200aea7",
+    "original_bytes": 4577383,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ]
+  },
+  {
+    "dataset": "DLPFC",
+    "method": "CAST",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "DLPFC",
+    "source_row": 9
+  },
+  {
+    "dataset": "DLPFC",
+    "method": "PASTE",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "DLPFC",
+    "source_row": 10
+  },
+  {
+    "dataset": "DLPFC",
+    "method": "PASTE2",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "DLPFC",
+    "source_row": 11
+  },
+  {
+    "dataset": "DLPFC",
+    "method": "PASTE (p0)",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "DLPFC",
+    "source_row": 12
+  },
+  {
+    "dataset": "DLPFC",
+    "method": "SANTO",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "DLPFC",
+    "source_row": 13
+  },
+  {
+    "dataset": "DLPFC",
+    "method": "SLAT",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "DLPFC",
+    "source_row": 14
+  },
+  {
+    "dataset": "DLPFC",
+    "method": "SPACEL",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "DLPFC",
+    "source_row": 15
+  },
+  {
+    "dataset": "DLPFC",
+    "method": "STalign",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "DLPFC",
+    "source_row": 16
+  },
+  {
+    "dataset": "DLPFC",
+    "method": "MOSAICField (RNA)",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "DLPFC",
+    "source_row": 17
+  },
+  {
+    "dataset": "MHPR",
+    "method": "OmniAligner",
+    "source_kind": "fresh_coordinate_recalculation",
+    "original_pair_metrics_sha256": "8a3a40f91d2be5c09a6d57c3c4fc6ad9506f4598652395fe65e98677126f96ec",
+    "original_bytes": 9874699,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ]
+  },
+  {
+    "dataset": "MHPR",
+    "method": "PASTE",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MHPR",
+    "source_row": 10
+  },
+  {
+    "dataset": "MHPR",
+    "method": "PASTE (p0)",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MHPR",
+    "source_row": 11
+  },
+  {
+    "dataset": "MHPR",
+    "method": "SANTO",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MHPR",
+    "source_row": 12
+  },
+  {
+    "dataset": "MHPR",
+    "method": "SLAT",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MHPR",
+    "source_row": 13
+  },
+  {
+    "dataset": "MHPR",
+    "method": "SPACEL",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MHPR",
+    "source_row": 14
+  },
+  {
+    "dataset": "MHPR",
+    "method": "STalign",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MHPR",
+    "source_row": 15
+  },
+  {
+    "dataset": "MHPR",
+    "method": "Spateo nonrigid",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MHPR",
+    "source_row": 16
+  },
+  {
+    "dataset": "MHPR",
+    "method": "Spateo rigid",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MHPR",
+    "source_row": 17
+  },
+  {
+    "dataset": "MHPR",
+    "method": "PASTE2",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "586a71d09e1e00d59e02ba3234578bbb3332103badaa52623066c49fddc277cf",
+    "original_bytes": 9883609,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "d7dce5197171a1473f9f45dd9db622e1ed1c9949ee4fd6316867c507e90abb3b"
+  },
+  {
+    "dataset": "MHPR",
+    "method": "CAST",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "7134b476b8a188edf5ff19397aec57f2e8aaa14f42f26ba7f2c33a9781b039a4",
+    "original_bytes": 9541787,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "7f261bb214e3d1b05a0886b859c63889cd2d029b1a74bf3eb67003863affe568"
+  },
+  {
+    "dataset": "MHPR",
+    "method": "MOSAICField (RNA)",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "8eb02d5dcb0a2187409b6ad38c1ae902ada5ccc0a501818eeb04a55451e06325",
+    "original_bytes": 8549723,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "ebe3014f395dbb1c06795539b1463e0bd36eee212a2689c5a0d72033e7eda005"
+  },
+  {
+    "dataset": "MMPC",
+    "method": "OmniAligner",
+    "source_kind": "fresh_coordinate_recalculation",
+    "original_pair_metrics_sha256": "6f326e946e13ebe387e0894fff10d90b0f461ffb22b3df0430c2cf157256d14a",
+    "original_bytes": 933499,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ]
+  },
+  {
+    "dataset": "MMPC",
+    "method": "PASTE",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MMPC",
+    "source_row": 10
+  },
+  {
+    "dataset": "MMPC",
+    "method": "SANTO",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MMPC",
+    "source_row": 11
+  },
+  {
+    "dataset": "MMPC",
+    "method": "SLAT",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MMPC",
+    "source_row": 12
+  },
+  {
+    "dataset": "MMPC",
+    "method": "SPACEL",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MMPC",
+    "source_row": 13
+  },
+  {
+    "dataset": "MMPC",
+    "method": "STalign",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MMPC",
+    "source_row": 14
+  },
+  {
+    "dataset": "MMPC",
+    "method": "CAST",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "bdfbd4a58c801cb386318fdffa044839e29bc01d09dd5e8fb74a37ef19e68e9a",
+    "original_bytes": 898440,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "99ba87b8fb1172fb2b1a1e1d73002f0a3a8f7d661d2e29676770caf4dcd6a059"
+  },
+  {
+    "dataset": "MMPC",
+    "method": "MOSAICField (RNA)",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "de19a11dad2c1af29a10e53f76c61b81b3e342b68e291b5b8b8ee034d351dce1",
+    "original_bytes": 718861,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "3f19c0b2ce68a1e8c6996df8bfbdfbdc9358718cfb74ce4969c65ed8b10b46f4"
+  },
+  {
+    "dataset": "MPC",
+    "method": "OmniAligner",
+    "source_kind": "fresh_coordinate_recalculation",
+    "original_pair_metrics_sha256": "e51008bd7723e1dd26763b581b6a648247f9331d00ccdee29524ff7a4677e745",
+    "original_bytes": 1628169,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ]
+  },
+  {
+    "dataset": "MPC",
+    "method": "PASTE",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MPC",
+    "source_row": 10
+  },
+  {
+    "dataset": "MPC",
+    "method": "SANTO",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MPC",
+    "source_row": 11
+  },
+  {
+    "dataset": "MPC",
+    "method": "SLAT",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MPC",
+    "source_row": 12
+  },
+  {
+    "dataset": "MPC",
+    "method": "SPACEL",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MPC",
+    "source_row": 13
+  },
+  {
+    "dataset": "MPC",
+    "method": "STalign",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MPC",
+    "source_row": 14
+  },
+  {
+    "dataset": "MPC",
+    "method": "PASTE2",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "6bac458ba6c36d3b2831ffd14e6aad2aea4157b2f2a52bc350cff2fb169caa0e",
+    "original_bytes": 1625616,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "cb12d02492104dc3e41be697506d27c002c11231fdf1034e28c4bf416f369219"
+  },
+  {
+    "dataset": "MPC",
+    "method": "CAST",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "a65a92f813a51ff45202b2aabf63f074a70d6612bd6dce3c4cc9d1c0cafcab74",
+    "original_bytes": 1604063,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "03d2a62e52bd2a3bda97615a969012e5cac12f911e774a5e4d48380197ea6a3e"
+  },
+  {
+    "dataset": "MPC",
+    "method": "MOSAICField (RNA)",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "beb3cb98d4d426f6cd998320d1c6d7242a33add26e2f78e9790bbde5e939494d",
+    "original_bytes": 1508086,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "fe7bb672e400e177b51bcfed9218424b0867ca436a5563fc1361a26be7fe5b1c"
+  },
+  {
+    "dataset": "E14_16",
+    "method": "OmniAligner",
+    "source_kind": "fresh_coordinate_recalculation",
+    "original_pair_metrics_sha256": "f47c975201608c897050157703d8c0f875de474122cbba5d7a0ebf7442c47a45",
+    "original_bytes": 6317239,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ]
+  },
+  {
+    "dataset": "E14_16",
+    "method": "PASTE",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "E14_16",
+    "source_row": 10
+  },
+  {
+    "dataset": "E14_16",
+    "method": "SLAT",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "E14_16",
+    "source_row": 11
+  },
+  {
+    "dataset": "E14_16",
+    "method": "SPACEL",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "E14_16",
+    "source_row": 12
+  },
+  {
+    "dataset": "E14_16",
+    "method": "PASTE2",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "4900a5435c60afd04ea08be11be99de9ab04a5bfbf9bd0758bdeb3ee2fbce80e",
+    "original_bytes": 6206790,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "3e9ce6d70d4c602c5ef305a72e2cb54dba9ab2d5735230ace06849894a2d8714"
+  },
+  {
+    "dataset": "E14_16",
+    "method": "CAST",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "a79c845f7bc955d379ee8861b20c8bf5bf530a18bbc3cff796bdffa05fa6c654",
+    "original_bytes": 28201,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "d5ccf497f0424755313ec676d140fe0c3a6b6c931ba646aac84ca77cb6b90885"
+  },
+  {
+    "dataset": "E14_16",
+    "method": "MOSAICField (RNA)",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "36a570aaf6fe5caf11f38d15ef7c32015a99fc4e273c60fe77d14b86fa37def7",
+    "original_bytes": 5654887,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "edd6327b8ba4915d2d02d1b4378e00c6f03e3e8807518771e7831a10439e40e4"
+  },
+  {
+    "dataset": "E14_16",
+    "method": "SANTO",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "7a3631ef9e3f251b1cbe59d614d2dc0299416947d6d2996e569254c36f20dc11",
+    "original_bytes": 5778829,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "303fddb78385b14d8965333445228af64068e3e54c7b249505682e3a8242d493"
+  },
+  {
+    "dataset": "E14_16",
+    "method": "STalign",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "ede76605f33117a593b0967798442195dfa4326f03da50f6ea31a89989c7e092",
+    "original_bytes": 6233916,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "60382c138fd88515284e9bc6282a6ade8a3d176015b6d115af8530d59a81c484"
+  },
+  {
+    "dataset": "MLN",
+    "method": "OmniAligner",
+    "source_kind": "fresh_coordinate_recalculation",
+    "original_pair_metrics_sha256": "b104da65062d8db8d91286bbbe41a1fdd6a0550b7f21aae6ce9e843829f9e519",
+    "original_bytes": 448997786,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ]
+  },
+  {
+    "dataset": "MLN",
+    "method": "SLAT full sample",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MLN",
+    "source_row": 10
+  },
+  {
+    "dataset": "MLN",
+    "method": "SPACEL",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MLN",
+    "source_row": 11
+  },
+  {
+    "dataset": "MLN",
+    "method": "STalign",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MLN",
+    "source_row": 12
+  },
+  {
+    "dataset": "MLN",
+    "method": "Spateo nonrigid",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MLN",
+    "source_row": 14
+  },
+  {
+    "dataset": "MLN",
+    "method": "PASTE (5k)",
+    "source_kind": "archived_scored_workbook",
+    "source_sheet": "MLN",
+    "source_row": 15
+  },
+  {
+    "dataset": "MLN",
+    "method": "PASTE2 (5k)",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "b29e2ec3bd6ed7c552394868cf061dd643e772402e7fa24981c4677658f28cbb",
+    "original_bytes": 38490919,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "494f8c2dfc42156317b9c30dcd02bf0fa197e9c7604d4666a832ae7e114af9f5"
+  },
+  {
+    "dataset": "MLN",
+    "method": "MOSAICField (RNA)",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "2dd9a76aa88a6672b292b5e0a8d3b6ad3f0e3412b52003981f01007c0519822a",
+    "original_bytes": 454387302,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "2a08a8051e1e0fea4b5ae997e8bb3d3a9013f4cbeac211be0e0c8fc14ddbb3ee"
+  },
+  {
+    "dataset": "MLN",
+    "method": "SANTO",
+    "source_kind": "completed_pair_scores",
+    "original_pair_metrics_sha256": "39c23cd2334fc39d96fb921a10e045211a33778348661d94ee97b234034617a5",
+    "original_bytes": 394423796,
+    "columns_retained": [
+      "pair_index",
+      "PCC",
+      "CosSim",
+      "SSIM",
+      "MI",
+      "Expression_MSE_native_ASSD_bygrid",
+      "Accuracy",
+      "native_insufficient_grid_fallback",
+      "reference_cells",
+      "moving_cells",
+      "reference_valid_grids",
+      "moving_valid_grids"
+    ],
+    "original_summary_sha256": "8b59029fca05dbf68ff3ced6f9248bacf986de03d9e151145e35bba3d7303aa5"
+  }
+]

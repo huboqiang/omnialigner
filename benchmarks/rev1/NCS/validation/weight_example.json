@@ -1,0 +1,10 @@
+{
+  "all_six_scores_match": true,
+  "pairs": 3,
+  "max_coordinate_difference": 0.00048828125,
+  "coordinate_tolerance": 0.001,
+  "score_tolerance": 1e-10,
+  "maximum_score_difference": 2.7755575615628914e-17,
+  "reads_selected_coordinates_as_prediction": false,
+  "coarse_stage": "frozen raw-to-coarse affine transforms"
+}
