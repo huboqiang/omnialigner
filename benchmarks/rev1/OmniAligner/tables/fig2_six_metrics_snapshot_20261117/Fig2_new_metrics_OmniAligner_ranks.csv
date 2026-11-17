@@ -1,0 +1,19 @@
+dataset,metric,rank,algorithm_count,display,status
+SmallIntestine,PCC,3,5,3/5,ranked
+SmallIntestine,CosSim,3,5,3/5,ranked
+SmallIntestine,SSIM,3,5,3/5,ranked
+SmallIntestine,MI,3,5,3/5,ranked
+SmallIntestine,MSE,3,5,3/5,ranked
+SmallIntestine,Region,2,5,2/5,ranked
+STARmap,PCC,2,5,2/5,ranked
+STARmap,CosSim,2,5,2/5,ranked
+STARmap,SSIM,2,5,2/5,ranked
+STARmap,MI,2,5,2/5,ranked
+STARmap,MSE,2,5,2/5,ranked
+STARmap,Region,2,5,2/5,ranked
+ST_brain,PCC,,,—,excluded: insufficient overlap / undefined
+ST_brain,CosSim,,,—,excluded: insufficient overlap / undefined
+ST_brain,SSIM,,,—,excluded: insufficient overlap / undefined
+ST_brain,MI,,,—,excluded: insufficient overlap / undefined
+ST_brain,MSE,,,—,excluded: insufficient overlap / undefined
+ST_brain,Region,,,—,excluded: insufficient overlap / undefined
