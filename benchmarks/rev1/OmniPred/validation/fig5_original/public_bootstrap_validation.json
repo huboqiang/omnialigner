@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "scores_checked": 148,
+  "cells": 563315,
+  "pseudo_spots": 1684,
+  "cells_in_valid_spots": 561994,
+  "max_abs_pcc_difference": 2.8658115852620014e-08,
+  "historical_cached_means_verified": true,
+  "ordered_marker_mapping": true,
+  "pcc_absolute_tolerance": 1e-07,
+  "aggregation_relative_tolerance": 3e-07,
+  "aggregation_max_abs_difference": {
+    "GigaTIME": 0.0,
+    "HEX": 0.0,
+    "SpatialEx": 4.76837158203125e-07,
+    "OmniPred": 2.384185791015625e-07
+  },
+  "public_bootstrap": "executed without modifications",
+  "python": "3.10.17",
+  "platform": "macOS-15.7.7-arm64-arm-64bit",
+  "elapsed_seconds": 1445.227,
+  "initial_inputs": [
+    "Fig5_CRC_original_benchmark.ipynb"
+  ],
+  "public_clone_commit": "ecd9dde977baf7c13068e8cb249c3f98b29a16e5",
+  "data_archive_sha256": "3e8464fad986d2717a24aaa0e1ee058c917a5966caee15fbc13ddd7be80d3368",
+  "all_code_cells_executed_in_order": 7,
+  "same_source_as_published_notebook": true,
+  "execution_note": "Final notebook executed unchanged from an empty working directory using public downloads and an isolated Python 3.10 environment. An earlier trial exposed float32 platform differences; the final version declares tolerances and preserves the calculations."
+}

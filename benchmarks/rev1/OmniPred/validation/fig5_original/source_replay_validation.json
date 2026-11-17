@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "scores_checked": 148,
+  "cells": 563315,
+  "pseudo_spots": 1684,
+  "cells_in_valid_spots": 561994,
+  "max_abs_pcc_difference": 3.219646771412954e-15,
+  "historical_cached_means_verified": true,
+  "ordered_marker_mapping": true,
+  "scope": "Linux recovered-source preflight, before the independent macOS public bootstrap",
+  "source_notebook_sha256": "74d320906d9f6d9fd2b63baf37788f390ac97e9129867400980907a04cc5ee69"
+}

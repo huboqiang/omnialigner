@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "scores_checked": 148,
+  "cells": 563315,
+  "pseudo_spots": 1684,
+  "cells_in_valid_spots": 561994,
+  "max_abs_pcc_difference": 2.8658115852620014e-08,
+  "historical_cached_means_verified": true,
+  "ordered_marker_mapping": true,
+  "pcc_absolute_tolerance": 1e-07,
+  "aggregation_relative_tolerance": 3e-07,
+  "aggregation_max_abs_difference": {
+    "GigaTIME": 0.0,
+    "HEX": 0.0,
+    "SpatialEx": 4.76837158203125e-07,
+    "OmniPred": 2.384185791015625e-07
+  }
+}
