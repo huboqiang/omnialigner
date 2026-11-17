@@ -1,3 +1,5 @@
+**Historical-coordinate diagnostic; not the newer agent-assisted selected OmniAligner model.**
+
 # Additional Fig. 2 six-metric evaluation: interim snapshot
 
 Three datasets have complete scoring for five historical Fig. 2 methods: SmallIntestine (7 adjacent pairs), STARmap (9), ST_brain (74). This is distinct from the six-dataset NCS benchmark and uses the historical Fig. 2 coordinate outputs.
