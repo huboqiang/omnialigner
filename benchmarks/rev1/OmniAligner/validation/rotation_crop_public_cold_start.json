@@ -31,10 +31,15 @@
   ],
   "pdf_fonttype": 42,
   "ps_fonttype": 42,
+  "current_fixed_algorithm_denominator": 9,
+  "current_fixed_nine_own_endpoints": 408,
+  "current_fixed_nine_first_endpoints": 92,
+  "raw_NA_preserved": true,
+  "failures_have_zero_rank_credit": true,
   "cold_start_success": true,
   "all_notebook_cells_executed": true,
   "unchanged_public_bootstrap_executed": true,
   "isolated_virtual_environment": true,
   "user_site_packages_disabled": true,
-  "wall_seconds": 455.41
+  "wall_seconds": 627.37
 }
