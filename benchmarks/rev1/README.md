@@ -8,6 +8,7 @@ The notebooks start with public `wget` and `git clone` commands and run without 
 | [OmniAligner benchmark table](OmniAligner/notebooks/NCS_submission_table_reproduce.ipynb) | Visible metric functions; freshly computed OmniAligner scores; all algorithm rows and rank/count matrix |
 | [OmniAligner selected-coordinate scoring](OmniAligner/notebooks/OmniAligner_NCS_reproduce.ipynb) | 44 adjacent pairs, 36 OmniAligner dataset means from released expression inputs and selected coordinates |
 | [Weights → coordinates → scores](OmniAligner/notebooks/OmniAligner_weights_to_scores_DLPFC.ipynb) | DLPFC checkpoint inference from original coordinates, followed by all six metrics |
+| [Controlled rotations and crops](OmniAligner/notebooks/OmniAligner_rotation_crop_benchmark_reproduce.ipynb) | All 748 configuration–condition results freshly scored from NPZ; six visible metric functions, family ranks and radar/crop/variance figures |
 | [Original Fig. 2: spatial-omics metrics](OmniAligner/notebooks/Fig2_spatial_omics_benchmark_reproduce.ipynb) | Explicit ARI/NMI/CLC; fresh SmallIntestine scoring, full nine-dataset archived means, optional full recomputation; historical display overrides separated |
 | [Original Fig. 3: FAIR landmarks](OmniAligner/notebooks/Fig3_FAIR_landmark_benchmark.ipynb) | Ten portable landmark arrays, TRE and both aTRE definitions; fresh calculations separated from historical display substitutions |
 | [Original Fig. 4: BRCA prediction](OmniPred/notebooks/Fig4_BRCA_original_benchmark.ipynb) | True expression and identity-mapped two-method predictions; 1,252 freshly calculated gene-wise PCCs in both directions |
@@ -20,6 +21,8 @@ The NCS snapshot includes completed PASTE2 MLN (18/18) and STalign E14–16 (15/
 The full comparison notebook and selected-coordinate notebook recompute all OmniAligner metrics from expression inputs and coordinates; the DLPFC examples also replay weight inference. Other NCS methods are reconstructed from archived means or complete pair-score records; OmniPred tables are reaggregated from frozen gene/seed/marker scores, not retrained. See the package READMEs for scope and provenance.
 
 The DLPFC workflow archive (26 MB, in the same release) contains the actual recorded stage evidence and agent reviews. The walkthrough does not make a fresh LLM call or rerun training; it recomputes inference/scoring and retains the original final geometric-admission status.
+
+The [rotation/crop reproduction](OmniAligner/docs/PERTURBATION_REPRODUCTION.md) uses a separate 130 MB NPZ Release asset and six numerical/plotting dependencies. It recomputes all reported configurations, including the four predefined isotropic crop retries, without SSH or private data paths. Figures use `om.pl.plt` with system Arial and Type 42 PDF/PS fonts. Registration fitting is not rerun. Earlier assets and checksums are unchanged.
 
 ## Original main-figure reproduction
 

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "archive": {
+    "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-OmniAligner-rotation-crop-20261118.tar.gz",
+    "bytes": 129997636,
+    "sha256": "4e01c2dd154820de82547cd67ade34cd1622c1ecb0a5c4bc1fd249fc6da9dd79"
+  },
+  "manifest_sha256": "b14a6cd8899aae6f26447b4df41d0492df70053ebdc5401012cee8bf3e45a1f7",
+  "datasets": [
+    "DLPFC",
+    "MHPR"
+  ],
+  "configuration_conditions": 748,
+  "OmniAligner_conditions": 68,
+  "algorithm_families": 9,
+  "configurations": 11,
+  "expected_scores_sha256": "42f3a93285e00d6b2ab97aa20dd26b4f62a89c6b1d6f0d3990303e44ec273687",
+  "expected_gene_metrics_sha256": "b30b319c5ca78a7e1feba15abeb3019669db28bbc38d96a04e0ee242bc4433e0",
+  "expected_rank_table_sha256": "47014ed29046f28cc0f4899be09bad2dfc1c9ea301ce44de1ee8e9265e486b1d",
+  "scope": "Recompute six metrics, eligibility, family ranks and figures from saved alignment coordinate NPZs and original measured expression/labels; no new fitting.",
+  "OmniAligner_protocol": "Original64 fixed400 results plus four predefined isotropic crop rescues; whole-row substitution only. Original numerical/geometry warnings retained; not independent anatomical validation.",
+  "font_api": "import omnialigner as om; om.pl.plt",
+  "pdf_fonttype": 42,
+  "ps_fonttype": 42
+}

@@ -1,0 +1,47 @@
+{
+  "PCC": {
+    "mean_max_abs_error": 0.0,
+    "NA_same": true,
+    "eligible_same": true,
+    "gene_max_abs_error": 0.0,
+    "gene_max_scaled_error": 0.0,
+    "gene_NA_same": true
+  },
+  "CosSim": {
+    "mean_max_abs_error": 2.4956416266874726e-08,
+    "NA_same": true,
+    "eligible_same": true,
+    "gene_max_abs_error": 4.1723251320568977e-07,
+    "gene_max_scaled_error": 2.178394988532216e-07,
+    "gene_NA_same": true
+  },
+  "SSIM": {
+    "mean_max_abs_error": 0.0,
+    "NA_same": true,
+    "eligible_same": true,
+    "gene_max_abs_error": 1.1102230246251565e-16,
+    "gene_max_scaled_error": 9.131509669985458e-17,
+    "gene_NA_same": true
+  },
+  "MI": {
+    "mean_max_abs_error": 0.0,
+    "NA_same": true,
+    "eligible_same": true,
+    "gene_max_abs_error": 0.0,
+    "gene_max_scaled_error": 0.0,
+    "gene_NA_same": true
+  },
+  "MSE": {
+    "mean_max_abs_error": 0.0,
+    "NA_same": true,
+    "eligible_same": true,
+    "gene_max_abs_error": 0.0,
+    "gene_max_scaled_error": 0.0,
+    "gene_NA_same": true
+  },
+  "Region": {
+    "mean_max_abs_error": 0.0,
+    "NA_same": true,
+    "eligible_same": true
+  }
+}
