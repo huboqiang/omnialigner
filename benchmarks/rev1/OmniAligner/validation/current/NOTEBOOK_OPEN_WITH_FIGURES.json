@@ -1,0 +1,18 @@
+{
+  "NCS": {
+    "inline_images": 2,
+    "matches_exported_png": true,
+    "sha256": "6de9e1b8852c8f3021d8ab085f659f1e2435b981077527d721e630b73cb9ba79"
+  },
+  "Deep": {
+    "inline_images": 2,
+    "matches_exported_png": true,
+    "sha256": "813c89404c57d9c6f67bf8b288b812d83e57ad85605f3de3cc5a547796fdf76b"
+  },
+  "Robustness": {
+    "inline_images": 1,
+    "matches_exported_png": true,
+    "sha256": "4815983e5e1f0a0b207874348cba068d6e9a714fb24884869bd124cc50d1ea9f",
+    "plot_executed_on_agg": true
+  }
+}

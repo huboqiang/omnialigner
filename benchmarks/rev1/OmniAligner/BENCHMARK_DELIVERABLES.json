@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "final_entry_count": 3,
+  "notebooks": {
+    "Robustness": {
+      "file": "notebooks/OmniAligner_rotation_crop_benchmark_reproduce.ipynb",
+      "algorithms": [
+        "OmniAligner",
+        "PASTE",
+        "PASTE2",
+        "Spateo",
+        "SPACEL",
+        "STalign",
+        "SANTO",
+        "SLAT",
+        "MOSAICField"
+      ],
+      "metrics": [
+        "PCC",
+        "CosSim",
+        "SSIM",
+        "MI",
+        "MSE",
+        "Region"
+      ],
+      "status": "validated_public_cold_start",
+      "fitted_OmniAligner_conditions": 68,
+      "configuration_conditions": 748,
+      "algorithm_families": 9,
+      "configurations": 11,
+      "embedded_figure_count": 1
+    },
+    "NCS": {
+      "file": "notebooks/NCS_submission_table_reproduce.ipynb",
+      "algorithms": [
+        "OmniAligner",
+        "PASTE",
+        "PASTE2",
+        "Spateo",
+        "SPACEL",
+        "STalign",
+        "SANTO",
+        "SLAT",
+        "MOSAICField"
+      ],
+      "metrics": [
+        "PCC",
+        "CosSim",
+        "SSIM",
+        "MI",
+        "MSE",
+        "Region",
+        "ARI",
+        "NMI",
+        "CLC"
+      ],
+      "status": "validated_public_cold_start",
+      "method_dataset_conditions": 54,
+      "complete_native_fits": 53,
+      "confirmed_native_failures": 1,
+      "datasets": [
+        "DLPFC",
+        "MHPR",
+        "MMPC",
+        "MPC",
+        "E14_16",
+        "MLN"
+      ],
+      "OmniAligner_first_endpoints": 32,
+      "OmniAligner_endpoint_count": 54,
+      "embedded_figure_count": 2
+    },
+    "Deep": {
+      "file": "notebooks/Fig2_spatial_omics_benchmark_reproduce.ipynb",
+      "algorithms": [
+        "OmniAligner",
+        "PASTE",
+        "PASTE2",
+        "Spateo",
+        "SPACEL",
+        "STalign",
+        "SLAT"
+      ],
+      "metrics": [
+        "PCC",
+        "CosSim",
+        "SSIM",
+        "MI",
+        "MSE",
+        "Region",
+        "ARI",
+        "NMI",
+        "CLC"
+      ],
+      "status": "validated_public_cold_start",
+      "method_dataset_conditions": 35,
+      "datasets": [
+        "ST_brain",
+        "E9_5",
+        "ABCA1",
+        "ABCA2",
+        "ABCA3"
+      ],
+      "main_comparison_exclusions": {
+        "SANTO": "Native full comparison unfinished; retained in diagnostics",
+        "MOSAICField": "Native full comparison unfinished; retained in diagnostics"
+      },
+      "OmniAligner_first_endpoints": 28,
+      "OmniAligner_endpoint_count": 45,
+      "embedded_figure_count": 2
+    }
+  },
+  "Loki_in_current_comparisons": false,
+  "CAST_in_current_comparisons": false,
+  "CPD_in_current_comparisons": false,
+  "ranking_policy": "expected_pair_weighted_native_metric_quality_v3"
+}

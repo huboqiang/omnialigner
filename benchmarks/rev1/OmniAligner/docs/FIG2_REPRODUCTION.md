@@ -1,7 +1,7 @@
 # Original Figure 2 spatial-omics benchmark
 
-Open `notebooks/Fig2_spatial_omics_benchmark_reproduce.ipynb` in a fresh Python
-3.10/3.11 notebook kernel. Its opening cells download the public assets, clone
+Open the [original Fig. 2 notebook](https://github.com/huboqiang/omnialigner/blob/e272a30c311de06727253db5305e60b425440b95/benchmarks/rev1/OmniAligner/notebooks/Fig2_spatial_omics_benchmark_reproduce.ipynb) in a fresh Python
+3.10/3.11 notebook kernel. The current branch uses that filename for the [Deep benchmark](../notebooks/Fig2_spatial_omics_benchmark_reproduce.ipynb). Its opening cells download the public assets, clone
 the `rev1` repository and install pinned CPU dependencies. No private path,
 full expression H5AD, pretrained model or registration runtime is required.
 

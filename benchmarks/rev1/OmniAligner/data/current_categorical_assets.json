@@ -1,0 +1,2515 @@
+{
+  "schema_version": 1,
+  "scope": "Optional full fresh ARI/NMI/CLC scoring, not required by the fast default run",
+  "NCS": {
+    "datasets": [
+      {
+        "dataset": "DLPFC",
+        "asset": {
+          "file": "rev1-NCS-categorical-DLPFC-20261118-936e5e568e17.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-NCS-categorical-DLPFC-20261118-936e5e568e17.tar.gz",
+          "sha256": "5544c4fa6507757ae48d86b944b9d42141076dea983de68586eef223415bce8e",
+          "bytes": 6196706
+        },
+        "archive_prefix": "",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner/coordinates_labels_rasters.npz",
+            "sha256": "be9ceeb80144f0188cd26d478b4ccc0efe0f7be0d93ca84c5e58ccf91ecb7f4f",
+            "cells": 14243,
+            "layers": 4,
+            "pairs": 3,
+            "coordinate_array_sha256": "115077463fd224cc6c84756acccc0a24fa0969e5a1cf2390703c94477a18cc50",
+            "labels_sha256": "f946279e5e38f9db6e90468621caa752d6cdd039e7649fcdd96d99b9451b1ca1",
+            "expected_pair_scores_file": "OmniAligner/pairs.csv",
+            "expected_pair_scores_sha256": "93a01255007f92e225bf313a909a4449d593e295b85a6020c6a20c3ec2481428",
+            "evaluation_support": {},
+            "score_receipt_sha256": "07083b14d402650d88b50679ede31e0e7a70ecac62f13834dfe4a570f4ccd695"
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE/coordinates_labels_rasters.npz",
+            "sha256": "f2e60749993d08a1df4e171c41a208a149399de3198e7117540fc57be7253be4",
+            "cells": 14243,
+            "layers": 4,
+            "pairs": 3,
+            "coordinate_array_sha256": "ad8aee71c01efd4681379fa75a6c6fe4a97faca56bd8269ca26e38b63abc09ad",
+            "labels_sha256": "f946279e5e38f9db6e90468621caa752d6cdd039e7649fcdd96d99b9451b1ca1",
+            "expected_pair_scores_file": "PASTE/pairs.csv",
+            "expected_pair_scores_sha256": "2badcc04f1173b2521263c031f025eef956042c48f1e334f74419756a11bf5be",
+            "evaluation_support": {},
+            "score_receipt_sha256": "1e5433107ab665d99d7b57d91f3a788b508c5675af37f5007f2a46143b2a548d"
+          },
+          {
+            "method": "PASTE2",
+            "kind": "global",
+            "file": "PASTE2/coordinates_labels_rasters.npz",
+            "sha256": "b39df07b2f3f518947e7747cfb3eb6ab22ad3acd44619bbc3eeceb0911226173",
+            "cells": 14243,
+            "layers": 4,
+            "pairs": 3,
+            "coordinate_array_sha256": "489849c77b378723cf0e050c5c731bec485c2a5262844565190256bb0732effc",
+            "labels_sha256": "f946279e5e38f9db6e90468621caa752d6cdd039e7649fcdd96d99b9451b1ca1",
+            "expected_pair_scores_file": "PASTE2/pairs.csv",
+            "expected_pair_scores_sha256": "8502d6994ee619daa03ab9a150632a4d0aee6f6476d616b7feb8e0a69c139264",
+            "evaluation_support": {},
+            "score_receipt_sha256": "ca285d406fd9e3e7394abd358276b0493ae053884ea85d6629eacf7ec1c9f3ff"
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo/coordinates_labels_rasters.npz",
+            "sha256": "e61931134b85803ca4ed1e013290ad9538441f1b18f538ba9835c9258cfc908e",
+            "cells": 14243,
+            "layers": 4,
+            "pairs": 3,
+            "coordinate_array_sha256": "3f13c400d3178aaf938405c724d9e046b125d54bfa2b87b7b492102ca673e9f5",
+            "labels_sha256": "f946279e5e38f9db6e90468621caa752d6cdd039e7649fcdd96d99b9451b1ca1",
+            "expected_pair_scores_file": "Spateo/pairs.csv",
+            "expected_pair_scores_sha256": "26a7c15cdc54f764cb2972ebbf2cf767716010fc3246e3c0553dd6bc08d2e1d9",
+            "evaluation_support": {},
+            "score_receipt_sha256": "361fdcfff034e4858366b3234190281a62f774c70e140122d00f264775f5f4f0"
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL/coordinates_labels_rasters.npz",
+            "sha256": "c7c84252a91259b311f89d3bc1d7be6817948ae2998bb9a8d6238e5ce1c58c56",
+            "cells": 14243,
+            "layers": 4,
+            "pairs": 3,
+            "coordinate_array_sha256": "785bae95a28d3d82dadecc08bc18e2c474fd858a4a4fd2a9e41620d73cf337be",
+            "labels_sha256": "f946279e5e38f9db6e90468621caa752d6cdd039e7649fcdd96d99b9451b1ca1",
+            "expected_pair_scores_file": "SPACEL/pairs.csv",
+            "expected_pair_scores_sha256": "19ea5a0c7be90a625d0b0aa535ddc978ff9fcf7562ba077e7a4688ba92454df8",
+            "evaluation_support": {},
+            "score_receipt_sha256": "fab91ecd5e1f14387db7d07bd0c01299bf76bce633ae3304585d64989f35ffd5"
+          },
+          {
+            "method": "STalign",
+            "kind": "global",
+            "file": "STalign/coordinates_labels_rasters.npz",
+            "sha256": "4cee486ba2e30d8ca7e3773456834479398c15f0e0b95409bfe7a94819f35e72",
+            "cells": 14243,
+            "layers": 4,
+            "pairs": 3,
+            "coordinate_array_sha256": "8835a52622f6b584d5645f6082754cc03b947d67e705b11112381b0ce53a2388",
+            "labels_sha256": "f946279e5e38f9db6e90468621caa752d6cdd039e7649fcdd96d99b9451b1ca1",
+            "expected_pair_scores_file": "STalign/pairs.csv",
+            "expected_pair_scores_sha256": "7134f9f13aff06c76d6578b59171b260e9a37099000aca8e96d84024046fd845",
+            "evaluation_support": {},
+            "score_receipt_sha256": "8147d3527caad86ca8a898aaec2714aec9364e13291024f4d12d854eb1be5053"
+          },
+          {
+            "method": "SANTO",
+            "kind": "global",
+            "file": "SANTO/coordinates_labels_rasters.npz",
+            "sha256": "d349a89b2581fc8ba6f7f2957f6efda72defb413522239c2eda5a246e0612caa",
+            "cells": 14243,
+            "layers": 4,
+            "pairs": 3,
+            "coordinate_array_sha256": "8910958960f423452f996d22093a9247230f076d42ec06aef52191c85db9d04d",
+            "labels_sha256": "f946279e5e38f9db6e90468621caa752d6cdd039e7649fcdd96d99b9451b1ca1",
+            "expected_pair_scores_file": "SANTO/pairs.csv",
+            "expected_pair_scores_sha256": "9a3a0aa95fbf603818818344c1cf1d2ccf8420e9b2cccbcac5d80d3f555f3a84",
+            "evaluation_support": {},
+            "score_receipt_sha256": "fa2b69e616d85f55311635892b8d379f3bd9329347699dd1a2f528a68393554a"
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT/coordinates_labels_rasters.npz",
+            "sha256": "3e83d872e61acce99563e3ce99017ddfe32b99a70fc99f3f5b6e762fa2b6467c",
+            "cells": 14243,
+            "layers": 4,
+            "pairs": 3,
+            "coordinate_array_sha256": "bf61061b6cd2061f692942dc694d8d083d3f491fcadac1aa45c55a3f822d96a7",
+            "labels_sha256": "f946279e5e38f9db6e90468621caa752d6cdd039e7649fcdd96d99b9451b1ca1",
+            "expected_pair_scores_file": "SLAT/pairs.csv",
+            "expected_pair_scores_sha256": "a3b55f368b2289be5f8933b98a966c66880bbac05a8bea9db4c576aa72d124ad",
+            "evaluation_support": {},
+            "score_receipt_sha256": "4233447fa7a42cafe26390c9d8ec722a47247c2a9dedf1dbe3cba6215a51ed62"
+          },
+          {
+            "method": "MOSAICField",
+            "kind": "pairs",
+            "pairs": [
+              {
+                "pair_index": 0,
+                "file": "MOSAICField/pair_0000.npz",
+                "sha256": "6a0140f50cfcd68fee6fc15623e761da25a72697d761d190b511ce50281a9503",
+                "expected": {
+                  "ARI": 0.230407565342566,
+                  "NMI": 0.1133414765927372,
+                  "CLC": 0.1819317517462075
+                },
+                "reference_raster_sha256": "66200ab8aaca52476f8d1d7d89cc2e4334e3db7ceafa7ea6a6976b69e0f6a826",
+                "moving_raster_sha256": "8591cff630ca613e6e4fc1e7730b5e746d94995b8545cfe252f352a021024ac8"
+              },
+              {
+                "pair_index": 1,
+                "file": "MOSAICField/pair_0001.npz",
+                "sha256": "f9ba30d3c1c36f4ca33c7dce2322edb3ba95eba50bedf6edd4be1e6bb05eab6b",
+                "expected": {
+                  "ARI": 0.4090554057699602,
+                  "NMI": 0.258527146995671,
+                  "CLC": 0.5717744154057772
+                },
+                "reference_raster_sha256": "cd3745f560209271f1ce028edb13e561e904b8f5926a111bf4d3b8a6bb840d7e",
+                "moving_raster_sha256": "500237c41323babab2a17ee4db8b729bba4c4adb6fba770c78c311f9878a0a40"
+              },
+              {
+                "pair_index": 2,
+                "file": "MOSAICField/pair_0002.npz",
+                "sha256": "225e55a2836689d9439d0ea214ccca8df2558f6fcd0aeb06a336908054f41439",
+                "expected": {
+                  "ARI": 0.1669740383606769,
+                  "NMI": 0.0874696531016267,
+                  "CLC": 0.1788216940324005
+                },
+                "reference_raster_sha256": "0f7365cd9175e72e1497a87f356f45aeb37fd472be22b0d670b2711609ef2b3f",
+                "moving_raster_sha256": "5c72e7c4e25f3435c69988e7bba4fdb647b68eb87cc470a0fb9766cac8093fde"
+              }
+            ],
+            "expected_pair_scores_file": "MOSAICField/pairs.csv",
+            "expected_pair_scores_sha256": "3af5929d0d96e5722026dc8bbc9c51e1df36506e95b24ba2a979d2fa6047d740",
+            "evaluation_support": {},
+            "score_receipt_sha256": "94bd08e0a74b4ba57f8a395833c1ead6173dc9970797367c874b0af68788d627"
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster_coords",
+          "raster"
+        ],
+        "pair_npz_keys": [
+          "reference_cell_ids",
+          "moving_cell_ids",
+          "reference_labels",
+          "moving_labels",
+          "reference_coords",
+          "moving_coords",
+          "reference_raster_coords",
+          "moving_raster_coords",
+          "reference_raster",
+          "moving_raster"
+        ],
+        "raster_integer_storage": "int16 lossless; restore int32 for original scoring raster hashes",
+        "CLC_coordinates": "Native coords unchanged; raster_coords are only for rebuilding the categorical raster",
+        "no_expression_matrix": true
+      },
+      {
+        "dataset": "MHPR",
+        "asset": {
+          "file": "rev1-NCS-categorical-MHPR-20261118-c4be1de664fd.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-NCS-categorical-MHPR-20261118-c4be1de664fd.tar.gz",
+          "sha256": "e611574658048d6c3bd2c1fd01813598304469927d1423f67f0b175b58b5a18d",
+          "bytes": 9030886
+        },
+        "archive_prefix": "",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner/coordinates_labels_rasters.npz",
+            "sha256": "4dc28bd2cf19b945366249b678c0988aeb17f759eb3699f4954f155933ce8577",
+            "cells": 28317,
+            "layers": 5,
+            "pairs": 4,
+            "coordinate_array_sha256": "14090bc0f63846f5f8c01fa60d71cae20398f3de8d6281c62a384afbf73bec9a",
+            "labels_sha256": "1053c8eaf343d606ce2b709eee6b3fef8c616df05f7c2537e3e12ada16680f9f",
+            "expected_pair_scores_file": "OmniAligner/pairs.csv",
+            "expected_pair_scores_sha256": "e9365ab907f2bf5b3a6bff20ce8083e12bdbbe400f3020474f25f92982348a5a",
+            "evaluation_support": {},
+            "score_receipt_sha256": "fb107d015858cd638a623ebe3d34f25ba92d2fb270a7542291aa656397ab4022"
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE/coordinates_labels_rasters.npz",
+            "sha256": "354114e6f13a92ce46be2d7793149af92a40045176951698d95e4ae8d414f593",
+            "cells": 28317,
+            "layers": 5,
+            "pairs": 4,
+            "coordinate_array_sha256": "02ae4ba906b1ec358d2f10fe94e04877d6f87c475a0111d99410c276645ab6b8",
+            "labels_sha256": "1053c8eaf343d606ce2b709eee6b3fef8c616df05f7c2537e3e12ada16680f9f",
+            "expected_pair_scores_file": "PASTE/pairs.csv",
+            "expected_pair_scores_sha256": "e529e4a40f1fa65204f1c1155303fe70b438cd4eda3a1ce491aba66a3acdb906",
+            "evaluation_support": {},
+            "score_receipt_sha256": "7a657df8e4ef959d4d62f8963214d2d822b91910580c4abe38e97040f353b089"
+          },
+          {
+            "method": "PASTE2",
+            "kind": "global",
+            "file": "PASTE2/coordinates_labels_rasters.npz",
+            "sha256": "ce55d734375c28636776536a861ed245efcbd80f9ae8c707a5444a7b79e3d3a7",
+            "cells": 28317,
+            "layers": 5,
+            "pairs": 4,
+            "coordinate_array_sha256": "9cd55d11979653fe8da946fb0b0015c8f3cac4d0a1f222da56ca27fc6685e814",
+            "labels_sha256": "1053c8eaf343d606ce2b709eee6b3fef8c616df05f7c2537e3e12ada16680f9f",
+            "expected_pair_scores_file": "PASTE2/pairs.csv",
+            "expected_pair_scores_sha256": "1f4ccce5995eabd0245794dbcd92b10a7e183e3b7dcefd7f3e27323b7654ec51",
+            "evaluation_support": {},
+            "score_receipt_sha256": "90294d25e1f308c5b8fd0ebd7ee18401ccf563b9a0a555dc680af53c4d734a06"
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo/coordinates_labels_rasters.npz",
+            "sha256": "2e47906d1c27060d0d7c3aabf4f2cc14f6bdc771460e2e4f625eb939c4b85fef",
+            "cells": 28317,
+            "layers": 5,
+            "pairs": 4,
+            "coordinate_array_sha256": "3829b816352570395a7ae9c61132597003bc05102c0a0a5d40dcd18d9ab04875",
+            "labels_sha256": "1053c8eaf343d606ce2b709eee6b3fef8c616df05f7c2537e3e12ada16680f9f",
+            "expected_pair_scores_file": "Spateo/pairs.csv",
+            "expected_pair_scores_sha256": "433f31402ac99fd4fec1e89e0803adf470918ace60e5c6c7c8a6c56dc22e53fc",
+            "evaluation_support": {},
+            "score_receipt_sha256": "472af51c93b42e35434e643468f72b39e7e503a296c99fc8d87c40bee05c7b59"
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL/coordinates_labels_rasters.npz",
+            "sha256": "b186e96a9a32e7a1197514494a9b14da93ff080661aeeba6dc7d0046bd084300",
+            "cells": 28317,
+            "layers": 5,
+            "pairs": 4,
+            "coordinate_array_sha256": "ec13ef725d61284c2cfb642b05e4a2bff7421e19328705f31dc9ca869423577f",
+            "labels_sha256": "1053c8eaf343d606ce2b709eee6b3fef8c616df05f7c2537e3e12ada16680f9f",
+            "expected_pair_scores_file": "SPACEL/pairs.csv",
+            "expected_pair_scores_sha256": "e35deb8bbd8574f2cee1a5be94af263ff5ef5c6a057848bcf62b17e612e59958",
+            "evaluation_support": {},
+            "score_receipt_sha256": "06eddd5e57a436221ad418bd07633cd5b5291111ddceaba836628f38ac8599b6"
+          },
+          {
+            "method": "STalign",
+            "kind": "global",
+            "file": "STalign/coordinates_labels_rasters.npz",
+            "sha256": "fb4f153e57fe0c9de4b9a5e8436015bf1a281ee63ffb3b555db94688b0f1974c",
+            "cells": 28317,
+            "layers": 5,
+            "pairs": 4,
+            "coordinate_array_sha256": "a3cfd2fc3d099380ef6d581e66777c4c8b12d407b1650ebe4657ed0faa15bcfe",
+            "labels_sha256": "1053c8eaf343d606ce2b709eee6b3fef8c616df05f7c2537e3e12ada16680f9f",
+            "expected_pair_scores_file": "STalign/pairs.csv",
+            "expected_pair_scores_sha256": "3d469b38e98281457fd0a642b64fcd1fff06ef40f21e56774dafcf7bc8ac57fe",
+            "evaluation_support": {},
+            "score_receipt_sha256": "f0e7405b369fda3cc09be382ba4e5a339f5c12d29fe71411b5f005d5d9c32498"
+          },
+          {
+            "method": "SANTO",
+            "kind": "global",
+            "file": "SANTO/coordinates_labels_rasters.npz",
+            "sha256": "cb2968a9d116ee0447b551caaad2c34c96559618fb788a437ca7128dceb00526",
+            "cells": 28317,
+            "layers": 5,
+            "pairs": 4,
+            "coordinate_array_sha256": "d3197a01573d07f6358b0650ed4cc0e93be2839b2d34683e8f2bb695dc247f26",
+            "labels_sha256": "1053c8eaf343d606ce2b709eee6b3fef8c616df05f7c2537e3e12ada16680f9f",
+            "expected_pair_scores_file": "SANTO/pairs.csv",
+            "expected_pair_scores_sha256": "e648924b5b936f6ccb52261cd018c0c10858f0489f53eb2ce155ec01e0108b80",
+            "evaluation_support": {},
+            "score_receipt_sha256": "69069345c9257b9623dbb22383b768022d83405beae951450734d7b25bd224f3"
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT/coordinates_labels_rasters.npz",
+            "sha256": "660ab85daa6593e632c60efb154dac16ee70cd4871230f69ef73ff9d953047fb",
+            "cells": 28317,
+            "layers": 5,
+            "pairs": 4,
+            "coordinate_array_sha256": "504687300409e82901fbca62f0e955e03db0dfbca9765d2dac776abe080c0eac",
+            "labels_sha256": "1053c8eaf343d606ce2b709eee6b3fef8c616df05f7c2537e3e12ada16680f9f",
+            "expected_pair_scores_file": "SLAT/pairs.csv",
+            "expected_pair_scores_sha256": "aa547eb7c9afb4b50c8243ebe58a8318fae819dea32ff7d99f9088503459a19e",
+            "evaluation_support": {},
+            "score_receipt_sha256": "8fc75e8fccaa2b2ccca07eb71c289995d8a610702ef383bcf2e7dfd37c480914"
+          },
+          {
+            "method": "MOSAICField",
+            "kind": "pairs",
+            "pairs": [
+              {
+                "pair_index": 0,
+                "file": "MOSAICField/pair_0000.npz",
+                "sha256": "010964e8ca12acd8920966cf6b283371a9e3b7a350f1476139dfb94e27c6bb2b",
+                "expected": {
+                  "ARI": 0.8864941938354924,
+                  "NMI": 0.7166643395315961,
+                  "CLC": 0.5951086956521738
+                },
+                "reference_raster_sha256": "5782e26176dc579e81b0bdbb7b094eaf258b1412f22b0dc38b6b444b76604a08",
+                "moving_raster_sha256": "a0743a1f9dbc95d15c682a706290912512aeedb728f16f453116728064f0b6a7"
+              },
+              {
+                "pair_index": 1,
+                "file": "MOSAICField/pair_0001.npz",
+                "sha256": "472cf2f8ea846a01eac4561d53011ba563922faaf7f07ad6b1746e5bf989e89c",
+                "expected": {
+                  "ARI": 0.7009454274658673,
+                  "NMI": 0.4955871062610606,
+                  "CLC": 0.2560671288402079
+                },
+                "reference_raster_sha256": "878361a3e4da8072a72030dae84cf0699b005770648d90c508744b18b36d5dca",
+                "moving_raster_sha256": "0dc77364ae77bc651e9227788ccd88824412e43a652198312ce14971c7c921cc"
+              },
+              {
+                "pair_index": 2,
+                "file": "MOSAICField/pair_0002.npz",
+                "sha256": "238348cf9a63fa6de32401493c07d7c9a045ce9e84b250bfdbd313a4aee72104",
+                "expected": {
+                  "ARI": 0.6881839539321134,
+                  "NMI": 0.4453054843077544,
+                  "CLC": 0.3835096324994568
+                },
+                "reference_raster_sha256": "3dbe5fefb4c9a6555aefc262a5f305e0a00f160ae5948500e21d3625365fd6b9",
+                "moving_raster_sha256": "7be19a14e6d4339891b21899c331d801168bf7e981cddd10dcd286230939fbb5"
+              },
+              {
+                "pair_index": 3,
+                "file": "MOSAICField/pair_0003.npz",
+                "sha256": "089364963f100b4a5dfcb528a8cef5fd9bcc9ee929f49c362f6b33c2744c52cf",
+                "expected": {
+                  "ARI": 0.8142357299291866,
+                  "NMI": 0.5685398725716552,
+                  "CLC": 0.367399840874676
+                },
+                "reference_raster_sha256": "5b2e99df2b110eee038c08c65c770dc56bfe659a86252be746ee14003f95bc68",
+                "moving_raster_sha256": "6e90ec2169599ff7ef4b0fbb6f02752888a299642d977f576830061a56e752ec"
+              }
+            ],
+            "expected_pair_scores_file": "MOSAICField/pairs.csv",
+            "expected_pair_scores_sha256": "84ca72667142f3668b64a994bab63d25ae6c33136ed6cbd359eb2cc3d7727a51",
+            "evaluation_support": {},
+            "score_receipt_sha256": "e5cea1bd25b9c56a60cef4443c97d7ae573afee5e05c4f90289118caeb9f5379"
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster_coords",
+          "raster"
+        ],
+        "pair_npz_keys": [
+          "reference_cell_ids",
+          "moving_cell_ids",
+          "reference_labels",
+          "moving_labels",
+          "reference_coords",
+          "moving_coords",
+          "reference_raster_coords",
+          "moving_raster_coords",
+          "reference_raster",
+          "moving_raster"
+        ],
+        "raster_integer_storage": "int16 lossless; restore int32 for original scoring raster hashes",
+        "CLC_coordinates": "Native coords unchanged; raster_coords are only for rebuilding the categorical raster",
+        "no_expression_matrix": true
+      },
+      {
+        "dataset": "MMPC",
+        "asset": {
+          "file": "rev1-NCS-categorical-MMPC-20261118-bed2275f0934.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-NCS-categorical-MMPC-20261118-bed2275f0934.tar.gz",
+          "sha256": "491f30dd74f6355b0191d0dbc52d984d33953369a5d1f38587fdb428641078a5",
+          "bytes": 1704685
+        },
+        "archive_prefix": "",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner/coordinates_labels_rasters.npz",
+            "sha256": "92ce0cfa5c78e547ead149314a613fa5b271b0608417d7119ba766580700c1fc",
+            "cells": 3190,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "8d80bf8c8d1ad7e771cc2e87275127a16bd43590231fcae46988163351422dbc",
+            "labels_sha256": "4ad7df2ef566e1e21e2cc0e5e20de34e7e1ad6a6afafd217ebdcbc2bb65fdea8",
+            "expected_pair_scores_file": "OmniAligner/pairs.csv",
+            "expected_pair_scores_sha256": "466a3795932bb7a2f96e44ba1d96d95fe459acb380ca75aa68343a3087bde698",
+            "evaluation_support": {},
+            "score_receipt_sha256": "dd7772dbed7822f3e8673e4e4b67a57549bff6bcfc2e1d8dea2d121a9e4decf7"
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE/coordinates_labels_rasters.npz",
+            "sha256": "49fe274173ac33914a578ca4ec933838e4d85cb1fe3f1104a186f1e76a187e4c",
+            "cells": 3190,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "280fd0892e76e15da47c2d5dcd478ae028d69fe0ef09b3a052ce4e076dd21a38",
+            "labels_sha256": "4ad7df2ef566e1e21e2cc0e5e20de34e7e1ad6a6afafd217ebdcbc2bb65fdea8",
+            "expected_pair_scores_file": "PASTE/pairs.csv",
+            "expected_pair_scores_sha256": "bcb375da01bc36aefe51b4210afdf1b2801d5c89db96d83f184fa9ea224d268e",
+            "evaluation_support": {},
+            "score_receipt_sha256": "7a51d48ff7c8983eea4bea66d28210cc29d70fae20873cca2ea70892728b6ab1"
+          },
+          {
+            "method": "PASTE2",
+            "kind": "unavailable",
+            "status": "native_failed",
+            "reason": "Native GLM-PCA diverged before any pair completed; no saved aligned pair exists. Native algorithm and budget were not changed."
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo/coordinates_labels_rasters.npz",
+            "sha256": "38067f14f7bdf6a77009c853148e405f88994ba2cc23fc56a9ec0f77bd459f65",
+            "cells": 3190,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "8b00cd53f605ef96cadd3561e554bf7e35b55741c0b31db6802132bf1e4250dc",
+            "labels_sha256": "4ad7df2ef566e1e21e2cc0e5e20de34e7e1ad6a6afafd217ebdcbc2bb65fdea8",
+            "expected_pair_scores_file": "Spateo/pairs.csv",
+            "expected_pair_scores_sha256": "8549cc449bd684609bfd69f06ecda15cf7822a018fbf1c288e2c462f2b51db10",
+            "evaluation_support": {},
+            "score_receipt_sha256": "823e78b2ae0a5c8d587382c8bd9e39936fc7dbb4d36d55694e32026f2b5dd781"
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL/coordinates_labels_rasters.npz",
+            "sha256": "bfedd6905c5b511b7eff8511a14e2394a6f55dce4f0537fa360607cd28e6bc1c",
+            "cells": 3190,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "305cbfce39f18f34c297cc2c75ef3dcd4c0c6bfe6b30dc7290dffb7afefe8f71",
+            "labels_sha256": "4ad7df2ef566e1e21e2cc0e5e20de34e7e1ad6a6afafd217ebdcbc2bb65fdea8",
+            "expected_pair_scores_file": "SPACEL/pairs.csv",
+            "expected_pair_scores_sha256": "c7cc7c15b05a19ca06fb5e79604f8b7b61c25594154bfabae219ac930a168eb9",
+            "evaluation_support": {},
+            "score_receipt_sha256": "758895948738076db41eacc69566a8fb925a86a83115f8a8a0ababf97fbbadda"
+          },
+          {
+            "method": "STalign",
+            "kind": "global",
+            "file": "STalign/coordinates_labels_rasters.npz",
+            "sha256": "84eba3f1e22319b1916d638e37c526b83cc1227dc37be100aa221ccc6a58bcd8",
+            "cells": 3190,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "afebc30984b2ea69e3bf234ac6c57f73ac73914e785a372053010e28270cbb55",
+            "labels_sha256": "4ad7df2ef566e1e21e2cc0e5e20de34e7e1ad6a6afafd217ebdcbc2bb65fdea8",
+            "expected_pair_scores_file": "STalign/pairs.csv",
+            "expected_pair_scores_sha256": "db4eded54b4012e28ac497535e1e7ec64173d7348ef80199bbd55f42842bcd60",
+            "evaluation_support": {},
+            "score_receipt_sha256": "cb1afcfc353cada463a1fc77c51fea5eede923d3209c2e775f3bb9fc134868e9"
+          },
+          {
+            "method": "SANTO",
+            "kind": "global",
+            "file": "SANTO/coordinates_labels_rasters.npz",
+            "sha256": "56648721720b86e2968b240ad86276cb73a99fd17daa48db7920dd6f077bcf5b",
+            "cells": 3190,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "4fafcee6a44931a0d8bead19f8aff74134affe2a1b489dbe36f0302ac6677ad5",
+            "labels_sha256": "4ad7df2ef566e1e21e2cc0e5e20de34e7e1ad6a6afafd217ebdcbc2bb65fdea8",
+            "expected_pair_scores_file": "SANTO/pairs.csv",
+            "expected_pair_scores_sha256": "341fec9153f3277712915e8bac7d77c6be3d6c561a1246f3022ae6d684112e0d",
+            "evaluation_support": {},
+            "score_receipt_sha256": "d69e187838a573d861deff8722984147a93146082822cf477716881e34e3d624"
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT/coordinates_labels_rasters.npz",
+            "sha256": "b21a9e2ec666fade74e967e12ddc0f2eb5eefd1e28d12e3bfb0c47b343bad2be",
+            "cells": 3190,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "2d16868d7f25653baa7b758be4aa305fdeb5b9951b36924c46388151440d0ff8",
+            "labels_sha256": "4ad7df2ef566e1e21e2cc0e5e20de34e7e1ad6a6afafd217ebdcbc2bb65fdea8",
+            "expected_pair_scores_file": "SLAT/pairs.csv",
+            "expected_pair_scores_sha256": "59360e02c5398a6db7fa448808d92d054313df8bce8aa24c0cd4a8e65d15b4b4",
+            "evaluation_support": {},
+            "score_receipt_sha256": "46d9d0484c8452d8be74510b284d6cc8f5cb198dfe9f7f78ce9b69d10a19b033"
+          },
+          {
+            "method": "MOSAICField",
+            "kind": "pairs",
+            "pairs": [
+              {
+                "pair_index": 0,
+                "file": "MOSAICField/pair_0000.npz",
+                "sha256": "2109ccbb2c217151cf5d879accbcd1de08226bc6e05de487cb1edd907ccaec15",
+                "expected": {
+                  "ARI": 0.0687473890438428,
+                  "NMI": 0.0244131074965715,
+                  "CLC": 0.5542274693847621
+                },
+                "reference_raster_sha256": "b198795397be6edcdd07117d3cb6353d6a30445d48330c97575d566dbb9963f0",
+                "moving_raster_sha256": "c9929c0f86911eb6724aae0e54625c2f89668f75529d25e8e4e4833a53d9aab0"
+              },
+              {
+                "pair_index": 1,
+                "file": "MOSAICField/pair_0001.npz",
+                "sha256": "eee496971005087f91a557ac635221133b35d36ba835a8125c423ae903ea56a8",
+                "expected": {
+                  "ARI": 0.1465426347027368,
+                  "NMI": 0.0515092876542086,
+                  "CLC": 0.6640733435605229
+                },
+                "reference_raster_sha256": "9fc5f702f4c586cfe77a55550cfa517c4c0577df0aa86f72de876d580e2ad2e1",
+                "moving_raster_sha256": "8b2cecdbe485d143238fb3abf98353685ab533b517e651a8b15ed1b4df3fefd7"
+              }
+            ],
+            "expected_pair_scores_file": "MOSAICField/pairs.csv",
+            "expected_pair_scores_sha256": "f5c5ed73168ac5eb68fc57a0825d9f88576d4abf0799450b4b62ca343b5f05ad",
+            "evaluation_support": {},
+            "score_receipt_sha256": "0870ce8ca5cdd992ef1af6fa92eae06862036f791eb9b42d015145fb211d2394"
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster_coords",
+          "raster"
+        ],
+        "pair_npz_keys": [
+          "reference_cell_ids",
+          "moving_cell_ids",
+          "reference_labels",
+          "moving_labels",
+          "reference_coords",
+          "moving_coords",
+          "reference_raster_coords",
+          "moving_raster_coords",
+          "reference_raster",
+          "moving_raster"
+        ],
+        "raster_integer_storage": "int16 lossless; restore int32 for original scoring raster hashes",
+        "CLC_coordinates": "Native coords unchanged; raster_coords are only for rebuilding the categorical raster",
+        "no_expression_matrix": true
+      },
+      {
+        "dataset": "MPC",
+        "asset": {
+          "file": "rev1-NCS-categorical-MPC-20261118-d31287e8a831.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-NCS-categorical-MPC-20261118-d31287e8a831.tar.gz",
+          "sha256": "1c3075df178e23d70b04bd599d4242e1fbdd19c200124b59eb10fc079256586a",
+          "bytes": 2543644
+        },
+        "archive_prefix": "",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner/coordinates_labels_rasters.npz",
+            "sha256": "9db424c322230d99485f11bea31dd75274a53acfccc00eee5edbfc80fffab904",
+            "cells": 5250,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "9d755e6d405cec11b34aa8784a7869b9f0cb3f41369862c42478e4b2f07ce434",
+            "labels_sha256": "034704bcc2cf433246cfde45b757dc80161edd1821fd858acb74508b7336d677",
+            "expected_pair_scores_file": "OmniAligner/pairs.csv",
+            "expected_pair_scores_sha256": "476ffb57dbe2dd2c92200220fae726ae24209ced181a9307c10005994ea63503",
+            "evaluation_support": {},
+            "score_receipt_sha256": "a24689cf62d462a5813baf0b936df12aadaa6949279154cff610a72a5e9e4d15"
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE/coordinates_labels_rasters.npz",
+            "sha256": "64f0111d3a74a779ce26b7a48d0302597c698515cf7067ee855b5f2d6fcc22a5",
+            "cells": 5250,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "c30cc991a2ae2a5192cee465f6462f68cc35111162defab1bb89852bdf20bbd7",
+            "labels_sha256": "034704bcc2cf433246cfde45b757dc80161edd1821fd858acb74508b7336d677",
+            "expected_pair_scores_file": "PASTE/pairs.csv",
+            "expected_pair_scores_sha256": "cdd47f8a99759c3466e73f2d548883846a8f48080bd25d88c5dd50668434ffa4",
+            "evaluation_support": {},
+            "score_receipt_sha256": "c391577518258b976079fdf183a9a163c0f9927c5e94870bf2fa8307a3eceab1"
+          },
+          {
+            "method": "PASTE2",
+            "kind": "global",
+            "file": "PASTE2/coordinates_labels_rasters.npz",
+            "sha256": "a92a6c56a8477aadb2bd7fd6df4dafc533252ab8ac9b94367d33bddb70515420",
+            "cells": 5250,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "4ae070ae86e2a238cd433584f8f556dade6dc48b137c6acdcaf645a58d93e5f6",
+            "labels_sha256": "034704bcc2cf433246cfde45b757dc80161edd1821fd858acb74508b7336d677",
+            "expected_pair_scores_file": "PASTE2/pairs.csv",
+            "expected_pair_scores_sha256": "11a4f7102abee14bf8112f93e6a9c835d6cf55a46bccb26633ac1752d3c6487c",
+            "evaluation_support": {},
+            "score_receipt_sha256": "4f1a8f52054ef529ed383ecf11306511be7416f780aa0557a2a959ed6e82c42b"
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo/coordinates_labels_rasters.npz",
+            "sha256": "725b20787f7be9fa3c0d74c1bb17f4e5348dc41be058c532906023fb591f5096",
+            "cells": 5250,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "386e28707fa92244c16fd7bf01d9edd2c557cfa1dee7d05321a7ed28dfd46375",
+            "labels_sha256": "034704bcc2cf433246cfde45b757dc80161edd1821fd858acb74508b7336d677",
+            "expected_pair_scores_file": "Spateo/pairs.csv",
+            "expected_pair_scores_sha256": "40ad62fa12ce135f8dda609b2ff5e0777cecc9af39e66392c3994232b8911318",
+            "evaluation_support": {},
+            "score_receipt_sha256": "69c027b8e715903547daef275924978aced1e00e79e9b7055c163beebd3fd22b"
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL/coordinates_labels_rasters.npz",
+            "sha256": "17f2d3a3321f5cc93b3bd6f7af9c301330d953a172266087dc3d9300187c4643",
+            "cells": 5250,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "b1ab8147b2c1ef53e2ccaebbc9f26bab533c8874355a013a01ca7300537d15a2",
+            "labels_sha256": "034704bcc2cf433246cfde45b757dc80161edd1821fd858acb74508b7336d677",
+            "expected_pair_scores_file": "SPACEL/pairs.csv",
+            "expected_pair_scores_sha256": "b6a848bac1d707a017bcba7084f298e2eacb0ffc90d3f890b83378685c00ccc9",
+            "evaluation_support": {},
+            "score_receipt_sha256": "587c77a1f81fa122cd886b10a9bb27dfc524a023e259a2161c0120b0d19e36b2"
+          },
+          {
+            "method": "STalign",
+            "kind": "global",
+            "file": "STalign/coordinates_labels_rasters.npz",
+            "sha256": "f15b92ba55f69a5e86d7923454da45fe08dd8c6f789e61f9cca7c42dd32d2f25",
+            "cells": 5250,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "2a0e7ec1fd50afcbfde70b3c9cbe8e868e3d584aec2e36bd45d2568848460618",
+            "labels_sha256": "034704bcc2cf433246cfde45b757dc80161edd1821fd858acb74508b7336d677",
+            "expected_pair_scores_file": "STalign/pairs.csv",
+            "expected_pair_scores_sha256": "f599df12eeb069dbffd477f1468ee0fb9f6665e804eb87e17e0dc50c3ea22dd7",
+            "evaluation_support": {},
+            "score_receipt_sha256": "f56fe05c56cf6228d3717156051fe459a95c1b657d05187e1c2365e2f5a5de95"
+          },
+          {
+            "method": "SANTO",
+            "kind": "global",
+            "file": "SANTO/coordinates_labels_rasters.npz",
+            "sha256": "2d1784a2eeeb15763c6dc9be55463ea837d8fc7c1e0c52ab3ef4009aba9e364d",
+            "cells": 5250,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "471add94adffe26d9e5b0618685881f76e7b914650f66734111e621f94f1db64",
+            "labels_sha256": "034704bcc2cf433246cfde45b757dc80161edd1821fd858acb74508b7336d677",
+            "expected_pair_scores_file": "SANTO/pairs.csv",
+            "expected_pair_scores_sha256": "f49336d290af6744a2e8ea83092978dc690bf57027feda48a01bebbf83f7f57c",
+            "evaluation_support": {},
+            "score_receipt_sha256": "79a9cff11fc73c83ed7b9937c1e273f3799754adab93358a35b39bc7133808ca"
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT/coordinates_labels_rasters.npz",
+            "sha256": "6a97b36e41b2987214600c5571060652ab5c7a1f4512d92b216dc26afffd4797",
+            "cells": 5250,
+            "layers": 3,
+            "pairs": 2,
+            "coordinate_array_sha256": "b7cf25dcc4ddb23bdb4e7be9ced5df6e68769e42d5e329e662db5865eb4a7902",
+            "labels_sha256": "034704bcc2cf433246cfde45b757dc80161edd1821fd858acb74508b7336d677",
+            "expected_pair_scores_file": "SLAT/pairs.csv",
+            "expected_pair_scores_sha256": "96fe35b914db3cefb22bed168ab97dd3c673a8ca406054d0dee59af7bb67f999",
+            "evaluation_support": {},
+            "score_receipt_sha256": "de42a95f8877458f67a3b23d5c0fa957373d9893656be27cb0fb6b25e70393f6"
+          },
+          {
+            "method": "MOSAICField",
+            "kind": "pairs",
+            "pairs": [
+              {
+                "pair_index": 0,
+                "file": "MOSAICField/pair_0000.npz",
+                "sha256": "1acc4a2bb5b46aeb629fc825fd78020145f64db9dc5297c11fd754d252e9948d",
+                "expected": {
+                  "ARI": 0.1735064782757134,
+                  "NMI": 0.102617094045331,
+                  "CLC": 0.2433233979135619
+                },
+                "reference_raster_sha256": "3f9546391be4e24a4511e59acff2390163dab8a5081ad8bf2f2fb5e73d20fa21",
+                "moving_raster_sha256": "278aff7535d09172c443a61520f23cb77c60427939a5dff15619df9332a313b0"
+              },
+              {
+                "pair_index": 1,
+                "file": "MOSAICField/pair_0001.npz",
+                "sha256": "3808fb7c3af52c43fe9b98bbbc6be1beb6e2e4eb2b25807a136a03ac4f988405",
+                "expected": {
+                  "ARI": 0.114129046025373,
+                  "NMI": 0.0593046878557109,
+                  "CLC": 0.6084507941915427
+                },
+                "reference_raster_sha256": "5e32186514f402db2fa118663deb70c1a678d5af7f58107bff758897ea01e079",
+                "moving_raster_sha256": "1f646691cbd8924b381a263fa339d39112870e3392525a7194499b207b522413"
+              }
+            ],
+            "expected_pair_scores_file": "MOSAICField/pairs.csv",
+            "expected_pair_scores_sha256": "f5b36a6cd30ff3bcca30e52afa98d182c6375766299b65a4bef98bddbcb98a31",
+            "evaluation_support": {},
+            "score_receipt_sha256": "a24849ed4d06505e68190aee2408059cf4677fcc3669a7aec246be66ff7c4445"
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster_coords",
+          "raster"
+        ],
+        "pair_npz_keys": [
+          "reference_cell_ids",
+          "moving_cell_ids",
+          "reference_labels",
+          "moving_labels",
+          "reference_coords",
+          "moving_coords",
+          "reference_raster_coords",
+          "moving_raster_coords",
+          "reference_raster",
+          "moving_raster"
+        ],
+        "raster_integer_storage": "int16 lossless; restore int32 for original scoring raster hashes",
+        "CLC_coordinates": "Native coords unchanged; raster_coords are only for rebuilding the categorical raster",
+        "no_expression_matrix": true
+      },
+      {
+        "dataset": "E14_16",
+        "asset": {
+          "file": "rev1-NCS-categorical-E14_16-20261118-a749a6984d82.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-NCS-categorical-E14_16-20261118-a749a6984d82.tar.gz",
+          "sha256": "35c0d3116a5cf0b27effd7e808b99a661b72f65643ab6dee66fd03ffa5a9c0dd",
+          "bytes": 9917161
+        },
+        "archive_prefix": "",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner/coordinates_labels_rasters.npz",
+            "sha256": "02cea398e8df9c870c9b9fc7cd1ee01d227c1a3975299ed1fe465c4f62cb5543",
+            "cells": 15150,
+            "layers": 16,
+            "pairs": 15,
+            "coordinate_array_sha256": "28c73c69259f47dc0519f338a710778e6e7db9271cadbddd4f0ddefed55f9f3c",
+            "labels_sha256": "515d6abc6f109c103d94813ed1d1c22a835cbf1936c598aa7a4c0ffa6efa5b81",
+            "expected_pair_scores_file": "OmniAligner/pairs.csv",
+            "expected_pair_scores_sha256": "b87daf38710bafba81e3e8cd1bdd3b74071ba62ad7e946b6657ece6d98b1d152",
+            "evaluation_support": {},
+            "score_receipt_sha256": "f1e615ae37a3762d1b26ac9e36748f7b761043178a4ac577d953fb059fc28d94"
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE/coordinates_labels_rasters.npz",
+            "sha256": "73603243c117954ab60b920cc6842468f7738c0ac5eb89a690f6769792c204a5",
+            "cells": 15150,
+            "layers": 16,
+            "pairs": 15,
+            "coordinate_array_sha256": "910405b92ea77c92cc9ff3f321f64bf2ee5d69a21a43cebdd0a3743134d4da42",
+            "labels_sha256": "515d6abc6f109c103d94813ed1d1c22a835cbf1936c598aa7a4c0ffa6efa5b81",
+            "expected_pair_scores_file": "PASTE/pairs.csv",
+            "expected_pair_scores_sha256": "642fb0970e2d848734f6cb75d5ffe12c7772b98a221b0e56b6d13ff8a791b5f4",
+            "evaluation_support": {},
+            "score_receipt_sha256": "f40f0e71dfa11fc736ff5bb0a803670a5487b122f20cdd2924cbf24d35b5145a"
+          },
+          {
+            "method": "PASTE2",
+            "kind": "global",
+            "file": "PASTE2/coordinates_labels_rasters.npz",
+            "sha256": "541877c86895bd2c7d799a8d5d3dfb5686dc3113fe95bcd9f07b923a37099ad9",
+            "cells": 15150,
+            "layers": 16,
+            "pairs": 15,
+            "coordinate_array_sha256": "134fea74329330395d0d1402bb0646119661a855181fea973b0187da7cba018a",
+            "labels_sha256": "515d6abc6f109c103d94813ed1d1c22a835cbf1936c598aa7a4c0ffa6efa5b81",
+            "expected_pair_scores_file": "PASTE2/pairs.csv",
+            "expected_pair_scores_sha256": "4848901fee6f19a1dd51c5be62bda49fbb3bd01a4ca822632481fc253aeb2a8a",
+            "evaluation_support": {},
+            "score_receipt_sha256": "f4f13f97bec50a4eda9bd0efa6715845fcab0d4f26b61450d7c345245d01e28f"
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo/coordinates_labels_rasters.npz",
+            "sha256": "b957cb16ad2c4d29c941b0a8b261c0abfce579799539fc712f21ab3a4ff6b2af",
+            "cells": 15150,
+            "layers": 16,
+            "pairs": 15,
+            "coordinate_array_sha256": "361be3d4aa945f4a2b93d233e6fa6e09333b487f93e9d58769e6bf7f42c112ad",
+            "labels_sha256": "515d6abc6f109c103d94813ed1d1c22a835cbf1936c598aa7a4c0ffa6efa5b81",
+            "expected_pair_scores_file": "Spateo/pairs.csv",
+            "expected_pair_scores_sha256": "e19d83880c59f38f78df4ca4409998fd0aa987b016798abb8b756a598ab8b863",
+            "evaluation_support": {},
+            "score_receipt_sha256": "997ab707b29ceb5984e538324f7e41f06e3596d75e3f4ee06db0982cafc958fe"
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL/coordinates_labels_rasters.npz",
+            "sha256": "ff46aa7665dac1cb83d7a29b64df152f07cc7e04828eb26834935a918320aef4",
+            "cells": 15150,
+            "layers": 16,
+            "pairs": 15,
+            "coordinate_array_sha256": "38237c2ab40a7dfd89e3c5392fae171c35520b725402cb32f7517a417e4e8053",
+            "labels_sha256": "515d6abc6f109c103d94813ed1d1c22a835cbf1936c598aa7a4c0ffa6efa5b81",
+            "expected_pair_scores_file": "SPACEL/pairs.csv",
+            "expected_pair_scores_sha256": "baa621e4cf4e13e295f1aff97f5022cb18764674e6041ac8ff7f101c061d6e08",
+            "evaluation_support": {},
+            "score_receipt_sha256": "b86044509b8ae6956ebba3e9ccdee8f5615a30a18ddb5e7d42996bd185a74cbf"
+          },
+          {
+            "method": "STalign",
+            "kind": "pairs",
+            "pairs": [
+              {
+                "pair_index": 0,
+                "file": "STalign/pair_0000.npz",
+                "sha256": "3c5ede6ddf051e7b42a5b8918f517d22c3a03bea4ff8a581960e82bb2d176ede",
+                "expected": {
+                  "ARI": 0.2565306214469013,
+                  "NMI": 0.0910951529414025,
+                  "CLC": 0.436030428769018
+                },
+                "reference_raster_sha256": "70843863fc6400c7fefaa15db3290a749bb65ea214e8817329b8f833826bd033",
+                "moving_raster_sha256": "a9e1d2faac4cd943348b093d1d6c4aff3a6a6977db5a6ff6bd54cc4845e46168"
+              },
+              {
+                "pair_index": 1,
+                "file": "STalign/pair_0001.npz",
+                "sha256": "9a1a6ee30961192e485e2ebacdd6ba018a86c7687c8e8e5ba54b19fa40f10b0c",
+                "expected": {
+                  "ARI": 0.2563992055929669,
+                  "NMI": 0.0950262677194465,
+                  "CLC": 0.4682539682539682
+                },
+                "reference_raster_sha256": "a9e1d2faac4cd943348b093d1d6c4aff3a6a6977db5a6ff6bd54cc4845e46168",
+                "moving_raster_sha256": "6e6d8f797a7ace47850506869fb778d19e7f710cef7adb0aa341414bc8133927"
+              },
+              {
+                "pair_index": 2,
+                "file": "STalign/pair_0002.npz",
+                "sha256": "8d3ae4f438ab306b68b5b04252306a35dbb83ce94f3f941ca84dd4a76b0bf0b0",
+                "expected": {
+                  "ARI": 0.252813836151873,
+                  "NMI": 0.1035072498737438,
+                  "CLC": 0.5234113712374582
+                },
+                "reference_raster_sha256": "6e6d8f797a7ace47850506869fb778d19e7f710cef7adb0aa341414bc8133927",
+                "moving_raster_sha256": "00183a3b6e47c5a1510cfd1e015ae0790a82c9bf586e461cfc74131b6641adc2"
+              },
+              {
+                "pair_index": 3,
+                "file": "STalign/pair_0003.npz",
+                "sha256": "f0a3a168f7a00701ddeeade4068541224be2585d7d2e9bac3c8966f70508cb9f",
+                "expected": {
+                  "ARI": 0.2288646181096872,
+                  "NMI": 0.098284520613366,
+                  "CLC": 0.6757051581736013
+                },
+                "reference_raster_sha256": "00183a3b6e47c5a1510cfd1e015ae0790a82c9bf586e461cfc74131b6641adc2",
+                "moving_raster_sha256": "78964d36175c8ea8abb2693e433392f1c6b941db0a56f1a69e093ecce92256c5"
+              },
+              {
+                "pair_index": 4,
+                "file": "STalign/pair_0004.npz",
+                "sha256": "304b4eae841e82903e21488f87ff446183be4a73f5de6140d21e41aaa26ee4d1",
+                "expected": {
+                  "ARI": 0.2354713071197325,
+                  "NMI": 0.1136107286264394,
+                  "CLC": 0.6560554612337294
+                },
+                "reference_raster_sha256": "78964d36175c8ea8abb2693e433392f1c6b941db0a56f1a69e093ecce92256c5",
+                "moving_raster_sha256": "8d3fba4c0b10e05e17e2f62ba72f17b7bcd1772692c96ba918fd52a350dce167"
+              },
+              {
+                "pair_index": 5,
+                "file": "STalign/pair_0005.npz",
+                "sha256": "1b3b0eba9987b322cd23b1cfdb694c934a01dfd3fc391f0e99040401ea87e23e",
+                "expected": {
+                  "ARI": 0.2666027984511863,
+                  "NMI": 0.1074856158545782,
+                  "CLC": 0.5308209173239847
+                },
+                "reference_raster_sha256": "8d3fba4c0b10e05e17e2f62ba72f17b7bcd1772692c96ba918fd52a350dce167",
+                "moving_raster_sha256": "ceb408ecebd47fa111ea829f57e41c357cba522473899762b465c167a028bfef"
+              },
+              {
+                "pair_index": 6,
+                "file": "STalign/pair_0006.npz",
+                "sha256": "89123748995ab3f3ee3af1f093265543f316b9d5aa635fd991eb551a699b36ec",
+                "expected": {
+                  "ARI": 0.2375696315280419,
+                  "NMI": 0.1025957672516548,
+                  "CLC": 0.4902102102102102
+                },
+                "reference_raster_sha256": "ceb408ecebd47fa111ea829f57e41c357cba522473899762b465c167a028bfef",
+                "moving_raster_sha256": "06b7e262348f907312bd566e9500b9f218583b9cc1dc01185cded7a0e9ba8e97"
+              },
+              {
+                "pair_index": 7,
+                "file": "STalign/pair_0007.npz",
+                "sha256": "ad7a0cacef6451dc5479af00dfce0a6a77546d0f6168a53dc05264f28875bf51",
+                "expected": {
+                  "ARI": 0.2617481097226413,
+                  "NMI": 0.1102101407441707,
+                  "CLC": 0.4276475958612294
+                },
+                "reference_raster_sha256": "06b7e262348f907312bd566e9500b9f218583b9cc1dc01185cded7a0e9ba8e97",
+                "moving_raster_sha256": "cfc29d36d600ee2e2bee2337cf081b5423f33086c642cbc626bec039d32518ca"
+              },
+              {
+                "pair_index": 8,
+                "file": "STalign/pair_0008.npz",
+                "sha256": "93ea0db2569d3126fbe40d09f9e29fe8b7882684095294afdb15d91ff6e13b0d",
+                "expected": {
+                  "ARI": 0.2394719097054039,
+                  "NMI": 0.0940416780878613,
+                  "CLC": 0.5307383853089163
+                },
+                "reference_raster_sha256": "cfc29d36d600ee2e2bee2337cf081b5423f33086c642cbc626bec039d32518ca",
+                "moving_raster_sha256": "b6ab0f1096e9b9f9f6e404d01e7c3c8c4ef9c26b9ab3432adc8571b351614ad5"
+              },
+              {
+                "pair_index": 9,
+                "file": "STalign/pair_0009.npz",
+                "sha256": "8d051bcb88cd05baae471df4241627e48f5cca44b675c8c5ba4466e453e36092",
+                "expected": {
+                  "ARI": 0.2285822750950492,
+                  "NMI": 0.0944073386476544,
+                  "CLC": 0.5833333333333334
+                },
+                "reference_raster_sha256": "b6ab0f1096e9b9f9f6e404d01e7c3c8c4ef9c26b9ab3432adc8571b351614ad5",
+                "moving_raster_sha256": "edf5df5458aaeb8d53bba59afcd42e5a0b730340634940fc6fc9955c8f43967d"
+              },
+              {
+                "pair_index": 10,
+                "file": "STalign/pair_0010.npz",
+                "sha256": "9bd8d77ade8a89d7b95f6654d4fb822ac81b1a799eb31a41d259b761a9915f27",
+                "expected": {
+                  "ARI": 0.2225562348782044,
+                  "NMI": 0.0928209678619193,
+                  "CLC": 0.5323456620376736
+                },
+                "reference_raster_sha256": "edf5df5458aaeb8d53bba59afcd42e5a0b730340634940fc6fc9955c8f43967d",
+                "moving_raster_sha256": "4ac8207833746b2908277ab4b5d92b24d17c94f61931a6705ff488188387ab10"
+              },
+              {
+                "pair_index": 11,
+                "file": "STalign/pair_0011.npz",
+                "sha256": "f04755ca6faa3bccc6053d79f53e007bf6407e7b9b8ee8ed10a184787c6df6ac",
+                "expected": {
+                  "ARI": 0.2089331381280824,
+                  "NMI": 0.0630634548543703,
+                  "CLC": 0.3926807760141093
+                },
+                "reference_raster_sha256": "4ac8207833746b2908277ab4b5d92b24d17c94f61931a6705ff488188387ab10",
+                "moving_raster_sha256": "c5bab1967b82980903fe5bd7b12a5bdf5a5595d7d3403af2e5e6dab2098a0aaa"
+              },
+              {
+                "pair_index": 12,
+                "file": "STalign/pair_0012.npz",
+                "sha256": "4b5722455d928d8a6804509dd0cdfb073122be02f624424fd786ad4df9ab2ad3",
+                "expected": {
+                  "ARI": 0.2326791933026134,
+                  "NMI": 0.0850843149659681,
+                  "CLC": 0.5220855057351407
+                },
+                "reference_raster_sha256": "c5bab1967b82980903fe5bd7b12a5bdf5a5595d7d3403af2e5e6dab2098a0aaa",
+                "moving_raster_sha256": "55eb00a9c9d0fcc12595f5959a77f8d51577121767335b248c309cf8ec87cd9e"
+              },
+              {
+                "pair_index": 13,
+                "file": "STalign/pair_0013.npz",
+                "sha256": "bd8b30e6a88490864cdb6553f16212a141e3466fb7adfb8062d18e925b351bb5",
+                "expected": {
+                  "ARI": 0.2218471989642054,
+                  "NMI": 0.0833749373045859,
+                  "CLC": 0.4531711674568817
+                },
+                "reference_raster_sha256": "55eb00a9c9d0fcc12595f5959a77f8d51577121767335b248c309cf8ec87cd9e",
+                "moving_raster_sha256": "2c93d6177e6f67ced4e8b716fffa972b10d44c5c7abfd54d260e7cb2e7c741e1"
+              },
+              {
+                "pair_index": 14,
+                "file": "STalign/pair_0014.npz",
+                "sha256": "dfc55ff7565726eba98df5fa3c157fba62ee7bbf98b20067badea73d95f545e3",
+                "expected": {
+                  "ARI": 0.2258367664421591,
+                  "NMI": 0.0839915109364222,
+                  "CLC": 0.4204633857601893
+                },
+                "reference_raster_sha256": "2c93d6177e6f67ced4e8b716fffa972b10d44c5c7abfd54d260e7cb2e7c741e1",
+                "moving_raster_sha256": "a814d841e7c33232556eb5cbbd03a73d5fc2d46147c02f2132f6965386da8bca"
+              }
+            ],
+            "expected_pair_scores_file": "STalign/pairs.csv",
+            "expected_pair_scores_sha256": "28370423335ca9f51fdf1db8d6200410107f1b8ae08c902873bbbefc35be6ebd",
+            "evaluation_support": {},
+            "score_receipt_sha256": "e52e9869085b5dee2efea9871d7834e911f3b8e5d8b88e4085db50b778b63667"
+          },
+          {
+            "method": "SANTO",
+            "kind": "pairs",
+            "pairs": [
+              {
+                "pair_index": 0,
+                "file": "SANTO/pair_0000.npz",
+                "sha256": "a35b3e8cd84a7b98fde05a5b807d4cfb79c6376069873405976be27977816c84",
+                "expected": {
+                  "ARI": 0.1773027613751199,
+                  "NMI": 0.0493562703521558,
+                  "CLC": 0.4327455048409405
+                },
+                "reference_raster_sha256": "70843863fc6400c7fefaa15db3290a749bb65ea214e8817329b8f833826bd033",
+                "moving_raster_sha256": "c4cda3e2f848e85834841ad586d70765868fb5fb5c919f5ec0914644b5f53dbb"
+              },
+              {
+                "pair_index": 1,
+                "file": "SANTO/pair_0001.npz",
+                "sha256": "af1f2ce17e2d4e89d8ad0a6883bdf77b679f2fbc5041e07a06c1e3b37fe788fa",
+                "expected": {
+                  "ARI": 0.1307227118553468,
+                  "NMI": 0.0386628391560218,
+                  "CLC": 0.4744990892531876
+                },
+                "reference_raster_sha256": "c4cda3e2f848e85834841ad586d70765868fb5fb5c919f5ec0914644b5f53dbb",
+                "moving_raster_sha256": "bebe53654e9ff399f54a349443c56302231c7402d90a1ec5c8e884fdfda39e8d"
+              },
+              {
+                "pair_index": 2,
+                "file": "SANTO/pair_0002.npz",
+                "sha256": "ba25df2ec18a8406f721ca15d02c7805da4c325354a248ebaff7233f9e07364d",
+                "expected": {
+                  "ARI": 0.2083856736183472,
+                  "NMI": 0.0742152974665033,
+                  "CLC": 0.3795986622073579
+                },
+                "reference_raster_sha256": "bebe53654e9ff399f54a349443c56302231c7402d90a1ec5c8e884fdfda39e8d",
+                "moving_raster_sha256": "9c6bcf216cdb85d10ec3bdefcf9acc4556d598bf8d33071811438cb125526b10"
+              },
+              {
+                "pair_index": 3,
+                "file": "SANTO/pair_0003.npz",
+                "sha256": "fb23ee27def86f7b23a45f95866a7b474ce56f0dd9cc1eb317a315a37f07b61c",
+                "expected": {
+                  "ARI": 0.2968250256231081,
+                  "NMI": 0.1607049454383402,
+                  "CLC": 0.6178899797413121
+                },
+                "reference_raster_sha256": "9c6bcf216cdb85d10ec3bdefcf9acc4556d598bf8d33071811438cb125526b10",
+                "moving_raster_sha256": "bfb79b3c9fcb63ce8862ddd5eab02e0b5f44aba3e78b3096eab3097d9c381963"
+              },
+              {
+                "pair_index": 4,
+                "file": "SANTO/pair_0004.npz",
+                "sha256": "fbad44175240ebe2759600cb72692e1f177d55da54786f54f81421a9bb814e1f",
+                "expected": {
+                  "ARI": 0.2342334644205381,
+                  "NMI": 0.0862866644795294,
+                  "CLC": 0.444468024900962
+                },
+                "reference_raster_sha256": "bfb79b3c9fcb63ce8862ddd5eab02e0b5f44aba3e78b3096eab3097d9c381963",
+                "moving_raster_sha256": "3568488d84c8eda340ff777d5323937d828493bd550463dfd46f905d29e97d24"
+              },
+              {
+                "pair_index": 5,
+                "file": "SANTO/pair_0005.npz",
+                "sha256": "1a0ee3f2fa4bd43f79d1bcacdacfc708ec32c662edc2a42bd673ded3068a2ebe",
+                "expected": {
+                  "ARI": 0.1153235864196715,
+                  "NMI": 0.0372044700968971,
+                  "CLC": 0.2885188431200701
+                },
+                "reference_raster_sha256": "3568488d84c8eda340ff777d5323937d828493bd550463dfd46f905d29e97d24",
+                "moving_raster_sha256": "ef81f824095ba6163db5a579c750e6bab7f6d9cefe24f555d511c087761c84fc"
+              },
+              {
+                "pair_index": 6,
+                "file": "SANTO/pair_0006.npz",
+                "sha256": "fbfbb5469d933a140ea13c65cc107e3d81a89ef827bcf250c94e1ef81e9720b5",
+                "expected": {
+                  "ARI": 0.1708141061585256,
+                  "NMI": 0.0691054691782202,
+                  "CLC": 0.4056056056056056
+                },
+                "reference_raster_sha256": "ef81f824095ba6163db5a579c750e6bab7f6d9cefe24f555d511c087761c84fc",
+                "moving_raster_sha256": "e17403783f166f829794fb816cf1ed019810876800aad58f8b691ce1a5291c35"
+              },
+              {
+                "pair_index": 7,
+                "file": "SANTO/pair_0007.npz",
+                "sha256": "8159f5316531b77d62c7dd6f3ef0b189a0bd47ab8d87c32e6d1314b7630025e1",
+                "expected": {
+                  "ARI": 0.190656468865194,
+                  "NMI": 0.0686311673362389,
+                  "CLC": 0.3521505376344086
+                },
+                "reference_raster_sha256": "e17403783f166f829794fb816cf1ed019810876800aad58f8b691ce1a5291c35",
+                "moving_raster_sha256": "8da7898868da838e6ab475a4e368c304816c02f527873411d4b28fd83fd94025"
+              },
+              {
+                "pair_index": 8,
+                "file": "SANTO/pair_0008.npz",
+                "sha256": "e5c6c5909de920bbc3f4e5424d2de06241c9dc31bce8adcc8750b17f923f7a46",
+                "expected": {
+                  "ARI": 0.1909437554948846,
+                  "NMI": 0.059880927514682,
+                  "CLC": 0.298980921002222
+                },
+                "reference_raster_sha256": "8da7898868da838e6ab475a4e368c304816c02f527873411d4b28fd83fd94025",
+                "moving_raster_sha256": "d6c588dfd7be46fc454005d98b15a85d074d09f69bd4d1722b9984de24d9df21"
+              },
+              {
+                "pair_index": 9,
+                "file": "SANTO/pair_0009.npz",
+                "sha256": "493e52d2ea02a0628d064c0646018c0b7a143a0f4f4eed52af5aa7e14e332ed9",
+                "expected": {
+                  "ARI": 0.1793315015747416,
+                  "NMI": 0.0658159166858728,
+                  "CLC": 0.6015911172161172
+                },
+                "reference_raster_sha256": "d6c588dfd7be46fc454005d98b15a85d074d09f69bd4d1722b9984de24d9df21",
+                "moving_raster_sha256": "4459555ca60e9de5e1eb5be8b4dfb5c56df01a094cecd37ca3e746afcb2c42a9"
+              },
+              {
+                "pair_index": 10,
+                "file": "SANTO/pair_0010.npz",
+                "sha256": "93f4d8bd15412bdbfcae735796750039da2c66dcb8a3b3d9dc7dfbb5cfdad3e6",
+                "expected": {
+                  "ARI": 0.1904196585521714,
+                  "NMI": 0.0644927088064996,
+                  "CLC": 0.4227622714148219
+                },
+                "reference_raster_sha256": "4459555ca60e9de5e1eb5be8b4dfb5c56df01a094cecd37ca3e746afcb2c42a9",
+                "moving_raster_sha256": "f41e5a2f6b53467278edd9aec1703d226e18fe30c4577a5dcd394e78f59da7d0"
+              },
+              {
+                "pair_index": 11,
+                "file": "SANTO/pair_0011.npz",
+                "sha256": "c12475c622c2208507cc3f3e2e548143a6c64c35d04bc29e02642ee2b78e2d07",
+                "expected": {
+                  "ARI": 0.1300900301014132,
+                  "NMI": 0.0478075820686151,
+                  "CLC": 0.426601998824221
+                },
+                "reference_raster_sha256": "f41e5a2f6b53467278edd9aec1703d226e18fe30c4577a5dcd394e78f59da7d0",
+                "moving_raster_sha256": "d7171c30a7d6ff9ba5825b6c65f1ce9a021ee87a2f5dec02a29931466dd18f4f"
+              },
+              {
+                "pair_index": 12,
+                "file": "SANTO/pair_0012.npz",
+                "sha256": "2c4009a0de98e5d186299d875a0ab38d8c404825c54b6deb94faa7623ecb447b",
+                "expected": {
+                  "ARI": 0.0861825207871957,
+                  "NMI": 0.0251680694714869,
+                  "CLC": 0.4315328467153284
+                },
+                "reference_raster_sha256": "d7171c30a7d6ff9ba5825b6c65f1ce9a021ee87a2f5dec02a29931466dd18f4f",
+                "moving_raster_sha256": "8b1f25b05432bb8aa9323fea331f51f8cb4d67e59d4e707843d6ce14139f4407"
+              },
+              {
+                "pair_index": 13,
+                "file": "SANTO/pair_0013.npz",
+                "sha256": "e320eb11bdedaa482b52a32b98090100c925418c9e8a4b0111bff744a314e1a8",
+                "expected": {
+                  "ARI": 0.2026138768159948,
+                  "NMI": 0.071612292391478,
+                  "CLC": 0.4805538376966948
+                },
+                "reference_raster_sha256": "8b1f25b05432bb8aa9323fea331f51f8cb4d67e59d4e707843d6ce14139f4407",
+                "moving_raster_sha256": "b007a2b2474c5d51470f21f4b7b4784e396cb0d97258a8c6aac52bcebd54471d"
+              },
+              {
+                "pair_index": 14,
+                "file": "SANTO/pair_0014.npz",
+                "sha256": "7a14847fa7de68971d0c3d7eabb1765375b52b44d8eeffc2b47a919f9c72433c",
+                "expected": {
+                  "ARI": 0.1421314774057782,
+                  "NMI": 0.0406463104299686,
+                  "CLC": 0.4498900727211229
+                },
+                "reference_raster_sha256": "b007a2b2474c5d51470f21f4b7b4784e396cb0d97258a8c6aac52bcebd54471d",
+                "moving_raster_sha256": "ff2c467b9e601830ca98d5b0d40d3d71ca03778278abab8164e603afad4c0ca6"
+              }
+            ],
+            "expected_pair_scores_file": "SANTO/pairs.csv",
+            "expected_pair_scores_sha256": "37170a795e4f48dbd1181049a9330226281660d281cb125d85f509bb1a761606",
+            "evaluation_support": {},
+            "score_receipt_sha256": "6f62a656f2fa93b098be362fe1eed91db87d7bc3615d05826dd0572503dc58da"
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT/coordinates_labels_rasters.npz",
+            "sha256": "bd4b60eb766bf5d05e82ce779d39fb67a71234663e1a91cc293f49cf87973b0c",
+            "cells": 15150,
+            "layers": 16,
+            "pairs": 15,
+            "coordinate_array_sha256": "a69075f7b322eed8f3b07eddec1d93e44ca3c7ae620f10e1a9a83dce1033e755",
+            "labels_sha256": "515d6abc6f109c103d94813ed1d1c22a835cbf1936c598aa7a4c0ffa6efa5b81",
+            "expected_pair_scores_file": "SLAT/pairs.csv",
+            "expected_pair_scores_sha256": "ee87e1f81507fe15877dedfb5c438a1ea4ab2a8dcce6a86d47c5c39599a6baa3",
+            "evaluation_support": {},
+            "score_receipt_sha256": "bf174af310c2775235a2ec2d9fad4ee741446c43e2a3c63bb192cf0d09b49637"
+          },
+          {
+            "method": "MOSAICField",
+            "kind": "pairs",
+            "pairs": [
+              {
+                "pair_index": 0,
+                "file": "MOSAICField/pair_0000.npz",
+                "sha256": "b98f42006a855f1b1ae36a36f109ca72666dff1dff9ef4bd5c370dddc7bb69bb",
+                "expected": {
+                  "ARI": 0.202798740639107,
+                  "NMI": 0.0613606748796985,
+                  "CLC": 0.2465421853388658
+                },
+                "reference_raster_sha256": "70843863fc6400c7fefaa15db3290a749bb65ea214e8817329b8f833826bd033",
+                "moving_raster_sha256": "1c016b299d5f2df25e96e7f7e9ad5c8d9875c2e26ece972d34d3eb9a555e4c29"
+              },
+              {
+                "pair_index": 1,
+                "file": "MOSAICField/pair_0001.npz",
+                "sha256": "effb8b44339dac07b86e0b1baca112b5f84f421fff8715ba263dbc237912e790",
+                "expected": {
+                  "ARI": 0.0679637210409774,
+                  "NMI": 0.0199518903538331,
+                  "CLC": 0.4518605256310174
+                },
+                "reference_raster_sha256": "d255214cb00968225b661fd82f2ce54488dc16d3081e9abd3ecd362bbf66355f",
+                "moving_raster_sha256": "75527851a6cca7633c3d83180e3c737cb7cd9130187c17c96de4b846497ebb85"
+              },
+              {
+                "pair_index": 2,
+                "file": "MOSAICField/pair_0002.npz",
+                "sha256": "25cfad11e478e29070707d77f3b2a59b39d63de2066baa2aca13553221dd338b",
+                "expected": {
+                  "ARI": 0.2891848455383304,
+                  "NMI": 0.1292734061894999,
+                  "CLC": 0.5412834448160535
+                },
+                "reference_raster_sha256": "0da385c301ced66a9fe389af8caa951f606050ac8ea71891b26d8d1dc48516f7",
+                "moving_raster_sha256": "ecb4b766aa829b87b29675a8296d6ec0bd401f7d92e5323363366e21728edb45"
+              },
+              {
+                "pair_index": 3,
+                "file": "MOSAICField/pair_0003.npz",
+                "sha256": "8605e2c7f15253de5df8fd5d8c8e562f599b908aef9d7eaf67327f793bd80568",
+                "expected": {
+                  "ARI": 0.3267594212798697,
+                  "NMI": 0.160692606693715,
+                  "CLC": 0.6295776842761416
+                },
+                "reference_raster_sha256": "fa53eb8b1c4eb7d75b8cb99ce58468e61a24e841ad28dbdc10fc96f811eceb77",
+                "moving_raster_sha256": "c0ae3c58508bb9dd931e7ed4e81a9dd91eba27fd5bd660738293083e919882e5"
+              },
+              {
+                "pair_index": 4,
+                "file": "MOSAICField/pair_0004.npz",
+                "sha256": "42d2b1b0ebd3da5a29bdf5f176eb79000208c422a664525179189ad3775f8c22",
+                "expected": {
+                  "ARI": 0.1084624509932891,
+                  "NMI": 0.0304797897397725,
+                  "CLC": 0.3815789473684211
+                },
+                "reference_raster_sha256": "77b3cfe389f64432a133dce67ab1777cd4b59ccab5201c271f977c64d9f4c704",
+                "moving_raster_sha256": "6a4afbe67c7031e4d2377bc9953d193cfb48484bf143fc1feb1c150632d05b48"
+              },
+              {
+                "pair_index": 5,
+                "file": "MOSAICField/pair_0005.npz",
+                "sha256": "fff96d7061d2b6d5cb25769c1c364ad4b19ed02affecbe11e2f42f5aba393df0",
+                "expected": {
+                  "ARI": 0.1888270034143493,
+                  "NMI": 0.0628713711088702,
+                  "CLC": 0.2030382705229331
+                },
+                "reference_raster_sha256": "47b53303a793fca42ac5861046dca132c6594fdd05a4c9f02c7271ae84904c47",
+                "moving_raster_sha256": "265c1edbb3fc338bd8b4bed19e21e74d5c5d581eac923d94313a530b192c383a"
+              },
+              {
+                "pair_index": 6,
+                "file": "MOSAICField/pair_0006.npz",
+                "sha256": "e22370827543bccab86658e7f13b995bf29dc798eb90b4c9bfdccaa407809a6e",
+                "expected": {
+                  "ARI": 0.1894347933777414,
+                  "NMI": 0.065642933972939,
+                  "CLC": 0.2025225225225225
+                },
+                "reference_raster_sha256": "4836608ae581636ebb21bf1f308d82941c4c5454c07dc504743ec60544466a55",
+                "moving_raster_sha256": "e85d54f4dfed2bae826513240899c5120e6f1bc19102e99140917b3b4c26af3b"
+              },
+              {
+                "pair_index": 7,
+                "file": "MOSAICField/pair_0007.npz",
+                "sha256": "db031bc0ab1b4f70a0185d4eda58f98a7bcfdd8a4e0df7eaf46e984040a1fb3e",
+                "expected": {
+                  "ARI": 0.2743334826361578,
+                  "NMI": 0.1064631427800465,
+                  "CLC": 0.2895617772367621
+                },
+                "reference_raster_sha256": "bca9136f9858e27a407b4cc48a21e70bf92cc4784859ca34f2f3d31b7363da33",
+                "moving_raster_sha256": "6cce656895201787b74d467c8110a2d1976bb14733f09f368b0772dc3d2223d3"
+              },
+              {
+                "pair_index": 8,
+                "file": "MOSAICField/pair_0008.npz",
+                "sha256": "96fa2f6314dd801bb181cefce006d44ac174685abfdca3b27835c5ecca77cb54",
+                "expected": {
+                  "ARI": 0.1597203925303795,
+                  "NMI": 0.0519975528419369,
+                  "CLC": 0.3069751998569714
+                },
+                "reference_raster_sha256": "98967cc6dd1ce67b043b67f4aa614f6baf53ca2d6af0a38a6c27382c2af8e8ce",
+                "moving_raster_sha256": "405f5a36e80cc72ade19def1591e4c19ca970b1afac39ca0ba7a2ddf6935c9fc"
+              },
+              {
+                "pair_index": 9,
+                "file": "MOSAICField/pair_0009.npz",
+                "sha256": "e997d3cdfe7a02865b7bc68038e6ba32525bfd8162990e6654e90aa212ea1335",
+                "expected": {
+                  "ARI": 0.1313139450811852,
+                  "NMI": 0.0418197130459858,
+                  "CLC": 0.3061183608058608
+                },
+                "reference_raster_sha256": "8d412a9174dcb4522d4decd2971672a76cfb3c3ff57f94bae42c3ea612a335a8",
+                "moving_raster_sha256": "7522f14cdd00296f2f4b005bf44cd2be99e55c20e1b1c0bbc12350d392a388de"
+              },
+              {
+                "pair_index": 10,
+                "file": "MOSAICField/pair_0010.npz",
+                "sha256": "7dd33cbb4d000a9bbc964349c6563ce55f0b835e4672b936b412e2d4276f6069",
+                "expected": {
+                  "ARI": 0.2108952619052914,
+                  "NMI": 0.0748140414645216,
+                  "CLC": 0.3568678674549704
+                },
+                "reference_raster_sha256": "206b4d6c298ea70b046fbbc5eb2862eb4e04101a2ad593e90404f512a02e324d",
+                "moving_raster_sha256": "99483926cf9717c45ea2a8b205074729f84fa668f30f230977916edbff84cdfd"
+              },
+              {
+                "pair_index": 11,
+                "file": "MOSAICField/pair_0011.npz",
+                "sha256": "0ac37ff6ebc422f46d6f2787aa395f4f221d6b4ee5f4a7e91f9638c1e547fd22",
+                "expected": {
+                  "ARI": 0.1132457813260506,
+                  "NMI": 0.0326710526471941,
+                  "CLC": 0.303938859494415
+                },
+                "reference_raster_sha256": "1fccf0854ca51e4600c08556c86ecb7fd58008a22c23f305b4e265107a9e5840",
+                "moving_raster_sha256": "9610ec19813fb8d8e40e2cd99de2c68f165ee1404a78f4a1270df88e58d49ee4"
+              },
+              {
+                "pair_index": 12,
+                "file": "MOSAICField/pair_0012.npz",
+                "sha256": "03fcc8c6acf38bf5529f3490499f697c0751d83d61ef00138c3c6430f84e4044",
+                "expected": {
+                  "ARI": 0.2004875823975116,
+                  "NMI": 0.0597093799820453,
+                  "CLC": 0.3711366006256517
+                },
+                "reference_raster_sha256": "c3b6e03d133f6b8a2ead5a60f29800e21d18d25e2dacc9d46152d2930ea7b169",
+                "moving_raster_sha256": "f459a71b45dab30ee3ea67f166b225da25f59259e20cf682907efc0239bfc109"
+              },
+              {
+                "pair_index": 13,
+                "file": "MOSAICField/pair_0013.npz",
+                "sha256": "555887d0c8359b0cdcd8df4b949cd6ed56b3d3ccfc4c6e8b6a29c624165ff195",
+                "expected": {
+                  "ARI": 0.2084987793849326,
+                  "NMI": 0.0613857075718411,
+                  "CLC": 0.2721775578918436
+                },
+                "reference_raster_sha256": "321f95c070676f1c05b093e313608672932e4b97f8635a25594f245e739c24b0",
+                "moving_raster_sha256": "2f0ae5a3079c06b78290f5bea1a9a3dae1cd07720c29dee9ffecd069e8f7001a"
+              },
+              {
+                "pair_index": 14,
+                "file": "MOSAICField/pair_0014.npz",
+                "sha256": "d4510e04e5866e64a63d340098b4ec071aed7ece2cca4e8127393225e1969a33",
+                "expected": {
+                  "ARI": 0.0857753810228954,
+                  "NMI": 0.0218389274864057,
+                  "CLC": 0.1059022492812447
+                },
+                "reference_raster_sha256": "1db36551cf42a4a6d7feba2a0dce8e8386e769f2581c866b0886cf99c6057a52",
+                "moving_raster_sha256": "82f8468b7521f509c398b91749d03a0563587da6db13eb0ed6c1d7d24e2950fa"
+              }
+            ],
+            "expected_pair_scores_file": "MOSAICField/pairs.csv",
+            "expected_pair_scores_sha256": "b9721e78ea093f9bda3550017fb4f4a47d3e98affaa32081b71803a4df7b8f52",
+            "evaluation_support": {},
+            "score_receipt_sha256": "ded1d291427139349db63800fa41ec9b68b0fbfd187ca81fbe54dba1e6e58416"
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster_coords",
+          "raster"
+        ],
+        "pair_npz_keys": [
+          "reference_cell_ids",
+          "moving_cell_ids",
+          "reference_labels",
+          "moving_labels",
+          "reference_coords",
+          "moving_coords",
+          "reference_raster_coords",
+          "moving_raster_coords",
+          "reference_raster",
+          "moving_raster"
+        ],
+        "raster_integer_storage": "int16 lossless; restore int32 for original scoring raster hashes",
+        "CLC_coordinates": "Native coords unchanged; raster_coords are only for rebuilding the categorical raster",
+        "no_expression_matrix": true
+      },
+      {
+        "dataset": "MLN",
+        "asset": {
+          "file": "rev1-NCS-categorical-MLN-20261118-cec8bc7eb154.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-NCS-categorical-MLN-20261118-cec8bc7eb154.tar.gz",
+          "sha256": "e0d3473330a76ee82507e482548cb479d2cf041b853a0e2206dc065388a541d8",
+          "bytes": 302785965
+        },
+        "archive_prefix": "",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner/coordinates_labels_rasters.npz",
+            "sha256": "96666879cb67c003926d6bc3042d83f8e0ce45cad70b6df64e2b0bcfeb1deb3f",
+            "cells": 1097769,
+            "layers": 19,
+            "pairs": 18,
+            "coordinate_array_sha256": "db2fcbcb2a28b5e23fd172ea92a952f4dce8908eb857f4b5b3898b4c46e32b0b",
+            "labels_sha256": "1a6d6ba476a6f34431f4d9a26949a9d5616fcb86d5fe5a53dc6df7846141942d",
+            "expected_pair_scores_file": "OmniAligner/pairs.csv",
+            "expected_pair_scores_sha256": "a003e6194b78d9e49c5e6b4fe9db00b670de53320ff9a00824f55e5ce5e57a6d",
+            "evaluation_support": {},
+            "score_receipt_sha256": "8684a67ab689d52ca6f25eb2d1675ca1ba655bb6ed219b08ea21394cfc736477"
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE/coordinates_labels_rasters.npz",
+            "sha256": "51b5745b6cfa3f79bed5c982d12e2a482015ac30cc8542d5f0f4ee09383ea115",
+            "cells": 95000,
+            "layers": 19,
+            "pairs": 18,
+            "coordinate_array_sha256": "ff573b119d152348f508afd73604193cf504ba95294ea23cfe58c8bad376036a",
+            "labels_sha256": "54c36889aef992fe8725da821a7ee2d33d59146651d479e4f71f4c703468b45a",
+            "expected_pair_scores_file": "PASTE/pairs.csv",
+            "expected_pair_scores_sha256": "5b82917c5f0fb2b3cd5a36327c26aab1fac8ad5f9abdc0b11bd9beccb756c6bd",
+            "evaluation_support": {
+              "native_subset": true,
+              "evaluation_cells": 95000,
+              "full_cohort_cells": 1097769,
+              "full_projection_available": false,
+              "support": "Unchanged genuine native PASTE spatial output, 19 sections x5000 sampled cells; inherited spatial_3d_aligned values are legacy wrong-field scores and are not used",
+              "native_output_order_preserved": true
+            },
+            "score_receipt_sha256": "44776b500e61eba71099f7793c8755d26dc5e57721de57b48e725bde930ba148"
+          },
+          {
+            "method": "PASTE2",
+            "kind": "global",
+            "file": "PASTE2/coordinates_labels_rasters.npz",
+            "sha256": "3a2ea5ffde6b7ed7c82d16f6ac4388f9b0b3cda6a99e93d3fe5a77d359ede404",
+            "cells": 95000,
+            "layers": 19,
+            "pairs": 18,
+            "coordinate_array_sha256": "b1a5dbd9c06ff28b4837d3e6c2710839835e4e960c0ac65f3cbdccd8ef52842a",
+            "labels_sha256": "54c36889aef992fe8725da821a7ee2d33d59146651d479e4f71f4c703468b45a",
+            "expected_pair_scores_file": "PASTE2/pairs.csv",
+            "expected_pair_scores_sha256": "1f37ac1b947371f9fa3c79edd9f88e10056d0512fe8cb099c596b8b68ca366c3",
+            "evaluation_support": {
+              "native_subset": true,
+              "evaluation_cells": 95000,
+              "full_cohort_cells": 1097769,
+              "full_projection_available": false,
+              "support": "Unchanged native 19 sections x5000 sampled cells, exactly the paired six-metric support; no full-cell projection",
+              "native_output_order_preserved": true
+            },
+            "score_receipt_sha256": "fd7e71f8a25515125298d1bcbb0402fdc4ea37e9c46d6413dfadb4d6577a9471"
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo/coordinates_labels_rasters.npz",
+            "sha256": "e7ea25e7b33f0419ae624c8e2d6e286674d611cff47723272dd1ab3f1b7fdb1c",
+            "cells": 1097769,
+            "layers": 19,
+            "pairs": 18,
+            "coordinate_array_sha256": "6d8695e037d7ffef2f370a20b1510e0dfb5449ebf0cca24078e492617662b8af",
+            "labels_sha256": "1a6d6ba476a6f34431f4d9a26949a9d5616fcb86d5fe5a53dc6df7846141942d",
+            "expected_pair_scores_file": "Spateo/pairs.csv",
+            "expected_pair_scores_sha256": "7469a518e3ff95740b478bcf5039cb9350a36d8a8a1642b10607fec70ba853f8",
+            "evaluation_support": {},
+            "score_receipt_sha256": "ab3f8f182c110537e17bfb9ed09f92b7eff6997c32d59ab042a7a4d28bcbdc5c"
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL/coordinates_labels_rasters.npz",
+            "sha256": "822f2cfe28db21b5ab2538e6b8ce06661f2232e21b8376fc0783649639665635",
+            "cells": 1097769,
+            "layers": 19,
+            "pairs": 18,
+            "coordinate_array_sha256": "129e151c19b4e496ce4595ce6b7cce8721462ebb5f408ffa314616e53e585563",
+            "labels_sha256": "1a6d6ba476a6f34431f4d9a26949a9d5616fcb86d5fe5a53dc6df7846141942d",
+            "expected_pair_scores_file": "SPACEL/pairs.csv",
+            "expected_pair_scores_sha256": "51a52c4a8641ce2d917e8f75593023985ae60cac83d05b8ce406fb728a5c5903",
+            "evaluation_support": {},
+            "score_receipt_sha256": "47c010c8ca64add6fdf83abc574558efb285c0b3f4461e8c2f467213373ca8f2"
+          },
+          {
+            "method": "STalign",
+            "kind": "global",
+            "file": "STalign/coordinates_labels_rasters.npz",
+            "sha256": "777475dccd6df17d56d5a752ba257159c6d6b05c128669e59c3996b56405668d",
+            "cells": 1097769,
+            "layers": 19,
+            "pairs": 18,
+            "coordinate_array_sha256": "64dbe1cc33b283b4a0027bb6794796437d28f26bc9df9644f5cb83b286222d27",
+            "labels_sha256": "1a6d6ba476a6f34431f4d9a26949a9d5616fcb86d5fe5a53dc6df7846141942d",
+            "expected_pair_scores_file": "STalign/pairs.csv",
+            "expected_pair_scores_sha256": "cd59db3f39f2344f1ef044e8b3eaef11fda4b65b1a60d4d02b79d40ce01a5300",
+            "evaluation_support": {},
+            "score_receipt_sha256": "f4c684640f7c5c7c7cdfbe3f529768e4c8bb4c30fb5f166495be9b7ba33b2980"
+          },
+          {
+            "method": "SANTO",
+            "kind": "pairs",
+            "pairs": [
+              {
+                "pair_index": 0,
+                "file": "SANTO/pair_0000.npz",
+                "sha256": "b60027f53c6925ddf4e44617002339d9dc80216c08b980d1c9caa9483d878d57",
+                "expected": {
+                  "ARI": 0.5161027601444877,
+                  "NMI": 0.2006397660947871,
+                  "CLC": 0.2305473186838515
+                },
+                "reference_raster_sha256": "45de442e25e937beaf5e14d24fcd3d9e13785761a2188163dd82b4ef100e6fa1",
+                "moving_raster_sha256": "1e00fac04ec5ca182b701f10d04ad55ee12e5c9127cd6e9bf52f1aeca939972f"
+              },
+              {
+                "pair_index": 1,
+                "file": "SANTO/pair_0001.npz",
+                "sha256": "7b58dc77166d051b3f51773ac6cfdb0d0ea6aa2a69334b2a6aea253e0705acbe",
+                "expected": {
+                  "ARI": 0.5639614039666289,
+                  "NMI": 0.2282179094224873,
+                  "CLC": 0.189078470530622
+                },
+                "reference_raster_sha256": "1e00fac04ec5ca182b701f10d04ad55ee12e5c9127cd6e9bf52f1aeca939972f",
+                "moving_raster_sha256": "92f311a8176523ad1977b551423ea3f2a4212eabe64d8f1ccbf6c3c8998af163"
+              },
+              {
+                "pair_index": 2,
+                "file": "SANTO/pair_0002.npz",
+                "sha256": "9546ac7b686b999e8baebf72d3a39404bc9eef932418b71060d61e8e66f9cc0e",
+                "expected": {
+                  "ARI": 0.5891106383308902,
+                  "NMI": 0.2272710458797563,
+                  "CLC": 0.200722988040755
+                },
+                "reference_raster_sha256": "92f311a8176523ad1977b551423ea3f2a4212eabe64d8f1ccbf6c3c8998af163",
+                "moving_raster_sha256": "1aedb0b5acb3df25b7c480823146fb11bc9111df852f0ddf806a902b8f061a3c"
+              },
+              {
+                "pair_index": 3,
+                "file": "SANTO/pair_0003.npz",
+                "sha256": "eee77e750662df2d0ca7389cd2769f80faec06506cb7499e91f58a19ed07e5c4",
+                "expected": {
+                  "ARI": 0.4841341353263579,
+                  "NMI": 0.208575920977974,
+                  "CLC": 0.1932895998753295
+                },
+                "reference_raster_sha256": "1aedb0b5acb3df25b7c480823146fb11bc9111df852f0ddf806a902b8f061a3c",
+                "moving_raster_sha256": "e00c78eed94d937df00bbfac227f5c65b06c502983a30ce62c3accde668edfd6"
+              },
+              {
+                "pair_index": 4,
+                "file": "SANTO/pair_0004.npz",
+                "sha256": "4549e0f1fc9811da8fc277638575f0a4eb3674eafe9e59669ec862c29c8a4ff9",
+                "expected": {
+                  "ARI": 0.1089176514261236,
+                  "NMI": 0.0298146948439376,
+                  "CLC": 0.2130365946826693
+                },
+                "reference_raster_sha256": "e00c78eed94d937df00bbfac227f5c65b06c502983a30ce62c3accde668edfd6",
+                "moving_raster_sha256": "b8cc7a65ee0ec5836f54b88d7e3ddae2056e99e2111dac0f9ac3b79ede7c4c3a"
+              },
+              {
+                "pair_index": 5,
+                "file": "SANTO/pair_0005.npz",
+                "sha256": "8611e3915c0352e7753cd70ad6c88e426e49a8ad09571f7d3ba0e6f0e4c1699d",
+                "expected": {
+                  "ARI": 0.7348474994289412,
+                  "NMI": 0.3422989726634048,
+                  "CLC": 0.2587203797483525
+                },
+                "reference_raster_sha256": "b8cc7a65ee0ec5836f54b88d7e3ddae2056e99e2111dac0f9ac3b79ede7c4c3a",
+                "moving_raster_sha256": "a5eb6bb3aaa7e36c070deaed5f2cee61841fc1b0484523c435aa4538be3ff450"
+              },
+              {
+                "pair_index": 6,
+                "file": "SANTO/pair_0006.npz",
+                "sha256": "b7ae5d85a4351a288d388a660edce767033c7b7c87183d083223b4de504b76fc",
+                "expected": {
+                  "ARI": 0.8165317994882038,
+                  "NMI": 0.4622743481183669,
+                  "CLC": 0.2728981735242774
+                },
+                "reference_raster_sha256": "a5eb6bb3aaa7e36c070deaed5f2cee61841fc1b0484523c435aa4538be3ff450",
+                "moving_raster_sha256": "3c9f8c46e430b194f954eae7233ececa6db9d6881ff02e74711d2e6499255edc"
+              },
+              {
+                "pair_index": 7,
+                "file": "SANTO/pair_0007.npz",
+                "sha256": "e117b0eba1ca424aa6506b483d37ba5d1981b075d55a5608d3e1b325321be9b0",
+                "expected": {
+                  "ARI": 0.5192957397759053,
+                  "NMI": 0.2633863808776623,
+                  "CLC": 0.2835848541498582
+                },
+                "reference_raster_sha256": "3c9f8c46e430b194f954eae7233ececa6db9d6881ff02e74711d2e6499255edc",
+                "moving_raster_sha256": "9f512287f431245aae6910cee8bae8ad31a0c20db6b5ebf006308383d13b5f13"
+              },
+              {
+                "pair_index": 8,
+                "file": "SANTO/pair_0008.npz",
+                "sha256": "5e324584144125708d3bda2e2c217e482482e7feabfc947ce946e67e3075093d",
+                "expected": {
+                  "ARI": 0.7563730414019131,
+                  "NMI": 0.4348374120061063,
+                  "CLC": 0.2247327144685941
+                },
+                "reference_raster_sha256": "9f512287f431245aae6910cee8bae8ad31a0c20db6b5ebf006308383d13b5f13",
+                "moving_raster_sha256": "a0736c59d526f89893aa282f791ba6e96d1a95e28ebc18c8d9cd4509a8494a47"
+              },
+              {
+                "pair_index": 9,
+                "file": "SANTO/pair_0009.npz",
+                "sha256": "cfee45cbc92b5bdf42a8c205c5c7d71c16d4469e4c8ca301f50ab2f0d4996fea",
+                "expected": {
+                  "ARI": 0.5116397608877206,
+                  "NMI": 0.2200759256956533,
+                  "CLC": 0.1058561332585144
+                },
+                "reference_raster_sha256": "a0736c59d526f89893aa282f791ba6e96d1a95e28ebc18c8d9cd4509a8494a47",
+                "moving_raster_sha256": "5980d5133984aae6ccc152531b808e0e9cdbedd57f0c8221119c988f9b9e0a7a"
+              },
+              {
+                "pair_index": 10,
+                "file": "SANTO/pair_0010.npz",
+                "sha256": "482ff4a58649e3c554adea18a169cccc982409ea0b5995bdbf4c9f1f27937072",
+                "expected": {
+                  "ARI": 0.2870595822903957,
+                  "NMI": 0.1482575018526522,
+                  "CLC": 0.2580212260739297
+                },
+                "reference_raster_sha256": "5980d5133984aae6ccc152531b808e0e9cdbedd57f0c8221119c988f9b9e0a7a",
+                "moving_raster_sha256": "3e74711bb8c94adc072ceacb7eb12525d629a3af40dc1a8f64c076df1bf6868d"
+              },
+              {
+                "pair_index": 11,
+                "file": "SANTO/pair_0011.npz",
+                "sha256": "4cf5a564c9340cc7b0317df8c07f4ddb195cc683cbd7ca446ffe6b1f8eee75b8",
+                "expected": {
+                  "ARI": 0.6983788738100344,
+                  "NMI": 0.4044188497940565,
+                  "CLC": 0.2441843912475723
+                },
+                "reference_raster_sha256": "3e74711bb8c94adc072ceacb7eb12525d629a3af40dc1a8f64c076df1bf6868d",
+                "moving_raster_sha256": "d1910609033f9b3d36c188700d237f473bc6e6f71a11eda74c7f2dbe64ac025c"
+              },
+              {
+                "pair_index": 12,
+                "file": "SANTO/pair_0012.npz",
+                "sha256": "7902924d88395addfa49d03579bd6f6887e00a729296414859c181edf54b922e",
+                "expected": {
+                  "ARI": 0.5204121278684601,
+                  "NMI": 0.2650006267592746,
+                  "CLC": 0.2496323301179702
+                },
+                "reference_raster_sha256": "d1910609033f9b3d36c188700d237f473bc6e6f71a11eda74c7f2dbe64ac025c",
+                "moving_raster_sha256": "e55c026caeeef16d265dd326c002c611043eb4718b7bbc98b277ebd4610bcb9f"
+              },
+              {
+                "pair_index": 13,
+                "file": "SANTO/pair_0013.npz",
+                "sha256": "2b7e07ea33a961b620b8885177cd3e3a630b122f2b23cacf7495b1827daebdec",
+                "expected": {
+                  "ARI": 0.2260067374107083,
+                  "NMI": 0.1190261863227917,
+                  "CLC": 0.1471555519127513
+                },
+                "reference_raster_sha256": "e55c026caeeef16d265dd326c002c611043eb4718b7bbc98b277ebd4610bcb9f",
+                "moving_raster_sha256": "945d750fbb5da3cb5661386767d6cf24984d2688ba96c83134b10b1518943e97"
+              },
+              {
+                "pair_index": 14,
+                "file": "SANTO/pair_0014.npz",
+                "sha256": "3784a9b6e9a17b52033ece48668b8430df8e49675621fad77a2e0aba0b93aaea",
+                "expected": {
+                  "ARI": 0.59696641758563,
+                  "NMI": 0.267124321279127,
+                  "CLC": 0.2014958308239776
+                },
+                "reference_raster_sha256": "945d750fbb5da3cb5661386767d6cf24984d2688ba96c83134b10b1518943e97",
+                "moving_raster_sha256": "9ecaf529584504cdfeb5445b3a711755aaee7ee53b476e71a998e5d036aebf4c"
+              },
+              {
+                "pair_index": 15,
+                "file": "SANTO/pair_0015.npz",
+                "sha256": "dd5481751af07f4694a1740e02491f62842ab4bd24a338ad4f06ad36693a38cb",
+                "expected": {
+                  "ARI": 0.5821496561457961,
+                  "NMI": 0.2969008247128861,
+                  "CLC": 0.2892461832997524
+                },
+                "reference_raster_sha256": "9ecaf529584504cdfeb5445b3a711755aaee7ee53b476e71a998e5d036aebf4c",
+                "moving_raster_sha256": "fe211f3421b9a89f939ef9e99b76ecdc8ab915053a132e7e6c42b33076e27fd5"
+              },
+              {
+                "pair_index": 16,
+                "file": "SANTO/pair_0016.npz",
+                "sha256": "03c98ba18bbcb7669c5293b82f78424240a33b07f79e68b99e44df5b0fdd29b3",
+                "expected": {
+                  "ARI": 0.613698307537957,
+                  "NMI": 0.3613275069887893,
+                  "CLC": 0.3166917198803481
+                },
+                "reference_raster_sha256": "fe211f3421b9a89f939ef9e99b76ecdc8ab915053a132e7e6c42b33076e27fd5",
+                "moving_raster_sha256": "63763f57ec3f474ccd5793d05434d9ba79b4d08c4679d9d29ccb8370d112efdb"
+              },
+              {
+                "pair_index": 17,
+                "file": "SANTO/pair_0017.npz",
+                "sha256": "7fe26e454a405d12e37b7f3497a1a3f9f98d09facc1d2f4092e9bbd64d86c895",
+                "expected": {
+                  "ARI": 0.4446614457728107,
+                  "NMI": 0.2127347865032947,
+                  "CLC": 0.2711961946411707
+                },
+                "reference_raster_sha256": "63763f57ec3f474ccd5793d05434d9ba79b4d08c4679d9d29ccb8370d112efdb",
+                "moving_raster_sha256": "8ef5210be83299302f4c15896685e786267e01328220f319bd2e56d753c67f9c"
+              }
+            ],
+            "expected_pair_scores_file": "SANTO/pairs.csv",
+            "expected_pair_scores_sha256": "0ddf7ed968ebd830f9ce94b1afd16b2596439e1793aff22015b25532ca665cd3",
+            "evaluation_support": {},
+            "score_receipt_sha256": "f1b6ee81ddc86c7b99e9e502acb3fe202b7bb8473fec2527bdbee5c5f368e891"
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT/coordinates_labels_rasters.npz",
+            "sha256": "d808595560b7893315b12ec1199b8f70de3b6dd7eee563f4f2847a5ed847b163",
+            "cells": 1097769,
+            "layers": 19,
+            "pairs": 18,
+            "coordinate_array_sha256": "ed7838cd2c9c0f5ba5c7163790ec4e512c4a1f47b05a4f2c56a632495ed71fed",
+            "labels_sha256": "1a6d6ba476a6f34431f4d9a26949a9d5616fcb86d5fe5a53dc6df7846141942d",
+            "expected_pair_scores_file": "SLAT/pairs.csv",
+            "expected_pair_scores_sha256": "d42a222ee71689490002fa4b548353ba2d3e61bda3a4c1d44b7cdf031610e05d",
+            "evaluation_support": {},
+            "score_receipt_sha256": "a8ae2ed2e5637fba9f44cc67eb6f1eeacaa321098c9ae90929b2e0632237b068"
+          },
+          {
+            "method": "MOSAICField",
+            "kind": "pairs",
+            "pairs": [
+              {
+                "pair_index": 0,
+                "file": "MOSAICField/pair_0000.npz",
+                "sha256": "79e590b3cb8828a274d41fd48c799dd233a0e83d3801b4e142037373d76f502d",
+                "expected": {
+                  "ARI": 0.851994456077602,
+                  "NMI": 0.4658444866333435,
+                  "CLC": 0.2535115740554622
+                },
+                "reference_raster_sha256": "45de442e25e937beaf5e14d24fcd3d9e13785761a2188163dd82b4ef100e6fa1",
+                "moving_raster_sha256": "1480e88972e9a5025a8a6d4813d5301cf4c4012732398ad1e7db9c32d0d6a17b"
+              },
+              {
+                "pair_index": 1,
+                "file": "MOSAICField/pair_0001.npz",
+                "sha256": "fa953d9dcac13f850d516408512c1d2164b57c41b1f8d9a58ed3edc9ba1f9d97",
+                "expected": {
+                  "ARI": 0.8766700677836025,
+                  "NMI": 0.4362142070070605,
+                  "CLC": 0.1928594201230399
+                },
+                "reference_raster_sha256": "b9cf5f0f6957d999994859ba32c1cb149068fc296a2b7249a99baa69e3897725",
+                "moving_raster_sha256": "41ae1f6697ddee385c959e9c9cb205c868da5368b2d5f264ae82fa97d6a5064c"
+              },
+              {
+                "pair_index": 2,
+                "file": "MOSAICField/pair_0002.npz",
+                "sha256": "6c4da4f31cb00b2216af880190e4bf924d46b6a4c2cb5fda0beefbfe84c4ffdd",
+                "expected": {
+                  "ARI": 0.7953364315062675,
+                  "NMI": 0.3623858863679347,
+                  "CLC": 0.1799729752478077
+                },
+                "reference_raster_sha256": "012759c8baf07d6031a77dd976aed3d7e7b22638f58f966c1b5ec6ab012849c8",
+                "moving_raster_sha256": "6efd7bbd3d9dc95f9ec5d2098bd93936766699cb4acbc2d7f16c3bf82910a720"
+              },
+              {
+                "pair_index": 3,
+                "file": "MOSAICField/pair_0003.npz",
+                "sha256": "d8a5e14bd1c0579989525e6c9ac6623c3db01c5c07cc4201d0f1138ea3b9b6e2",
+                "expected": {
+                  "ARI": 0.8705545356633216,
+                  "NMI": 0.4597235697636979,
+                  "CLC": 0.2476560270001412
+                },
+                "reference_raster_sha256": "ea8f1c0864a7deea136957209e3d66a2befab6517d86cf40365ae50911755a5e",
+                "moving_raster_sha256": "fa0db26073ee01fd0bff2140fbb33225fcab0102869ae8afdd8a79e4845986a4"
+              },
+              {
+                "pair_index": 4,
+                "file": "MOSAICField/pair_0004.npz",
+                "sha256": "33e298cc964dcdc930e13730b193ecfe19d9f93d0e3c4541c487b21d61b05683",
+                "expected": {
+                  "ARI": 0.6092170057619405,
+                  "NMI": 0.2985547225925173,
+                  "CLC": 0.141805502217988
+                },
+                "reference_raster_sha256": "c4a077a7626a5070a302be8b7e2fab6a3ac95fe5223eeab377c474065fa926e6",
+                "moving_raster_sha256": "2244ea0622a49cbfe422d238227372cc1cf59b517131987bdb9fa2141befc2c2"
+              },
+              {
+                "pair_index": 5,
+                "file": "MOSAICField/pair_0005.npz",
+                "sha256": "134a91721dd67c9734ae2cbc212adba9f9fbfd2cc2bb1367e88022641bbb49c9",
+                "expected": {
+                  "ARI": 0.8845830810593885,
+                  "NMI": 0.4811449234598343,
+                  "CLC": 0.2614410964930524
+                },
+                "reference_raster_sha256": "33d6d74b75d08535114e779994793f363ffa2f7e6cb40792caa999956041f980",
+                "moving_raster_sha256": "f3be2fc52c9beed7de5a12a14e743577d9fafe41fe3676892affb2b9bd1b5dba"
+              },
+              {
+                "pair_index": 6,
+                "file": "MOSAICField/pair_0006.npz",
+                "sha256": "6e0c19bd192d4b3bd362bd6162e794a6ac29f7b9253de27ffdc605ddd682dc88",
+                "expected": {
+                  "ARI": 0.8670990730741629,
+                  "NMI": 0.47222283595537,
+                  "CLC": 0.259930728982905
+                },
+                "reference_raster_sha256": "f2a1be5ca2837ee576a762a7fb24b0b21ff481f5dda2e545310652618af05b18",
+                "moving_raster_sha256": "fda026dfd90ba993a9d5250e3c4deced208710e6b67bb42c4df7391dafe4ba0a"
+              },
+              {
+                "pair_index": 7,
+                "file": "MOSAICField/pair_0007.npz",
+                "sha256": "a224ec31983f7823cd15c55ab8992e5b89680bef9a8e5d5185033f2fa95aa996",
+                "expected": {
+                  "ARI": 0.8906925476859631,
+                  "NMI": 0.4610578089191817,
+                  "CLC": 0.2371744797795567
+                },
+                "reference_raster_sha256": "ff3385ec076cc685374b0d55866283af461836de697ed49de5a30e943460ac71",
+                "moving_raster_sha256": "a05a611fe274fe0b8a82e1fc0c61437df8a4556aa694f90addbdd9eb99c1eec5"
+              },
+              {
+                "pair_index": 8,
+                "file": "MOSAICField/pair_0008.npz",
+                "sha256": "86ae1fe8c8803c46cadd7a5245d2aa2986741485122a084f762ce141f0fb7ead",
+                "expected": {
+                  "ARI": 0.8428944218962631,
+                  "NMI": 0.4398368520296383,
+                  "CLC": 0.3176091426578499
+                },
+                "reference_raster_sha256": "794e2c8a4ca589bb5a634534a3326bb821de8284c35292a020cede57facac0a1",
+                "moving_raster_sha256": "093375d65a75af46bd1c719bb41680d6629ed8764afd4bfbcb8dfca44e0164f4"
+              },
+              {
+                "pair_index": 9,
+                "file": "MOSAICField/pair_0009.npz",
+                "sha256": "41edf9f1c2993f53c4bd04d4556e10c0ef9b093d9161c571af4d3d1b8b7e276f",
+                "expected": {
+                  "ARI": 0.7787886498124951,
+                  "NMI": 0.3659970569665404,
+                  "CLC": 0.2516919748650337
+                },
+                "reference_raster_sha256": "d9cb2cf995aae28103db2d3f836ff306d8febbc662c6834193b5fc4c7ac8c885",
+                "moving_raster_sha256": "23843eade3156c3bb57f6745a16c4785aeb1b67fa0aec75301e80428de560cc2"
+              },
+              {
+                "pair_index": 10,
+                "file": "MOSAICField/pair_0010.npz",
+                "sha256": "abcbce736541a012bfb1f0cc3a1371611d685fee64d2e92460c509f4e6f9d9d9",
+                "expected": {
+                  "ARI": 0.8133532899084452,
+                  "NMI": 0.4240200022298731,
+                  "CLC": 0.225081135728111
+                },
+                "reference_raster_sha256": "07a5ac6c027f568bd0ccfc2944376c707989e6801b00e54fa47f5ee35e631c0e",
+                "moving_raster_sha256": "1312db6166cd1d72d9e3ff951efd5a003c0d34bf1f958e84bfe858d735fde31f"
+              },
+              {
+                "pair_index": 11,
+                "file": "MOSAICField/pair_0011.npz",
+                "sha256": "29f54de1734aa0667fcb31fb9261e3b33d4e09dd087d030f70bbeed55a5a3d6c",
+                "expected": {
+                  "ARI": 0.8560381049324571,
+                  "NMI": 0.4586799003966636,
+                  "CLC": 0.2683988861169195
+                },
+                "reference_raster_sha256": "9fc72b11db30c03ebb52a727178a081a727034c3919f264a03133ccf5100e9a3",
+                "moving_raster_sha256": "80f1ae39ac04593575f59dfb1e172d4475572a0e53cba6b7fd9e540f92c6dd06"
+              },
+              {
+                "pair_index": 12,
+                "file": "MOSAICField/pair_0012.npz",
+                "sha256": "2f1da28172cc896219d9ec3e33a576894906658f863155592bfda7d0f66aebe0",
+                "expected": {
+                  "ARI": 0.8079084366229825,
+                  "NMI": 0.3922808819437035,
+                  "CLC": 0.2844202237507486
+                },
+                "reference_raster_sha256": "819dd3e9b5cd8734ef35ca5c150a4abb903fcc7c1c8e35c7306cb6ebd3f4f365",
+                "moving_raster_sha256": "e15c8d4a7385eca426a5c6c47c165a96f1d979a618ce5f982473a70f02d75564"
+              },
+              {
+                "pair_index": 13,
+                "file": "MOSAICField/pair_0013.npz",
+                "sha256": "751112215eb5e51f15d793419eef7b19b817c942373f613f6a4834b44796fc5b",
+                "expected": {
+                  "ARI": 0.763036529046002,
+                  "NMI": 0.3622947607038592,
+                  "CLC": 0.1756353651227905
+                },
+                "reference_raster_sha256": "534ded7af78c1d1bc2afbbe3cce7db3277c6dfa9fd25c2af3416f76fc5317ecf",
+                "moving_raster_sha256": "6c0e3c2c1896a74e664e2b5f7063cb54b6ea0f9248a1100230de2d15cd9ef116"
+              },
+              {
+                "pair_index": 14,
+                "file": "MOSAICField/pair_0014.npz",
+                "sha256": "15ff94022513db3c9358bd63383188fc00332a7a4c6bce9b0c445c81c7fe4ee8",
+                "expected": {
+                  "ARI": 0.806473593840797,
+                  "NMI": 0.4129716626257667,
+                  "CLC": 0.3421506036854746
+                },
+                "reference_raster_sha256": "d337c03785cde8f1a4d384137045bcf3dd2a9762d9318695329a45b7e4bd351c",
+                "moving_raster_sha256": "3d42082c28463eca9c2633dc2c527108e4b4505bff7254031cb08b197b8aa4db"
+              },
+              {
+                "pair_index": 15,
+                "file": "MOSAICField/pair_0015.npz",
+                "sha256": "2c09d9908706a80efbabf06e4bf0af28187d566d9d29396c826d46f15c138f79",
+                "expected": {
+                  "ARI": 0.8204342122494741,
+                  "NMI": 0.4221195911398586,
+                  "CLC": 0.2670510913496749
+                },
+                "reference_raster_sha256": "6105b34afb3d1c699b778e06cf7eb8c14ba81484bffaf3af305fe946d7bc57d4",
+                "moving_raster_sha256": "f2c35049d8813a070e7660cbbaea9f2b4c82582bdc570379353ff795914cce59"
+              },
+              {
+                "pair_index": 16,
+                "file": "MOSAICField/pair_0016.npz",
+                "sha256": "746d88541aa6e644869ac04d38d6913ddb0bc79e5019c2e0aaa90a95c71b3a65",
+                "expected": {
+                  "ARI": 0.8227283408524109,
+                  "NMI": 0.4261256029667155,
+                  "CLC": 0.2616820618064183
+                },
+                "reference_raster_sha256": "68f0ef648526a253137a2912c3c46ea46bd29b32af7f9817b0e351cd00a58f6f",
+                "moving_raster_sha256": "0a378fe85c554ae4faca65ea2b3dbbb8bcf91a713a16b378ca7e1804d7d2345f"
+              },
+              {
+                "pair_index": 17,
+                "file": "MOSAICField/pair_0017.npz",
+                "sha256": "b49c05091e8e6d38fd0bf635ac78a210fa4d9af267de60255b6fb342e0943928",
+                "expected": {
+                  "ARI": 0.7815774431630238,
+                  "NMI": 0.383208174296625,
+                  "CLC": 0.3046965247922186
+                },
+                "reference_raster_sha256": "49e2b76d21671d821f48de3bc07e16e63f0812c6acb941c5e461dc9091462d58",
+                "moving_raster_sha256": "2ad89c3a39ad7e3b93452850179d38f31cdc87cb43bb75c6dac172513a50ebbe"
+              }
+            ],
+            "expected_pair_scores_file": "MOSAICField/pairs.csv",
+            "expected_pair_scores_sha256": "73d34870ea9627c6f28f1e3dcfecd9a9ff9218e7bb101b91f949c27331df1ad1",
+            "evaluation_support": {},
+            "score_receipt_sha256": "2c463ea8e5252d753cc8c616cc9490804f2422832c3a236cf9921a01b96dbb21"
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster_coords",
+          "raster"
+        ],
+        "pair_npz_keys": [
+          "reference_cell_ids",
+          "moving_cell_ids",
+          "reference_labels",
+          "moving_labels",
+          "reference_coords",
+          "moving_coords",
+          "reference_raster_coords",
+          "moving_raster_coords",
+          "reference_raster",
+          "moving_raster"
+        ],
+        "raster_integer_storage": "int16 lossless; restore int32 for original scoring raster hashes",
+        "CLC_coordinates": "Native coords unchanged; raster_coords are only for rebuilding the categorical raster",
+        "no_expression_matrix": true
+      }
+    ],
+    "algorithm_count": 9,
+    "total_bytes": 332179047
+  },
+  "Deep": {
+    "datasets": [
+      {
+        "dataset": "ABCA1",
+        "asset": {
+          "file": "rev1-deep-categorical-full-ABCA1-20261118-b6a9c9ec4a39.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-deep-categorical-full-ABCA1-20261118-b6a9c9ec4a39.tar.gz",
+          "sha256": "fa7ad1d3871fe2d8366d6cf327edec2d6937e70e6aafd93dc0c800f1dd5d077d",
+          "bytes": 690994773
+        },
+        "archive_prefix": "fig2_current_ABCA1",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner.npz",
+            "sha256": "31af5950e2ac0365126d520c2c3721e43380eeea042d9f9f60e4f9f8893005b0",
+            "cells": 2611434,
+            "layers": 129,
+            "pairs": 128
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE.npz",
+            "sha256": "20cca9a9feebfcffefb9d3f2463f4b4b759a1571188ff90330d2a0c6d31169fe",
+            "cells": 2611434,
+            "layers": 129,
+            "pairs": 128
+          },
+          {
+            "method": "PASTE2",
+            "kind": "global",
+            "file": "PASTE2.npz",
+            "sha256": "37f6419176b714409575ebc689e47c729e56018dd2b7a8d1450eac7f00b185d6",
+            "cells": 2611434,
+            "layers": 129,
+            "pairs": 128
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo.npz",
+            "sha256": "a68d329419e082ba8281c8de02b9e9851075987e25153fe09b5bae9033bccc7b",
+            "cells": 2611434,
+            "layers": 129,
+            "pairs": 128
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL.npz",
+            "sha256": "ea20dce552344566f094019c6390956032cbf3eecf6b1a5f4261c9c99953dd58",
+            "cells": 2611434,
+            "layers": 129,
+            "pairs": 128
+          },
+          {
+            "method": "STalign",
+            "kind": "global",
+            "file": "STalign.npz",
+            "sha256": "b5f15822a1b209d6f9c3cee4cd39466c92aab6e60624adda84034cb3931cdf46",
+            "cells": 2611434,
+            "layers": 129,
+            "pairs": 128
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT.npz",
+            "sha256": "dd0d04c2f76db0b71b65bb2d6fd6694f7ebe0038a5f0f3e3a1c3c9b2e48baf62",
+            "cells": 2611434,
+            "layers": 129,
+            "pairs": 128
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster"
+        ],
+        "no_expression_matrix": true
+      },
+      {
+        "dataset": "ABCA2",
+        "asset": {
+          "file": "rev1-deep-categorical-full-ABCA2-20261118-0244c7092427.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-deep-categorical-full-ABCA2-20261118-0244c7092427.tar.gz",
+          "sha256": "14f55e359ca29c278a68ca8507958e0314485f4faab945930c6b5e1698fb140c",
+          "bytes": 280169714
+        },
+        "archive_prefix": "fig2_current_ABCA2",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner.npz",
+            "sha256": "7ceb4bdc1d41dd1d35cddcaff38062f0767dd49371cc9e59190f53e41fb2c9ca",
+            "cells": 1050713,
+            "layers": 54,
+            "pairs": 53
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE.npz",
+            "sha256": "3a6de9a0f8625529694a0aad00a072c77ab1f30dd0779f35be5875df75355335",
+            "cells": 1050713,
+            "layers": 54,
+            "pairs": 53
+          },
+          {
+            "method": "PASTE2",
+            "kind": "global",
+            "file": "PASTE2.npz",
+            "sha256": "477a5e175e379ee931259a8cca2d6079959c1f15da6100428add18a09f0bf1c5",
+            "cells": 1050713,
+            "layers": 54,
+            "pairs": 53
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo.npz",
+            "sha256": "b8b0ec68e93e0fcd4fcd8ebb83ae3e737ebe33dd1e5f13815f2ba16f8bf0274f",
+            "cells": 1050713,
+            "layers": 54,
+            "pairs": 53
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL.npz",
+            "sha256": "bd9b366267724a48b9d8dc7e2b1f0b4f5f173f027fb0c16e35da1ecc819f16f5",
+            "cells": 1050713,
+            "layers": 54,
+            "pairs": 53
+          },
+          {
+            "method": "STalign",
+            "kind": "global",
+            "file": "STalign.npz",
+            "sha256": "f206070fed4a79ed8c07aa98e671bb1962b3ae9d606ca2381f549b2e25170b92",
+            "cells": 1050713,
+            "layers": 54,
+            "pairs": 53
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT.npz",
+            "sha256": "2c583d6e73b0980fc1f56a570f07e0ef3a2230cbc70c2d1af1c73c8d6ab9ea11",
+            "cells": 1050713,
+            "layers": 54,
+            "pairs": 53
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster"
+        ],
+        "no_expression_matrix": true
+      },
+      {
+        "dataset": "ABCA3",
+        "asset": {
+          "file": "rev1-deep-categorical-full-ABCA3-20261118-b1ea2dcf132a.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-deep-categorical-full-ABCA3-20261118-b1ea2dcf132a.tar.gz",
+          "sha256": "9f2fc61cf5c106c57f51428834ea94fdd38d487d4d7190a1f785ceb6945f72d9",
+          "bytes": 407908348
+        },
+        "archive_prefix": "fig2_current_ABCA3",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner.npz",
+            "sha256": "2169f01cdea3d4f99ece4a10e8dc9412c355ac558c9060bccaa9a4a1e5632ab2",
+            "cells": 1566519,
+            "layers": 22,
+            "pairs": 21
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE.npz",
+            "sha256": "e5f3ab67b48fbef6495d3b695d677540ded8aa1c5daac793465579d5291482c6",
+            "cells": 1566519,
+            "layers": 22,
+            "pairs": 21
+          },
+          {
+            "method": "PASTE2",
+            "kind": "global",
+            "file": "PASTE2.npz",
+            "sha256": "3dd211921f1c454338009ba3ff480bb8971297403ee81ac95991927850d4e6e9",
+            "cells": 1566519,
+            "layers": 22,
+            "pairs": 21
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo.npz",
+            "sha256": "45fa1bbd8af4cbe99014bef9ece9207392b26ad4ce369ee059599a238eade320",
+            "cells": 1566519,
+            "layers": 22,
+            "pairs": 21
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL.npz",
+            "sha256": "17a827526fab6fecb5a29cd73265df46489c70ace37ca451b277dc6f9fa15479",
+            "cells": 1566519,
+            "layers": 22,
+            "pairs": 21
+          },
+          {
+            "method": "STalign",
+            "kind": "global",
+            "file": "STalign.npz",
+            "sha256": "e84771a261a3c863c22911b23cde1ff12715aaab3752bc881bf1ae7b8e402125",
+            "cells": 1566519,
+            "layers": 22,
+            "pairs": 21
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT.npz",
+            "sha256": "c23b3469ff01e3d11477ff31528ca0e592ad358f781c07dcec9371b328c49e4b",
+            "cells": 1566519,
+            "layers": 22,
+            "pairs": 21
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster"
+        ],
+        "no_expression_matrix": true
+      },
+      {
+        "dataset": "ST_brain",
+        "asset": {
+          "file": "rev1-deep-categorical-full-ST_brain-20261118-5e93a5e9bb96.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-deep-categorical-full-ST_brain-20261118-5e93a5e9bb96.tar.gz",
+          "sha256": "b99ccdbd6dbc003b95331e3689dcb4afe7554f24ca56377323e98e7c9bc9420c",
+          "bytes": 8708574
+        },
+        "archive_prefix": "fig2_current_ST_brain",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner.npz",
+            "sha256": "9d7cc058f7c8c99c4515a3d69eb24f529d83125bd7126336ad8c5e8091087ace",
+            "cells": 34056,
+            "layers": 75,
+            "pairs": 74
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE.npz",
+            "sha256": "e87380f2058b8a94252c5a317cde9fd56c55656c3180c1cbd44bca32a394a58d",
+            "cells": 34056,
+            "layers": 75,
+            "pairs": 74
+          },
+          {
+            "method": "PASTE2",
+            "kind": "global",
+            "file": "PASTE2.npz",
+            "sha256": "2d5acc82184e0c8a92a9b9bed5aa77fe3ee400d059011986c746181d56af396e",
+            "cells": 34056,
+            "layers": 75,
+            "pairs": 74
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo.npz",
+            "sha256": "ec0c80752c04a559c6533edd8e882dc2254d67235d5c55fb952e0383686e3879",
+            "cells": 34056,
+            "layers": 75,
+            "pairs": 74
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL.npz",
+            "sha256": "1c949aafa84765784057fec7761310e64af8d8337df28e101ff5a3349374a519",
+            "cells": 34056,
+            "layers": 75,
+            "pairs": 74
+          },
+          {
+            "method": "STalign",
+            "kind": "global",
+            "file": "STalign.npz",
+            "sha256": "97a964239fe9c7a17a2b63f6ab5be84fdb7a378d880650dca68f3fb0f4b28862",
+            "cells": 34056,
+            "layers": 75,
+            "pairs": 74
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT.npz",
+            "sha256": "3f949f99ee0c3d0e4a9f3a897d0a1449976b9fdae58802c081ade486608cb835",
+            "cells": 34056,
+            "layers": 75,
+            "pairs": 74
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster"
+        ],
+        "no_expression_matrix": true
+      },
+      {
+        "dataset": "E9_5",
+        "asset": {
+          "file": "rev1-deep-categorical-full-E9_5-20261118-66c226da5584.tar.gz",
+          "url": "https://github.com/huboqiang/omnialigner/releases/download/rev1/rev1-deep-categorical-full-E9_5-20261118-66c226da5584.tar.gz",
+          "sha256": "79ac452b779fb95ce4cb77929c1fa299e7ebc84dd81516ad794336b5157d0969",
+          "bytes": 88617321
+        },
+        "archive_prefix": "fig2_current_E9_5",
+        "methods": [
+          {
+            "method": "OmniAligner",
+            "kind": "global",
+            "file": "OmniAligner.npz",
+            "sha256": "1aa98744de1d991d40b451bcad06c634b85a504fc1092a8870488cfb8eda2937",
+            "cells": 646893,
+            "layers": 70,
+            "pairs": 69
+          },
+          {
+            "method": "PASTE",
+            "kind": "global",
+            "file": "PASTE.npz",
+            "sha256": "4040a72fa157c4f06f0567ddae0cb67a684706529500993903d5e696cbb8c287",
+            "cells": 646893,
+            "layers": 70,
+            "pairs": 69
+          },
+          {
+            "method": "PASTE2",
+            "kind": "global",
+            "file": "PASTE2.npz",
+            "sha256": "640d430e2404d58239a9c8b0a7689832c70c8b50d588e5d1ca8aafaa444aaa56",
+            "cells": 646893,
+            "layers": 70,
+            "pairs": 69
+          },
+          {
+            "method": "Spateo",
+            "kind": "global",
+            "file": "Spateo.npz",
+            "sha256": "dab885d861385a5286a89deb4f14e5bdf6806ee36ab21e06ebca4c667b7047bb",
+            "cells": 646893,
+            "layers": 70,
+            "pairs": 69
+          },
+          {
+            "method": "SPACEL",
+            "kind": "global",
+            "file": "SPACEL.npz",
+            "sha256": "5c5ad13a7b29f1bbacf92a53756e6c609f5ee74b08d5310ffd160f022347e169",
+            "cells": 646893,
+            "layers": 70,
+            "pairs": 69
+          },
+          {
+            "method": "STalign",
+            "kind": "global",
+            "file": "STalign.npz",
+            "sha256": "b45e5fa77f548b20a75383ec772d3cd3ccecb698d5f181c1c688245b78203805",
+            "cells": 646893,
+            "layers": 70,
+            "pairs": 69
+          },
+          {
+            "method": "SLAT",
+            "kind": "global",
+            "file": "SLAT.npz",
+            "sha256": "37b690864288cdd512595276534fdc161bcf9887ac8460c1e8c3ee958a500eb7",
+            "cells": 646893,
+            "layers": 70,
+            "pairs": 69
+          }
+        ],
+        "global_npz_keys": [
+          "cell_ids",
+          "layers",
+          "labels",
+          "coords",
+          "raster"
+        ],
+        "no_expression_matrix": true
+      }
+    ],
+    "algorithm_count": 7,
+    "total_bytes": 1476398730
+  }
+}

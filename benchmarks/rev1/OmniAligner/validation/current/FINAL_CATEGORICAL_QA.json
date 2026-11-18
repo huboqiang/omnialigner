@@ -1,0 +1,985 @@
+{
+  "ncs_completed": 53,
+  "ncs_native_failed": 1,
+  "deep_completed": 35,
+  "checked_main_conditions": 89,
+  "all_expected_pair_indices_checked": true,
+  "strict_mean_policy": "Independent csv float parsing + math.fsum, complete chain required",
+  "raw_NA_not_filled": true,
+  "errors": [],
+  "cases": [
+    {
+      "dataset": "DLPFC",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 3,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 3,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "PASTE2",
+      "status": "complete",
+      "pairs": 3,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 3,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 3,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 3,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "SANTO",
+      "status": "complete",
+      "pairs": 3,
+      "strict_mean_abs_errors": {
+        "ARI": 2.7755575615628914e-17,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 3,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "DLPFC",
+      "method": "MOSAICField",
+      "status": "complete",
+      "pairs": 3,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MHPR",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 4,
+      "strict_mean_abs_errors": {
+        "ARI": 1.1102230246251565e-16,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MHPR",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 4,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MHPR",
+      "method": "PASTE2",
+      "status": "complete",
+      "pairs": 4,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MHPR",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 4,
+      "strict_mean_abs_errors": {
+        "ARI": 1.1102230246251565e-16,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MHPR",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 4,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MHPR",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 4,
+      "strict_mean_abs_errors": {
+        "ARI": 6.938893903907228e-18,
+        "NMI": 6.331740687315346e-17,
+        "CLC": 8.326672684688674e-17
+      }
+    },
+    {
+      "dataset": "MHPR",
+      "method": "SANTO",
+      "status": "complete",
+      "pairs": 4,
+      "strict_mean_abs_errors": {
+        "ARI": 8.326672684688674e-17,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MHPR",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 4,
+      "strict_mean_abs_errors": {
+        "ARI": 1.1102230246251565e-16,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MHPR",
+      "method": "MOSAICField",
+      "status": "complete",
+      "pairs": 4,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "MMPC",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MMPC",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 4.163336342344337e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MMPC",
+      "method": "PASTE2",
+      "status": "native_failed"
+    },
+    {
+      "dataset": "MMPC",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 8.326672684688674e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MMPC",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 2.7755575615628914e-17,
+        "NMI": 4.163336342344337e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MMPC",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MMPC",
+      "method": "SANTO",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 8.326672684688674e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MMPC",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MMPC",
+      "method": "MOSAICField",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 2.7755575615628914e-17,
+        "NMI": 9.020562075079397e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MPC",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MPC",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 2.7755575615628914e-17,
+        "NMI": 8.326672684688674e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MPC",
+      "method": "PASTE2",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MPC",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 2.7755575615628914e-17,
+        "NMI": 8.326672684688674e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MPC",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MPC",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MPC",
+      "method": "SANTO",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 2.7755575615628914e-17,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "MPC",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MPC",
+      "method": "MOSAICField",
+      "status": "complete",
+      "pairs": 2,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 1.3877787807814457e-17,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "E14_16",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 15,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "E14_16",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 15,
+      "strict_mean_abs_errors": {
+        "ARI": 2.7755575615628914e-17,
+        "NMI": 1.3877787807814457e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "E14_16",
+      "method": "PASTE2",
+      "status": "complete",
+      "pairs": 15,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "E14_16",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 15,
+      "strict_mean_abs_errors": {
+        "ARI": 2.7755575615628914e-17,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "E14_16",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 15,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "E14_16",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 15,
+      "strict_mean_abs_errors": {
+        "ARI": 2.7755575615628914e-17,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "E14_16",
+      "method": "SANTO",
+      "status": "complete",
+      "pairs": 15,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "E14_16",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 15,
+      "strict_mean_abs_errors": {
+        "ARI": 5.551115123125783e-17,
+        "NMI": 6.938893903907228e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "E14_16",
+      "method": "MOSAICField",
+      "status": "complete",
+      "pairs": 15,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "MLN",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 18,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "MLN",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 18,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MLN",
+      "method": "PASTE2",
+      "status": "complete",
+      "pairs": 18,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 2.7755575615628914e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "MLN",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 18,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "MLN",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 18,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "MLN",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 18,
+      "strict_mean_abs_errors": {
+        "ARI": 5.637851296924623e-18,
+        "NMI": 5.898059818321144e-17,
+        "CLC": 2.7755575615628914e-17
+      }
+    },
+    {
+      "dataset": "MLN",
+      "method": "SANTO",
+      "status": "complete",
+      "pairs": 18,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 2.7755575615628914e-17
+      }
+    },
+    {
+      "dataset": "MLN",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 18,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 2.7755575615628914e-17
+      }
+    },
+    {
+      "dataset": "MLN",
+      "method": "MOSAICField",
+      "status": "complete",
+      "pairs": 18,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "ABCA1",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 128,
+      "strict_mean_abs_errors": {
+        "ARI": 1.1102230246251565e-16,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA1",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 128,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA1",
+      "method": "PASTE2",
+      "status": "complete",
+      "pairs": 128,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA1",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 128,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA1",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 128,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA1",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 128,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA1",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 128,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA2",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 53,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA2",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 53,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA2",
+      "method": "PASTE2",
+      "status": "complete",
+      "pairs": 53,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA2",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 53,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA2",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 53,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA2",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 53,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA2",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 53,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA3",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 21,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA3",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 21,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA3",
+      "method": "PASTE2",
+      "status": "complete",
+      "pairs": 21,
+      "strict_mean_abs_errors": {
+        "ARI": 1.1102230246251565e-16,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA3",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 21,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA3",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 21,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA3",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 21,
+      "strict_mean_abs_errors": {
+        "ARI": 5.724587470723463e-17,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ABCA3",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 21,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ST_brain",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 74,
+      "strict_mean_abs_errors": {
+        "ARI": 1.1102230246251565e-16,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ST_brain",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 74,
+      "strict_mean_abs_errors": {
+        "ARI": 1.1102230246251565e-16,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ST_brain",
+      "method": "PASTE2",
+      "status": "complete",
+      "pairs": 74,
+      "strict_mean_abs_errors": {
+        "ARI": 1.1102230246251565e-16,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ST_brain",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 74,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ST_brain",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 74,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ST_brain",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 74,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "ST_brain",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 74,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "E9_5",
+      "method": "OmniAligner",
+      "status": "complete",
+      "pairs": 69,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "E9_5",
+      "method": "PASTE",
+      "status": "complete",
+      "pairs": 69,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "E9_5",
+      "method": "PASTE2",
+      "status": "complete",
+      "pairs": 69,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 5.551115123125783e-17
+      }
+    },
+    {
+      "dataset": "E9_5",
+      "method": "Spateo",
+      "status": "complete",
+      "pairs": 69,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 0.0,
+        "CLC": 2.7755575615628914e-17
+      }
+    },
+    {
+      "dataset": "E9_5",
+      "method": "SPACEL",
+      "status": "complete",
+      "pairs": 69,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 8.326672684688674e-17
+      }
+    },
+    {
+      "dataset": "E9_5",
+      "method": "STalign",
+      "status": "complete",
+      "pairs": 69,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 0.0
+      }
+    },
+    {
+      "dataset": "E9_5",
+      "method": "SLAT",
+      "status": "complete",
+      "pairs": 69,
+      "strict_mean_abs_errors": {
+        "ARI": 0.0,
+        "NMI": 5.551115123125783e-17,
+        "CLC": 5.551115123125783e-17
+      }
+    }
+  ]
+}

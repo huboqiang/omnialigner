@@ -5,20 +5,19 @@ The notebooks start with public `wget` and `git clone` commands and run without 
 | Notebook | What it reproduces |
 |---|---|
 | [OmniAligner alignment + agent-refinement walkthrough](OmniAligner/notebooks/OmniAligner_alignment_workflow_DLPFC.ipynb) | DLPFC input, matching/stage evidence, recorded agent decisions and optimizer curves, then fresh coordinate inference and scoring |
-| [OmniAligner benchmark table](OmniAligner/notebooks/NCS_submission_table_reproduce.ipynb) | Visible metric functions; freshly computed OmniAligner scores; all algorithm rows and rank/count matrix |
-| [OmniAligner selected-coordinate scoring](OmniAligner/notebooks/OmniAligner_NCS_reproduce.ipynb) | 44 adjacent pairs, 36 OmniAligner dataset means from released expression inputs and selected coordinates |
+| [OmniAligner NCS benchmark](OmniAligner/notebooks/NCS_submission_table_reproduce.ipynb) | Six NCS cohorts; nine families; nine metrics; explicit NPZ scoring, source checks and PDF figures |
 | [Weights → coordinates → scores](OmniAligner/notebooks/OmniAligner_weights_to_scores_DLPFC.ipynb) | DLPFC checkpoint inference from original coordinates, followed by all six metrics |
 | [Controlled rotations and crops](OmniAligner/notebooks/OmniAligner_rotation_crop_benchmark_reproduce.ipynb) | All 748 configuration–condition results freshly scored from NPZ; six visible metric functions, family ranks and radar/crop/variance figures |
-| [Original Fig. 2: spatial-omics metrics](OmniAligner/notebooks/Fig2_spatial_omics_benchmark_reproduce.ipynb) | Explicit ARI/NMI/CLC; fresh SmallIntestine scoring, full nine-dataset archived means, optional full recomputation; historical display overrides separated |
+| [Deep spatial-omics benchmark](OmniAligner/notebooks/Fig2_spatial_omics_benchmark_reproduce.ipynb) | Current Deep benchmark: five cohorts >20 sections, seven completed methods, nine metrics and PDF figures |
 | [Original Fig. 3: FAIR landmarks](OmniAligner/notebooks/Fig3_FAIR_landmark_benchmark.ipynb) | Ten portable landmark arrays, TRE and both aTRE definitions; fresh calculations separated from historical display substitutions |
 | [Original Fig. 4: BRCA prediction](OmniPred/notebooks/Fig4_BRCA_original_benchmark.ipynb) | True expression and identity-mapped two-method predictions; 1,252 freshly calculated gene-wise PCCs in both directions |
 | [OmniPred benchmark tables](OmniPred/notebooks/OmniPred_submission_benchmarks.ipynb) | Cell RNA, regional RNA, native tiles, and CRC protein-region tables, each on its own support |
 
 The [rev1 release](https://github.com/huboqiang/omnialigner/releases/tag/rev1) contains the 145 MB data archive. Six selected coordinate NPZs (13.23 MB) and nine original geometry checkpoints plus the portable DLPFC checkpoint are in Git. Full H5ADs are not in Git; [original download links](OmniAligner/docs/DATA_DOWNLOADS.md) are provided separately.
 
-The NCS snapshot includes completed PASTE2 MLN (18/18) and STalign E14–16 (15/15). CAST MLN remains incomplete and is excluded from ranking. The selected OmniAligner configuration is the sole OmniAligner representative. Loki and CPD are not included. Undefined metrics remain NA. Ranking is within eligible finite results on the disclosed supports; it is not a significance test.
+The current alignment entry points are the three [OmniAligner benchmark notebooks](OmniAligner/README.md): Robustness, NCS and Deep. Loki, CAST and CPD are excluded. NCS has nine families; Deep has seven completed methods, with unfinished SANTO/MOSAICField retained as diagnostics. NCS/Deep include native six metrics plus ARI/NMI/CLC. Raw missing values remain NA; the derived quality score applies documented zero credit to failed/ineligible pairs. Source corrections and different native supports are disclosed in the audit.
 
-The full comparison notebook and selected-coordinate notebook recompute all OmniAligner metrics from expression inputs and coordinates; the DLPFC examples also replay weight inference. Other NCS methods are reconstructed from archived means or complete pair-score records; OmniPred tables are reaggregated from frozen gene/seed/marker scores, not retrained. See the package READMEs for scope and provenance.
+The unified NCS notebook recomputes all OmniAligner metrics from expression inputs and coordinates; the DLPFC examples also replay weight inference. Other NCS methods are reconstructed from archived means or complete pair-score records; OmniPred tables are reaggregated from frozen gene/seed/marker scores, not retrained. See the package READMEs for scope and provenance.
 
 The DLPFC workflow archive (26 MB, in the same release) contains the actual recorded stage evidence and agent reviews. The walkthrough does not make a fresh LLM call or rerun training; it recomputes inference/scoring and retains the original final geometric-admission status.
 

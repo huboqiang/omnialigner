@@ -1,34 +1,38 @@
-# OmniAligner revision benchmarks
+# OmniAligner: revision benchmark reproduction
 
-Open any notebook in `notebooks/` with a fresh Python 3.10/3.11 Jupyter kernel. Its first code cell downloads the public release archive, clones the `rev1` branch, checks SHA-256, and extracts the inputs; the second installs the pinned dependencies. No private server path or existing H5AD is required.
+Three notebooks are the current benchmark entry points:
 
-Start with [the DLPFC alignment and agent-refinement walkthrough](notebooks/OmniAligner_alignment_workflow_DLPFC.ipynb) to see the complete recorded stage sequence, actual agent decisions and both optimization trajectories. It verifies the source records and freshly recomputes coarse/final coordinates and scores. Archived detector/agent/training steps are explicitly distinguished from executed inference.
+| Benchmark | Runnable notebook | Main scope | Publication PDFs |
+|---|---|---|---|
+| Robustness | [Rotation/crop](notebooks/OmniAligner_rotation_crop_benchmark_reproduce.ipynb) | DLPFC/MHPR; 68 perturbations; 748 configurations; nine algorithm families | [Rotation/crop](figures/current/OmniAligner_rotation_crop.pdf) |
+| NCS | [NCS nine metrics](notebooks/NCS_submission_table_reproduce.ipynb) | Six datasets; nine families; six native metrics + ARI/NMI/CLC | [Ranks](figures/current/NCS_dataset_nine_metric_ranks.pdf), [summary](figures/current/NCS_grouped_performance_summary.pdf) |
+| Deep | [Deep nine metrics](notebooks/Fig2_spatial_omics_benchmark_reproduce.ipynb) | Five datasets >20 sections; seven completed methods; nine metrics | [Ranks](figures/current/Deep_dataset_nine_metric_ranks.pdf), [summary](figures/current/Deep_grouped_performance_summary.pdf) |
 
-1. **NCS_submission_table_reproduce.ipynb** shows the six metric definitions directly, freshly computes all 44 OmniAligner adjacent pairs / 36 means, then reconstructs the full submitted comparison, including all method rows and the rank/count figure. It verifies values, missingness, eligibility and all 36 ranks against the frozen submission reference.
-2. **OmniAligner_NCS_reproduce.ipynb** recomputes all 44 adjacent pairs and 36 selected OmniAligner means from original expression values/annotations and the six selected coordinate NPZs. Allow 48–64 GB RAM for MLN.
-3. **OmniAligner_weights_to_scores_DLPFC.ipynb** loads the portable selected geometry checkpoint, transforms original raw coordinates through the frozen coarse frame and learned nonlinear field, and computes the six scores on all three DLPFC pairs. Saved final coordinates are used only for validation. This replays inference, not the coarse matcher, agent or optimizer.
+All three have passed execution from public downloads in a clean directory and
+isolated Python 3.10 environment. Use Python 3.10/3.11. Each begins with `!wget`
+and `!git clone`, then installs its dependencies. No SSH or private directory is
+needed. The three notebooks include saved figure outputs for preview on open. Figures use
+`import omnialigner as om; om.pl.plt`, Arial and Type 42 fonts.
 
-The release expression inputs retain exact source `.X` values for the frozen evaluation-gene panel, original cell IDs, labels and raw coordinates. They are exported losslessly as sparse NPZs, with per-file and source-H5AD hashes. Full source H5ADs are [linked separately](docs/DATA_DOWNLOADS.md). They are not needed to reproduce the submitted table.
+Loki, CAST and CPD are excluded from all current comparisons. Deep SANTO and
+MOSAICField native runs are unfinished and retained only as diagnostics; the
+main Deep comparison is explicitly seven methods, not nine. There is one selected
+OmniAligner representative per cohort, without configuration tags in the table.
 
-## Included records
+[NCS details](docs/NCS_BENCHMARK_REPRODUCTION.md), [Deep details](docs/DEEP_BENCHMARK_REPRODUCTION.md),
+[full categorical recalculation](docs/FULL_CATEGORICAL_RECALC.md), and the
+[source audit](docs/SCORING_AUDIT_20261118.md) explain inputs, support differences,
+field/mask corrections, missingness and the precise ranking policy. Complete
+experiments preserve native-mean order. Raw NA is not replaced with zero MSE.
 
-- `data/selected_coordinates`: six coordinate NPZs (13.23 MB), with cell IDs and fixed cohort masks.
-- `data/weights`: nine original checkpoints and a tensor-only portable DLPFC checkpoint. The latter preserves the original learned parameters and frozen pre-nonlinear coordinate frame; it contains no expected final coordinate array.
-- `src`: frozen native SABench scorer, pair scoring and portable geometry inference.
-- `data/pair_scores` and `data/sources`: complete pair scores, archived baseline means, submitted references and eligibility/status records.
-- `validation`: executed numerical checks; `tables`: the matching submitted XLSX/PDF and rank figure.
+The fast default displays actual metric functions and recalculates real inputs;
+large full ARI/NMI/CLC calculations are optional. Complete coordinate/label/raster
+NPZs are checksummed per-dataset Release assets (NCS 332 MB; Deep 1.48 GB), not Git
+payloads. [Original H5AD downloads](docs/DATA_DOWNLOADS.md) remain separate.
 
-## Scope
+The current NCS and Deep notebooks replace the overlapping NCS notebook and
+the historical six-metric rank snapshot. Earlier tracked versions remain in Git history.
 
-There is one selected OmniAligner result per dataset; no historical OmniAligner alternative enters the ranks. Loki and CPD are excluded. PASTE2 MLN is complete (18/18); CAST MLN remains incomplete and unranked. Failed, undefined and diagnostic entries are retained. Green means rank 1; gray means another rank or unavailable comparison.
-
-The full-table notebook reconstructs every method row; it does not refit all comparators. Historical baseline means come from archived scored records, and added comparisons from their complete pair-score files. The full-table notebook itself recalculates OmniAligner from expression inputs and coordinates. MLN PASTE-family uses 5,000 cells per section; OmniAligner retains its recorded full-cell support. Fitting information and tuning budgets differ. These are descriptive development results, not evidence of independent-patient generalization.
-
-The native scoring implementation is from [SABench](https://github.com/Yunzhi-Yan/SABench). See `THIRD_PARTY_NOTICES.md` and the provenance manifests. Benchmark-frame coordinates are not calibrated micrometre measurements.
-
-## Original main figures
-
-- [Fig. 2 spatial-omics benchmark](notebooks/Fig2_spatial_omics_benchmark_reproduce.ipynb): explicit ARI/NMI/CLC with original raster/coordinate/label inputs, transparent historical scaling and overrides. [Scope](docs/FIG2_REPRODUCTION.md).
-- [Fig. 3 FAIR benchmark](notebooks/Fig3_FAIR_landmark_benchmark.ipynb): direct landmark calculations and separately reproduced historical display. [Scope](docs/Fig3_FAIR_reproduction.md).
-
-These original-figure experiments use different datasets and metrics from the NCS revision comparison above. They do not change its scores, ranks or eligibility rules.
+Additional focused examples remain available: [DLPFC weight inference](notebooks/OmniAligner_weights_to_scores_DLPFC.ipynb),
+[recorded agent-refinement walkthrough](notebooks/OmniAligner_alignment_workflow_DLPFC.ipynb),
+and [original FAIR landmark reproduction](notebooks/Fig3_FAIR_landmark_benchmark.ipynb).

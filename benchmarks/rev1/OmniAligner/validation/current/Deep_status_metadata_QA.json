@@ -1,0 +1,12 @@
+{
+  "scope": "Deep",
+  "raw_source_archive_unchanged": true,
+  "score_values_unchanged": true,
+  "clarified_status_columns": [
+    "main_scope_resolved",
+    "native_fit_complete"
+  ],
+  "main_scope_resolved": true,
+  "confirmed_native_failures": 0,
+  "source_collector_flag_removed_from_main_export": true
+}

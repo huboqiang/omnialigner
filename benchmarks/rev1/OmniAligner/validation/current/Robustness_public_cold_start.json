@@ -1,0 +1,45 @@
+{
+  "configuration_conditions": 748,
+  "condition_metric_positions": 4488,
+  "gene_metric_positions": 519860,
+  "all_values_match_declared_tolerances": true,
+  "all_NA_positions_match_exactly": true,
+  "metric_absolute_tolerances": {
+    "PCC": 1e-10,
+    "CosSim": 9.5367431640625e-07,
+    "SSIM": 1e-10,
+    "MI": 1e-10,
+    "MSE": 1e-10,
+    "Region": 1e-10
+  },
+  "all_eligibility_flags_match": true,
+  "all_OmniAligner_ranks_and_counts_match": true,
+  "OmniAligner_fitted_conditions": 68,
+  "OmniAligner_eligible_endpoints": 402,
+  "OmniAligner_first_endpoints": 92,
+  "archive_sha256": "4e01c2dd154820de82547cd67ade34cd1622c1ecb0a5c4bc1fd249fc6da9dd79",
+  "environment": {
+    "numpy": "1.26.0",
+    "scipy": "1.15.3",
+    "pandas": "2.1.1",
+    "scikit-learn": "1.4.2",
+    "matplotlib": "3.9.1",
+    "seaborn": "0.13.2"
+  },
+  "figure_font_family": [
+    "Arial"
+  ],
+  "pdf_fonttype": 42,
+  "ps_fonttype": 42,
+  "current_fixed_algorithm_denominator": 9,
+  "current_fixed_nine_own_endpoints": 408,
+  "current_fixed_nine_first_endpoints": 92,
+  "raw_NA_preserved": true,
+  "failures_have_zero_rank_credit": true,
+  "cold_start_success": true,
+  "all_notebook_cells_executed": true,
+  "unchanged_public_bootstrap_executed": true,
+  "isolated_virtual_environment": true,
+  "user_site_packages_disabled": true,
+  "wall_seconds": 627.37
+}

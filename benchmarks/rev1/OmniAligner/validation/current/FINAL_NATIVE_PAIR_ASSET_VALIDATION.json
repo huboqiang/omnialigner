@@ -1,0 +1,18 @@
+{
+  "ncs_nine_current": {
+    "files_hashes_verified": true,
+    "unique_pair_metric_keys": 2376,
+    "strict_raw_means_verified": 324,
+    "no_ranking_computed": true,
+    "native_sources_complete": true,
+    "ranking_input_complete": false
+  },
+  "deep_seven_current": {
+    "files_hashes_verified": true,
+    "unique_pair_metric_keys": 14490,
+    "strict_raw_means_verified": 210,
+    "no_ranking_computed": true,
+    "native_sources_complete": true,
+    "ranking_input_complete": false
+  }
+}

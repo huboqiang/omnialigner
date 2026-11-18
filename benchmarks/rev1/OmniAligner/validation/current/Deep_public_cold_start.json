@@ -1,0 +1,33 @@
+{
+  "snapshot": "af6732f680c24336",
+  "scope": "Deep: current source-bound pair scores; explicit complete input-loading gate",
+  "expected_pair_metric_positions": 21735,
+  "observed_eligible_pair_metric_positions": 21410,
+  "zero_credit_pair_metric_positions": 325,
+  "fresh_example_pairs": 1,
+  "fresh_native_example_pairs": 1,
+  "source_checksums_verified": true,
+  "policy": "expected_pair_weighted_native_metric_quality_v3",
+  "raw_missing_values_preserved": true,
+  "no_partial_raw_mean_substitution": true,
+  "algorithm_roster": [
+    "OmniAligner",
+    "PASTE",
+    "PASTE2",
+    "Spateo",
+    "SPACEL",
+    "STalign",
+    "SLAT"
+  ],
+  "fixed_algorithm_denominator": 7,
+  "all_tasks_complete": true,
+  "pdf_fonttype": 42,
+  "font_family": [
+    "Arial"
+  ],
+  "cold_start_success": true,
+  "all_notebook_cells_executed": true,
+  "unchanged_public_bootstrap_executed": true,
+  "isolated_virtual_environment": true,
+  "wall_seconds": 35.91
+}
