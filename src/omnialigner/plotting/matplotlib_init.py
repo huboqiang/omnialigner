@@ -1,26 +1,40 @@
-import logging
+"""Portable Matplotlib defaults for editable manuscript figures."""
 import os
-import warnings
+from pathlib import Path as _Path
 import matplotlib.pyplot as plt
 import seaborn as sns
-
 from matplotlib import font_manager
 
 
-warnings.filterwarnings("ignore")
-logging.getLogger('fontTools').propagate = False
+def _register_optional_fonts():
+    # Normal system fonts are discovered by Matplotlib itself. Extra fonts are
+    # read only when explicitly supplied; no font assets are bundled/downloaded.
+    for directory in os.environ.get("OMNIALIGNER_FONT_DIR", "").split(os.pathsep):
+        if not directory:
+            continue
+        folder = _Path(os.path.expandvars(directory)).expanduser()
+        if not folder.is_dir():
+            continue
+        for filename in font_manager.findSystemFonts(fontpaths=[str(folder)], fontext="ttf"):
+            try:
+                font_manager.fontManager.addfont(filename)
+            except (OSError, ValueError, RuntimeError):
+                # A malformed optional font must not prevent scoring/plotting.
+                continue
 
-PY_PATH = "/cluster/home/bqhu_jh/share/miniconda3/envs/cuda1.7/lib/python3.8/site-packages"
-MPL_TTY_PATH = "matplotlib/mpl-data/fonts/ttf"
-font_files = font_manager.findSystemFonts(
-    fontpaths=f"{PY_PATH}/{MPL_TTY_PATH}", fontext='ttf')
 
-if os.path.exists(f'{PY_PATH}/{MPL_TTY_PATH}/Arial.ttf'):
-    font_manager.fontManager.addfont(f'{PY_PATH}/{MPL_TTY_PATH}/Arial.ttf')
-    font_manager.fontManager.addfont(f'{PY_PATH}/{MPL_TTY_PATH}/Arial Bold.ttf')
-    plt.rcParams['font.family'] = ['Arial']
-    plt.rcParams['axes.unicode_minus'] = False
-    sns.set_style("white", {"font.family": ["Arial"]})
+_register_optional_fonts()
+try:
+    font_manager.findfont("Arial", fallback_to_default=False)
+    _family = ["Arial"]
+except ValueError:
+    _family = ["DejaVu Sans"]
 
-plt.rcParams['pdf.fonttype'] = 42
-plt.rcParams['ps.fonttype'] = 42
+sns.set_style("white", {"font.family": _family})
+plt.rcParams.update({
+    "font.family": _family,
+    "axes.unicode_minus": False,
+    "pdf.fonttype": 42,
+    "ps.fonttype": 42,
+    "svg.fonttype": "none",
+})
